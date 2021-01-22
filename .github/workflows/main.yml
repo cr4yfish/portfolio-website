@@ -28,5 +28,5 @@ jobs:
           server: '104.154.83.201'
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} 
           local_path: './*'
-          remote_path: '/opt/bitnami/nginx/html/*'
+          remote_path: '/opt/bitnami/nginx/html/'
           args: '-o ConnectTimeout=5'
