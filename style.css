@@ -12,6 +12,13 @@ html {
     scroll-behavior: smooth;
   }
 
+  @media screen and (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+
 /* scrollbar */
 
 body::-webkit-scrollbar {
@@ -74,6 +81,7 @@ body {
     box-sizing: border-box;
     top: 100%;
     width: 86vw;
+    height: fit-content;
     left: 6vw;
 }
 
@@ -128,13 +136,16 @@ header {
     display: flex;
     justify-content: space-between;
     position: relative;
-    min-width: fit-content;
+    max-width: 90vw;
+    height: fit-content;
+    overflow: visible;
 }
 
 .page1_leftside {
     display: block;
     position: relative;
     max-width: 15vw;
+    height: fit-content;
 }
 
 .big_h1 {
@@ -188,6 +199,7 @@ header {
     float: right;
     position: relative;
     min-width: 25vw;
+    min-height: 25vw;
 }
 
 .picture, .blob {
@@ -210,12 +222,11 @@ header {
 
 
 .wave  {
-    position: absolute;
+    position: relative;
     fill: var(--not_black) !important;
-    top: 100vh;
     left: 0;
     width: 100%;
-    transform: translateY(-50%);
+    transform: translateY(5%);
     z-index: -1;
 }
 
@@ -223,7 +234,7 @@ header {
 /* page1 spacer*/
 
 #page1 {
-    min-height: 95vh;
+    min-height: fit-content;
 }
 /* --- */
 
@@ -243,7 +254,13 @@ header {
     padding-bottom: 20vh;
     overflow: visible;
 }
+.artwork {
+    position: relative;
+}
 
+.artwork img {
+    width: 22vw;
+}
 
 .pages:last-child {
     padding-bottom: 5vh;
@@ -256,6 +273,8 @@ header {
 .pages_header {
     color: var(--almost_white);
     font-size: 3vw;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
 }
 
 .block_text {
@@ -303,19 +322,47 @@ footer span {
     color: var(--almost_white);
 }
 
-
 /* --- */
 
-@media screen and (max-width: 1500px) {
-    .wave {
-        top: 108vh;
+@media screen and (max-width: 1920px) {
+    .big_h1 {
+        font-size: 3vw;
     }
+    .intro_p {
+        font-size: 1.5vw;
+   }
+   .block_text {
+       font-size: 1.25vw;
+   }
 }
+
+@media screen and (max-width: 1280px) {
+    .pages {
+        margin-top: 13vh;
+    }
+    .big_h1 {
+        font-size: 3vw;
+    }
+    .intro_p {
+        font-size: 2vw;
+   }
+   .pages_header {
+       font-size: 3.5vw;
+       margin-bottom: 0.5vh;
+   }
+   .block_text {
+       font-size: 1.75vw;
+   }
+   .artwork img {
+       width: 30vw;
+   }
+}
+
 @media screen and (max-width: 900px) {
     .page1_leftside {
         max-width: 85%;
         height: fit-content;
-        left: 44%;
+        left: 50%;
         text-align: center;
         transform: translateX(-50%);
     }
@@ -342,22 +389,13 @@ footer span {
         max-width: 60%;
     }
     .big_h1 {
-        font-size: 7vw;
+        font-size: 6vw;
     }
     .intro_p {
         font-size: 4vw;
    }
 }
-@media screen and (max-width: 800px) {
-    .wave {
-        top: 110vh;
-    }
-}
-@media screen and (max-width: 600px) {
-    .wave {
-        top: 112vh;
-    }
-}
+
 @media screen and (max-width: 500px) {
     .picture_wrapper{
         display: none;
@@ -368,7 +406,11 @@ footer span {
     .intro_p {
         font-size: 6vw;
    }
+}@media screen and (max-width: 450px) {
    .wave {
-    top: 122vh;
+    transform: translateY(15%);
 }
+    .pages {
+        margin-top: 20vh;
+    }
 }
