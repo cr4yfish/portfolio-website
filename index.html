@@ -15,92 +15,85 @@
     </head>
 
     <body>
+        <div class="content_wrapper">
+            <header>
+                <span class="logo_wrapper">
+                    <span class="logo"><img class="logo_image" src="images/logo.png" alt="logo">
+                        <span class="brevia_bold">Manuel Fahmy</span></span>
+                </span>
+                <div class="header_menu">
+                    <a href="coding.html" class="rubik_regular menu_item">Coding</a>
+                    <a href="design.html" class="rubik_regular menu_item">Design</a>
+                    <a href="photography.html" class="rubik_regular menu_item">Photography</a>
+                    <a href="filmmaking.html" class="rubik_regular menu_item">Filmmaking</a>
+                </div>
+            </header>
+        </div>
 
-        <div id="content_wrapper">
-            <div id="content_content">
+        <section id="page1" class="content_wrapper">
+            <div class="page1_leftside">
+                <span class="brevia_bold big_h1">Hi there,</span>
+                <br>
+                <p class="rubik_regular intro_p">
+                    I'm Manuel Fahmy. I do a lot of stuff, so feel free to take a look around.
+                </p>
+                <button class="btn-primary" style="cursor: pointer;" onclick="window.location.href='#page2';" >
+                    <a  class="brevia_bold">
+                        About me
+                    </a>
+                </button>
+            </div>
+            <span class="picture_wrapper">
+                <img src="images/selfie.png" class="picture" alt="selfie">
+                <img src="images/blob.png" class="blob" alt="blob">
+            </span>
+        </section>
 
-                <header>
-
-                    <span class="logo_wrapper">
-                        <span class="logo"><img class="logo_image" src="images/logo.png" alt="logo">
-                            <span class="brevia_bold">Manuel Fahmy</span></span>
-                    </span>
-
-                    <div class="header_menu">
-                        <a href="coding.html" class="rubik_regular menu_item">Coding</a>
-                        <a href="design.html" class="rubik_regular menu_item">Design</a>
-                        <a href="photography.html" class="rubik_regular menu_item">Photography</a>
-                        <a href="filmmaking.html" class="rubik_regular menu_item">Filmmaking</a>
-                    </div>
-
-                </header>
-
-                <section id="page1">
-
-                    <div class="page1_leftside">
-                        <span class="brevia_bold big_h1">Hi there,</span>
-                        <br>
-                        <p class="rubik_regular intro_p">
-                            I'm Manuel Fahmy. I do a lot of stuff, so feel free to take a look around.
-                        </p>
-
-                        <button class="btn-primary" style="cursor: pointer;" onclick="window.location.href='#page2';" >
-                            <a  class="brevia_bold">
-                                About me
-                            </a>
-                        </button>
-                    </div>
-
-                    <span class="picture_wrapper">
-                        <img src="images/selfie.png" class="picture" alt="selfie">
-                        <img src="images/blob.png" class="blob" alt="blob">
-                    </span>
-
-                </section>
-
-                <section id="page2">
-
-                    <h1 class="pages_header">Who I am</h1>
+        <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1440 320"><path fill-opacity="1" d="M0,32L120,32C240,32,480,32,720,53.3C960,75,1200,117,1320,138.7L1440,160L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path></svg>
+ 
+        <div id="lower_content">
+    
+            <section id="page2" class="content_wrapper pages">
+                <span class="text_wrapper">
+                    <h1 class="pages_header brevia_bold">Who I am</h1>
                     <div class="parahraph_wrapper">
                         <p class="block_text rubik_light">I am Manuel Fahmy and I'm currently a high school student. 
                             I enjoy gaining new skills and experiences, 
                             especially with anything related to technology.</p>
                     </div>
-                    <div class="artwork page2_artwork"><img src="images/page2_artwork.png" alt="who i am artwork"></div>
+                </span>
+                <div class="artwork page2_artwork"><img src="images/page2_artwork.png" alt="who i am artwork"></div>
+            </section>
 
-                </section>
-
-                <section id="page3">
-
-                    <h1 class="pages_header">What I do</h1>
+            <section id="page3" class="content_wrapper pages">
+                <span class="text_wrapper">
+                    <h1 class="pages_header brevia_bold">What I do</h1>
                     <div class="parahraph_wrapper">
                         <p class="block_text rubik_light">Currently, I focus on web design and full-stack web development. 
                             I'm also learning python and C#.
                         </p>
                     </div>
-                    <div class="artwork page2_artwork"><img src="images/page3_artwork.png" alt="what i do artwork"></div>
+                </span>
+                <div class="artwork page2_artwork"><img src="images/page3_artwork.png" alt="what i do artwork"></div>
+            </section>
 
-                </section>
-
-                <section id="page4">
-
-                    <h1 class="pages_header">Contact me</h1>
+            <section id="page4" class="content_wrapper pages">
+                <span class="text_wrapper">
+                    <h1 class="pages_header brevia_bold">Contact me</h1>
                     <div class="parahraph_wrapper">
                         <p class="block_text rubik_light">If you're interested in working with me, 
                             or for any other reason, feel free to contact me.
                         </p>
                     </div>
-
                     <button class="btn-primary">
                         <a href="#" class="brevia_bold">
                             Contact me
                         </a>
                     </button>
-
-                    <div class="artwork page2_artwork"><img src="images/page4_artwork.png" alt="contact me artwork"></div>
-
-                </section>
-            </div>
+                </span>
+                <div class="artwork page2_artwork"><img src="images/page4_artwork.png" alt="contact me artwork"></div>
+            </section>
+        </div>
 
         <footer>
             <div class="footer_inner">
@@ -108,14 +101,17 @@
                     <span class="logo"><img class="logo_image" src="images/logo.png" alt="logo"><span class="brevia_bold">Manuel Fahmy</span></span>
                 </span>
                 <span class="social_media">
-                    <i class="social_media_icon"><span onclick="window.location.href='#';"></span></i>
-                    <i class="social_media_icon"><span onclick="window.location.href='#';"></span></i>
-                    <i class="social_media_icon"><span onclick="window.location.href='#';"></span></i>
-                    <i class="social_media_icon"><span onclick="window.location.href='#';"></span></i>
+                    <span class="mousepointer social_media_icon"   onclick="window.location.href='https://github.com/cr4yfish';"><i class="fab fa-github-square"></i>
+                    </span>
+                    <span class="social_media_icon mousepointer" onclick="window.location.href='https://www.instagram.com/manuelfahmyz/';"><i class="fab fa-instagram-square"></i>
+                    </span>
+                    <span class="social_media_icon mousepointer" onclick="window.location.href='https://twitter.com/cr4yfish1';"><i class="fab fa-twitter-square"></i>
+                    </span>
+                    <span class="social_media_icon mousepointer" onclick="window.location.href='https://www.behance.net/manuelfahm5332';"><i class="fab fa-behance-square"></i>
+                    </span>
                 </span>
             </div>
         </footer>
-    </div>
 
 </body>
 </html>
