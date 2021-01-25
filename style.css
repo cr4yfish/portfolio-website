@@ -163,9 +163,6 @@ header {
     color: #ABABAB;
 }
 
-
-
-
 .btn-primary{
     position: relative;
     background: linear-gradient(90deg, var(--medium_orange) 0%, var(--light_orange) 100%);
@@ -352,7 +349,6 @@ header {
     background-color: var(--nice_purple);
 }
 
-
 /* --- */
 
 /* page4 */
@@ -362,7 +358,6 @@ header {
     z-index: 0;
     fill: var(--not_black);
 }
-
 
 .btn_contact {
     margin-top: 5vh;
