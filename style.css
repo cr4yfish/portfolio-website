@@ -79,16 +79,25 @@ html, body {
     overflow: hidden;
     box-sizing: border-box;
     top: 100%;
-    width: 86vw;
+    width: 100%;
     height: fit-content;
-    left: 7vw;
 }
 
 /* --- */
 
+
+/* new margin 2.0 technology (patent pending) */
+
+header, #page1, .footer_inner {
+    left: 5vw;
+    max-width: 90vw;
+}
+
+
 /* header */
 
 header {
+    position: relative;
     display: flex;
     justify-content: space-between;
     padding-bottom: 13vh;
@@ -378,7 +387,7 @@ header {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    width: 5vw;
+    width: 15vw;
 }
 
 
@@ -392,9 +401,8 @@ footer {
     display: flex;
     justify-content: space-between;
     position: relative;
-    left: 3vw;
-    width: 92vw;
     padding-bottom: 15px;
+    background: var(--not_black);
 }
 
 .social_media_icon {
@@ -423,6 +431,9 @@ footer span {
 /* --- */
 
 @media screen and (max-width: 1000px) {
+    .social_media_icon {
+        font-size: 4vw;
+    }
     .page4_artwork img {
         margin-top: 5vh;
         width: 20vw;
