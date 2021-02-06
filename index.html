@@ -8,7 +8,7 @@
         <meta name="description" content="Test description">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
-        <script src="script.js" async defer></script>
+        <script type="text/javascript" src="script.js" async defer></script>
         <link rel="canonical" href="https://manuelfahmy.xyz/index.html">
         <script src="https://kit.fontawesome.com/d4164139c2.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://use.typekit.net/bgm5mtl.css">
@@ -46,33 +46,71 @@
         <svg id="wave_black" class="wave_black wave" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1440 320"><path fill-opacity="1" d="M0,192L30,208C60,224,120,256,180,256C240,256,300,224,360,213.3C420,203,480,213,540,224C600,235,660,245,720,229.3C780,213,840,171,900,165.3C960,160,1020,192,1080,186.7C1140,181,1200,139,1260,128C1320,117,1380,139,1410,149.3L1440,160L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path></svg>
       <span id="scroll_here"></span>
         <div id="lower_content">
+
             <section id="page2" class="content_wrapper pages">
-                <div class="text_wrapper">
+                <div>
                     <h1 class="pages_header brevia_bold">Who I am</h1>
                     <div class="fancy_spacer"></div>
                     <div class="parahraph_wrapper">
                         <p class="block_text rubik_light">I am Manuel Fahmy and I'm currently a high school student. I enjoy gaining new skills and experiences, especially with anything related to technology.</p></div>
-                    <p class="expand_text rubik_light mousepointer">Expand</p>
+                    
+                        <!-- Hidden content -->
+                    <button class="collapsible expand_btn rubik_light mousepointer">Expand</button>
+                    <div class="collapsible_content">
+                        <ul class="text_wrapper">
+                                <li class="text_block rubik_light">This is finally working</li>
+                                <li class="text_block rubik_light">I'm planning on studying CS soon</li>
+                                <li class="text_block rubik_light">I'm planning on studying CS soon</li>
+                        </ul>
+                        <div class="artwork page2_artwork"><img src="images/page2_artwork.png" alt="who i am artwork"></div>
+                    </div>
+
+
+
+
                 </div>
-                <div class="artwork page2_artwork"><img src="images/page2_artwork.png" alt="who i am artwork"></div>
             </section>
+
+    <div class="move">
             <svg class="wave_purple wave" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1440 320"><path fill-opacity="1" d="M0,192L30,208C60,224,120,256,180,256C240,256,300,224,360,213.3C420,203,480,213,540,224C600,235,660,245,720,229.3C780,213,840,171,900,165.3C960,160,1020,192,1080,186.7C1140,181,1200,139,1260,128C1320,117,1380,139,1410,149.3L1440,160L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path></svg>
-        <div id="purple_wall">
+        
+            <div id="purple_wall">
             <section id="page3" class="content_wrapper pages">
-                <div class="text_wrapper">
+                <div>
                     <h1 class="pages_header brevia_bold">What I do</h1>
                     <div class="fancy_spacer"></div>
                     <div class="parahraph_wrapper">
                         <p class="block_text rubik_light">Currently, I focus on learning full-stack web development and expanding my knowledge in other fields of technology and design.
                         </p>
                     </div>
-                    <p class="expand_text rubik_light mousepointer">Expand</p>
+
+                    <button class="collapsible expand_btn rubik_light mousepointer">Expand</button>
+                    <div class="collapsible_content">
+                        <div id="stuff_wrapper">
+                            <div class="category_chooser"><h1 class="brevia_bold category_text">Coding</h1>
+                            </div>
+                            <div class="grid_layout">
+                                <span class="row1 column1 grid_header brevia_medium">Stuff</span>
+                                <span class="row2 column1 grid_text rubik_light">HTML, CSS and JS</span>
+                                <span class="row3 column1 grid_text rubik_light">Python</span>
+                                <span class="row4 column1 grid_text rubik_light">Java</span>
+                                <span class="row5 column1 grid_text rubik_light">C#</span>
+                                <span class="row1 column2 grid_header brevia_medium">Latest Projects</span>
+                                <span class="row2 column2 grid_text rubik_light">This</span>
+                                <span class="row3 column2 grid_text rubik_light">Website for JBN</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </section>
             <svg class="wave_black2 wave" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1440 320"><path fill-opacity="1" d="M0,192L30,208C60,224,120,256,180,256C240,256,300,224,360,213.3C420,203,480,213,540,224C600,235,660,245,720,229.3C780,213,840,171,900,165.3C960,160,1020,192,1080,186.7C1140,181,1200,139,1260,128C1320,117,1380,139,1410,149.3L1440,160L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path></svg>
         </div>
+    </div>
+
+
             <section id="page4" class="content_wrapper pages">
-                <div class="text_wrapper">
+                <div>
                     <h1 class="pages_header brevia_bold">Contact me</h1>
                     <div class="fancy_spacer"></div>
                     <div class="parahraph_wrapper">
@@ -102,5 +140,23 @@
                 </span>
             </div>
         </footer>
-</body>
+</body> 
+<script>
+var coll = document.getElementsByClassName("collapsible");
+    var i;
+    
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var collapsible_content = this.nextElementSibling;
+        if (collapsible_content.style.maxHeight){
+            collapsible_content.style.maxHeight = null;
+            collapsible_content.style.marginTop = "0";
+        } else {
+            collapsible_content.style.maxHeight = collapsible_content.scrollHeight + "px";
+            collapsible_content.style.marginTop = "10vw";
+        } 
+      });
+    }
+</script>
 </html>
