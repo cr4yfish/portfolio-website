@@ -536,12 +536,12 @@ footer {
     background: var(--not_black);
 }
 
-.social_media_icon {
-    font-size: 1vw;
+.sc_media_icon {
+    font-size: 1.5rem;
     padding-right: 15px;
 }
 
-.social_media_icon:last-child {
+.sc_media_icon:last-child {
     padding-right: 0;
 }
 
@@ -565,7 +565,7 @@ footer span {
     #scroll_here {
         top: 70vh;
     }
-    .social_media_icon {
+    .sc_media_icon {
         font-size: 4vw;
     }
     .page4_artwork img {
