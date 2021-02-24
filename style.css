@@ -332,7 +332,7 @@ header {
 
 .block_text {
     color: var(--almost_white);
-    font-size: 1rem;
+    font-size: 1.14rem;
     text-align: center;
 }
 
@@ -348,14 +348,14 @@ header {
     color: var(--medium_orange);
     margin-top: 10vh;
     transform: translateX(-50%) !important;
-    transition: 500ms all;
+    transition: 2s all !important;
     text-shadow: 0 0 0;
 }
 
-.active .expand_btn:hover {
+.expand_btn:hover {
     color: var(--light_orange);
     text-shadow: 0 0 10px var(--medium_orange);
-    transition: 250ms all;
+    transition: 750ms all !important;
 }
 
 .collapsible_content {
@@ -371,20 +371,30 @@ header {
 .text_wrapper {
     display: block;
     position: relative;
-    width: 30%;
+    max-width: 200px;
+    height: fit-content;
     left: 10%;
 }
 
 .text_block {
+    font-size: 1.14rem;
     float: left;
     padding-bottom: 10px;
     color: var(--almost_white);
     height: fit-content;
-    list-style-image: url(images/listPoint.png);
 }
 
-.text_block::marker {
-    transform: translateY(-50%) !important;
+ul {
+    list-style: none;
+}
+
+ul li::before {
+    content: "\2022";
+    color: var(--light_orange);
+    font-weight: 2000;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
 }
 
 .text_block:last-child {
