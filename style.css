@@ -6,6 +6,7 @@
     --almost_white: #F3F3F3;
     --not_black: #252525;
     --nice_purple: #811CF1;
+    --material_dark: #212121;
 }
 
 /* smooth scroll */
@@ -74,7 +75,7 @@ a {
 }
 
 html, body {
-    background-color: var(--almost_white);
+    background-color: var(--material_dark);
     position: absolute;
     margin: 0;
     width: 100%;
@@ -170,6 +171,7 @@ header {
 
 .big_h1 {
     font-size: 3vw;
+    color: var(--dark_orange);
 }
 
 .intro_p {
