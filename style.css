@@ -127,6 +127,7 @@ header {
 
 .logo span {
     font-size: 1.2vw;
+    color: var(--almost_white);
 }
 
 .header_menu {
