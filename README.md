@@ -1,3 +1,3 @@
 # portfolio-website
 
-<a href='https://manuelfahmy.xyz/'>https://manuelfahmy.xyz/<a>
+<a href='https://manuelfahmy.de/'>https://manuelfahmy.de/<a>
