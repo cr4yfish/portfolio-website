@@ -123,3 +123,12 @@ html, body {
     margin-left: 50%;
     transform: translateX(-50%);
 }
+
+@media screen and (max-width: 470px) {
+    #timelineWrapper {
+        max-width: 100%;
+    }
+    .entryTitle {
+        margin-bottom: 0.5rem;
+    }
+}
