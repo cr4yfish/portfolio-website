@@ -204,16 +204,20 @@ header {
 .sidenav a {
     padding: 8px 8px 8px 32px;
     display: block;
+    font-size: 1.5rem;
+    color: var(--almost_white);
 }
-
+.sidenav a:first-child {
+    color: var(--dark_orange) !important;
+} 
 #navbarOpener {
     opacity: 1;
     display: none;
     position: fixed;
     z-index: 2;
-    right: 5rem;
-    font-size: 3rem;
-    color: var(--almost_white);
+    right: 2rem;
+    font-size: 2rem;
+    color: var(--dark_orange);
     transition: opacity 0.5s;
 }
 
