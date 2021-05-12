@@ -16,3 +16,16 @@ for (i = 0; i < coll.length; i++) {
     } 
   });
 }
+
+function openNav() {
+  document.getElementById("sidebar").style.width = "250px";
+  document.getElementById("mainContent").style.marginRight = "250px";
+  document.getElementById("navbarOpener").style.opacity = "0";
+  
+}
+
+function closeNav() {
+  document.getElementById("sidebar").style.width = "0";
+  document.getElementById("mainContent").style.marginRight = "0";
+  document.getElementById("navbarOpener").style.opacity = "1";
+}

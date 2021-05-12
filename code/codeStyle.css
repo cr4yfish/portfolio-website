@@ -72,8 +72,6 @@ html, body {
     margin-bottom: 3rem !important;
 }
 
-
-
 .smallHeader {
     color: var(--grey);
     text-align: center;
@@ -89,7 +87,6 @@ html, body {
     height: fit-content;
     margin-bottom: 12rem;
 }
-
 
 .grid-container {
     position: relative;

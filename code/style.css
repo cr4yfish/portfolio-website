@@ -10,7 +10,6 @@
 }
 
 /* general */
-
 .unselectable {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -25,7 +24,6 @@
 }
 
 /* select */
-
 ::selection {
     background-color: var(--dark_orange);
     color: var(--material_dark);
@@ -42,23 +40,18 @@ html {
 	}
 }
 
-
 /* scrollbar */
-
 body::-webkit-scrollbar {
     width: 0.25vw;
     background-color: var(--not_black);
 }
- 
  
 body::-webkit-scrollbar-thumb {
     background-color: var(--light_orange);
     border-radius: 10px;
 }
 
-
 /* fonts */
-
 .brevia_bold {
     font-family: brevia, sans-serif;
     font-weight: 700;
@@ -91,7 +84,6 @@ a {
 /* --- */
 
 /* general stuff */
-
 .mousepointer {
     cursor: pointer;
 }
@@ -113,24 +105,19 @@ html, body {
 }
 
 /* no x overflow */
-
 body {
     overflow-x: hidden;
 }
 
 /* --- */
 
-
 /* new margin 2.0 technology (patent pending) */
-
 header, #page1, .footer_inner {
     left: 5vw;
     max-width: 90vw;
 }
 
-
 /* header */
-
 header {
     position: relative;
     display: flex;
@@ -149,6 +136,7 @@ header {
     position: relative;
     padding-right: 3px;
 }
+
 .logo img {
     width: 1vw;
 }
@@ -175,13 +163,14 @@ header {
     text-shadow: 0 0 20px var(--medium_orange_trans);
     transition: all 250ms;
 }
+
 .menu_item:last-child {
     padding-right: 0;
 }
+
 /* --- */
 
 /* Page1 */
-
 #page1 {
     display: flex;
     justify-content: space-between;
@@ -228,9 +217,6 @@ header {
     transition: all 0.5s cubic-bezier(0.38, 0.13, 0.32, 0.9);
 }
 
-
-
-
 .btn-primary:focus {
     background-color: var(--light_orange);
     outline: none;
@@ -241,9 +227,7 @@ header {
     font-size: 1vw;
 }
 
-
 /* picture stuff */
-
 .picture_wrapper {
     position: relative;
     float: right;
@@ -263,7 +247,6 @@ header {
     right: 5vw;
     z-index: 2;
 }
-
 
 .blob {
     top: 10vh;
@@ -297,7 +280,6 @@ header {
 }
 
 /* page1 spacer*/
-
 #page1 {
     min-height: fit-content;
 }
@@ -320,7 +302,6 @@ header {
 }
 
 /* page 2*/
-
 .pages {
     overflow: visible;
 }
@@ -335,7 +316,6 @@ header {
 .pages:last-child {
     padding-bottom: 5vh;
 }
-
 
 .pages_header {
     position: relative;
@@ -463,12 +443,10 @@ ul li::before {
 /* --- */
 
 /* page3 */
-
 #purple_wall {
     background-color: var(--nice_purple);
     overflow: hidden;
 }
-
 
 #stuff_wrapper {
     position: relative;
@@ -496,7 +474,6 @@ ul li::before {
 }
 
 /* grid */
-
 .grid_layout {
     display: grid;
     column-gap: 15vw;
@@ -538,7 +515,6 @@ ul li::before {
 /* --- */
 
 /* page4 */
-
 .wave_black2 {
     transform: translateY(3%);
     z-index: 0;
@@ -567,9 +543,7 @@ ul li::before {
     width: 15vw;
 }
 
-
 /* footer*/
-
 footer {
     background-color: var(--not_black);
 }
