@@ -1,4 +1,4 @@
-
+AOS.init();
 // I'll just dump the JSON here so I don't have to work with CORS again :/
 var projectsJSON = [
     {    
@@ -34,7 +34,7 @@ var projectsJSON = [
     {    
         "name": "Localhost Dashboard",
         "date": "2021",
-        "text": "Big story: I had multiple problems with CORS and figured it would be easier to use host the website properly. So I got XAMPP and, using Javascript, coded up a Website that scrapes all my local projects on my PC and lists them in a neat UI. It uses AJAX to get names and directory paths from my projects. It also generate hrefs, so I can open any (local) website within XAMPP.",
+        "text": "Big story: I had multiple problems with CORS and figured it would be easier to host the website properly. So I got XAMPP and, using Javascript, coded up a Website that scrapes all my local projects on my PC and lists them in a neat UI. It uses AJAX to get names and directory paths from my projects. It also generate hrefs, so I can open any (local) website within XAMPP.",
         "link": "https://manuelfahmy.de/"
     },
     {    
@@ -55,17 +55,14 @@ var projectsJSON = [
         "text": "Current Project. I have some more projects now that I could display. I also got my Webspace back and a new domain. Now it's time to beautify this thing using all the skills I aquired in the past 2 years.",
         "link": "https://manuelfahmy.de/"
     }
-    
 ]
-
-console.log(projectsJSON);
-
 
 for (i = 0; i < projectsJSON.length; i++) {
     var timelineWrapper = document.getElementById("timelineWrapper");
 
     let entryWrapper = document.createElement("div");
     entryWrapper.setAttribute("class", "entry_wrapper");
+    entryWrapper.setAttribute("data-aos", "fade-up");
 
     let entryHeader = document.createElement("div");
     entryHeader.setAttribute("class", "entryHeader");
@@ -90,6 +87,4 @@ for (i = 0; i < projectsJSON.length; i++) {
     entryWrapper.appendChild(entryText);
 
     timelineWrapper.appendChild(entryWrapper);
-
-
 }
