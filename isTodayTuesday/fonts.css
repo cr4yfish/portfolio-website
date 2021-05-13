@@ -1,0 +1,29 @@
+.brevia_reg {
+    font-family: brevia, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.bilo_thin {
+    font-family: bilo, sans-serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.bilo_light {
+    font-family: bilo, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.bilo_bold {
+    font-family: bilo, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.roboto_thin_italic {
+    font-family: roboto, sans-serif;
+    font-weight: 200;
+    font-style: italic;
+}
