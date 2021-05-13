@@ -1,6 +1,18 @@
 #musicWrapper {
     position: relative;
     transform: translateX(-50%);
-    width: 30%;
+    width: 50rem;
     left: 50%;
+}
+
+@media screen and (max-width: 1000px) {
+    #musicWrapper {
+        width: 25rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #musicWrapper {
+        width: 17rem;
+    }
 }

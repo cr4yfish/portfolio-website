@@ -1,0 +1,10 @@
+@media screen and (max-width: 1000px) {
+    #title {
+        font-size: 2rem !important;
+    }
+}
+@media screen and (max-width: 300px) {
+    #title {
+        font-size: 1.5rem !important;
+    }
+}
