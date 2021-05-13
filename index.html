@@ -12,22 +12,26 @@
         <link rel="canonical" href="https://manuelfahmy.de/index.html">
         <script src="https://kit.fontawesome.com/d4164139c2.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://use.typekit.net/bgm5mtl.css">
-        
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>  
+
     </head>
 
     <body>
-        <span class="content_wrapper  ">
+          
+
+        <span class="content_wrapper">
             <header>
                 <span class="logo_wrapper unselectable">
                     <span class="logo"><img class="logo_image" src="images/logo.png" alt="logo">
                         <span class="brevia_bold">Manuel Fahmy</span></span>
                     </span>
                     
-                <div class="header_menu unselectable">
-                    <a href="code.html" class="rubik_regular menu_item">Coding</a>
+                <div data-aos-duration="900" data-aos="fade-down" class="header_menu unselectable">
+                    <a  href="code.html" class="rubik_regular menu_item">Coding</a>
                     <a href="design.html" class="rubik_regular menu_item">Design</a>
                     <a href="photography.html" class="rubik_regular menu_item">Photography</a>
-                    <a href="filmmaking.html" class="rubik_regular menu_item">Filmmaking</a>
+                    <a href="https://closeupstudios.net/" class="rubik_regular menu_item">Filmmaking</a>
                     <a href="music.html" class="rubik_regular menu_item">Music</a>
                 </div>
 
@@ -39,7 +43,7 @@
                     <a href="code.html" class="rubik_regular">Coding</a>
                     <a href="design.html" class="rubik_regular">Design</a>
                     <a href="photography.html" class="rubik_regular">Photography</a>
-                    <a href="filmmaking.html" class="rubik_regular">Filmmaking</a>
+                    <a href="https://closeupstudios.net/" class="rubik_regular">Filmmaking</a>
                     <a href="music.html" class="rubik_regular">Music</a>
 
                 </div>
@@ -52,16 +56,15 @@
 
         <section id="page1" class="content_wrapper unselectable">
             <div class="page1_leftside">
-                <span class="brevia_bold big_h1">Hi there,</span>
-                <br>
-                <p class="rubik_regular intro_p">I'm Manuel. I do a lot of stuff, so feel free to take a look around.</p>
+                <div data-aos-duration="700" data-aos="fade-right" class="brevia_bold big_h1">Hi there,</div>
+                <p data-aos-duration="700" data-aos="flip-up" class="rubik_regular intro_p">I'm Manuel. I do a lot of stuff, so feel free to take a look around.</p>
                 <button class="btn-primary" style="cursor: pointer;" onclick="window.location.href='#scroll_here';" >
                     <a  class="brevia_bold">About me</a></button>
             </div>
             <span class="picture_wrapper ">
                 <img src="images/Gruppe 15.png" id="lines" class="unselectable" alt="Lines">
-                <img src="images/selfie.png" class="picture unselectable" alt="selfie">
-                <img src="images/blob.png" class="blob unselectable" alt="blob">
+                <img  data-aos-duration="900" data-aos="fade-left" src="images/selfie.png" class="picture unselectable" alt="selfie">
+                <img data-aos-duration="1000" data-aos="fade-left" src="images/blob.png" class="blob unselectable" alt="blob">
             </span>
         </section>
         <svg id="wave_black" class="wave_black wave" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1440 320"><path fill-opacity="1" d="M0,192L30,208C60,224,120,256,180,256C240,256,300,224,360,213.3C420,203,480,213,540,224C600,235,660,245,720,229.3C780,213,840,171,900,165.3C960,160,1020,192,1080,186.7C1140,181,1200,139,1260,128C1320,117,1380,139,1410,149.3L1440,160L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path></svg>
@@ -86,9 +89,6 @@
                         </ul>
                         <div class="artwork page2_artwork"><img src="images/page2_artwork.png" alt="who i am artwork"></div>
                     </div>
-
-
-
 
                 </div>
             </section>
@@ -164,6 +164,7 @@
 
         <script type="text/javascript" src="script.js" async defer></script>
 
+        <script>AOS.init()</script>
 </div>
 </body> 
 <script>
