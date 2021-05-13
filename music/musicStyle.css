@@ -1,0 +1,6 @@
+#musicWrapper {
+    position: relative;
+    transform: translateX(-50%);
+    width: 30%;
+    left: 50%;
+}
