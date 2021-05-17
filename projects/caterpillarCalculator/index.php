@@ -32,8 +32,9 @@
     $result = mysqli_query($con, $sql);
 
         echo "Continued with data";
-        echo $sql;
-        
+        echo $result;
+        echo mysqli_fetch_assoc($result);
+
         while ($row = mysqli_fetch_assoc($result)) {
             echo $row['USER'];
             echo $row['MONEY'] . "<br>";
