@@ -32,6 +32,7 @@
     $result = mysqli_query($con, $sql);
 
         echo "Continued with data";
+        echo $sql;
         
         while ($row = mysqli_fetch_assoc($result)) {
             echo $row['USER'];
