@@ -28,7 +28,7 @@
         die("SQL Connection failed!");
     }
 
-    $sql = "SELECT * FROM USER; ";
+    $sql = "SELECT * FROM moneten; ";
     $result = mysqli_query($con, $sql);
     $resultCheck = mysqli_num_rows($result);
 
@@ -36,7 +36,8 @@
         echo "Continued with data";
         while ($row = mysqli_fetch_assoc($result)) {
             echo $row['USER'];
-            
+            echo $row['MONEY'] . "<br>";
+
         }
     } else {
         echo "ERROR with result fetching!";
