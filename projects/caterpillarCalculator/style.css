@@ -8,8 +8,14 @@
     --darkerBlue: #435761;
 }
 
+::selection {
+    background-color: var(--grey);
+    color: var(--darkBlack);
+}
+
 html, body {
     overflow-x: hidden;
+    overflow-y: hidden;
     background-color: var(--darkBlack);
     min-height: 100vh;
 }
@@ -39,6 +45,7 @@ html, body {
 .listEntry:last-of-type {
     margin-top: 5rem;
     background-color: var(--darkerBlue);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     color: white;
     padding: 1rem;
     border-radius: 1rem;
@@ -72,6 +79,10 @@ html, body {
     border: none;
     text-align: right;
     width: 50%;
+}
+
+.listEntryInput:focus {
+    outline: 1px solid;
 }
 
 #together {
@@ -114,10 +125,13 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 1rem;
     outline: none;
     border: none;
+    transition: all 0.5s;
 } 
 
 .btn:hover {
     background-color: var(--grey);
+    box-shadow: 0 0 15px #d5d5d559;
+    transition: all 0.25s;
 }
 
 
@@ -138,7 +152,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .isEnough {
     font-size: 1.25rem;
-    margin-top: 3rem;
+    margin-top: 10rem;
 }
 
 .isEnough, #restAmount {
@@ -146,13 +160,13 @@ input[type=number]::-webkit-outer-spin-button {
     display: block;
     position: relative;
     text-align: center;
-    color: var(--darkBlack) !important;
+    color: var(--grey) !important;
 }
 
 #resultWrapper {
     z-index: 1;
     position: absolute;
-    background-color: var(--darkGrey);
+    background-color: var(--darkerBlue);
     box-shadow: 0 3px 20px rgba(0, 0, 0, 0.308);
     border-radius: 1rem;
     width: 100%;

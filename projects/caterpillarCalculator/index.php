@@ -14,35 +14,32 @@
 
     </head>
 
-    <body onload="cleaner();addListener();">
+    <body onload="loadDefaults();addListener();">
 
     <?php 
     
     $servername = "rdbms.strato.de";
     $user = "dbu596396";
     $pw = "FpDAtg7neWIL9E";
+    $dbname = "dbs2000829";
     
-    $con = new mysqli($servername, $user, $pw);
+    $con = mysqli_connect($servername, $user, $pw, $dbname);
 
     if($con->connect_error) {
         die("SQL Connection failed!");
     }
 
-    $sql = "SELECT * FROM `moneten`";
-    $result = mysqli_query($con, $sql);
-
-        echo "Continued with data";
-        echo $result;
-        echo mysqli_fetch_assoc($result);
-
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo $row['USER'];
-            echo $row['MONEY'] . "<br>";
-        }
-
+    $result = mysqli_query($con, "SELECT * FROM moneten");
 
     ?>
 
+    <?php while($row = mysqli_fetch_array($result)) { ?>
+
+       <span class="sqlData" style="z-index: -1; position: absolute;"> <?php echo $row["MONEY"]; ?> </span>
+       
+    <?php
+        }
+        ?>
 
         <div id="contentWrapper">
 
@@ -56,26 +53,26 @@
 
                 <div class="listEntry">
                     <span class="biloLight listEntryName">Anil</span>
-                        <input id="input1" onkeyup="addDot(this);" type="text" placeholder="aUEC amount"  class="inputCheck biloLight listEntryUEC listEntryInput">
+                        <input maxlength="30"id="input1" onkeyup="addDot(this);" type="text" placeholder="aUEC amount"  class="inputCheck biloLight listEntryUEC listEntryInput">
                 </div>
 
                 <div class="spacer"></div>
 
                 <div class="listEntry">
                     <span class="biloLight listEntryName">Hannes</span>
-                        <input id="input2" onkeyup="addDot(this);" placeholder="aUEC amount"  class="inputCheck biloLight listEntryUEC listEntryInput" type="text">
+                        <input maxlength="30" id="input2" onkeyup="addDot(this);" placeholder="aUEC amount"  class="inputCheck biloLight listEntryUEC listEntryInput" type="text">
                 </div>
 
                 <div class="spacer"></div>
 
                 <div class="listEntry">
                     <span class="biloLight listEntryName">Manuel</span>
-                        <input id="input3" onkeyup="addDot(this);" placeholder="aUEC amount" class="inputCheck biloLight listEntryUEC listEntryInput" type="text">
+                        <input maxlength="30" id="input3" onkeyup="addDot(this);" placeholder="aUEC amount" class="inputCheck biloLight listEntryUEC listEntryInput" type="text">
                 </div>
 
                 <div class="listEntry">
                     <span class="biloLight listEntryName">Gesamt</span>
-                        <span id="together" class="biloLight listEntryUEC listEntryInput">0</span>
+                        <span maxlength="30" id="together" class="biloLight listEntryUEC listEntryInput">0</span>
                 </div>
             </div>
 
