@@ -79,8 +79,22 @@ function addListener() {
 
         var togetherElement = document.getElementById("together")
         valuesHTMLcollection[i].addEventListener("keyup", function() {
-            console.log("Keyup event!");
-            togetherElement.textContent =  parseInt(document.getElementById("input1").value.match(/\d/g).join(''), 10) + parseInt(document.getElementById("input2").value.match(/\d/g).join(''), 10) + parseInt(document.getElementById("input3").value.match(/\d/g).join(''), 10);
+
+            var input = [];
+
+            for (i = 1; i < 4 ; i++) {
+                var searchInput = "input" + i.toString();
+
+                if (document.getElementById(searchInput).value.match(/\d/g) == null) {
+                    input[i] = 0;
+                } 
+                else {
+                    input[i] = document.getElementById(searchInput).value.match(/\d/g).join(''), 10;
+                }
+                
+            }
+
+            togetherElement.textContent =  parseInt(input[1]) + parseInt(input[2]) + parseInt(input[3]);
             
             let ele = togetherElement;
 
@@ -100,7 +114,13 @@ function addDot(element) {
 
     ele = ele.value.split('.').join('');    // Remove dash (-) if mistakenly entered.
 
-    let finalVal = ele.match(/.{1,3}(?=(.{3})*$)/g).join('.');
-    document.getElementById(element.id).value = finalVal;
+    if(document.getElementById(element.id).value.match(/\d/g) != null) {
+
+        let finalVal = ele.match(/.{1,3}(?=(.{3})*$)/g).join('.');
+        document.getElementById(element.id).value = finalVal;
+        
+    }
+
+
 
 }
