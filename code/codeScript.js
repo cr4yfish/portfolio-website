@@ -47,13 +47,19 @@ var projectsJSON = [
         "name": "isTodayTuesday",
         "date": "2021",
         "text": "Amid my finals in School, I was bored and wanted to code up a small project in an hour. This is the result. It tells you, using simple javascript, if it's tuesday. The Javascript system is built ready for expanding it (it checks the day from a variable, so it would be possible to upgrade it to a system where you can check if it's each day).",
-        "link": "https://manuelfahmy.de/isTodayTuesday/"
+        "link": "https://manuelfahmy.de/projects/isTodayTuesday/"
     },
     {    
         "name": "Portfolio Website 2.0",
         "date": "2021",
         "text": "Current Project. I have some more projects now that I could display. I also got my Webspace back and a new domain. Now it's time to beautify this thing using all the skills I aquired in the past 2 years.",
         "link": "https://manuelfahmy.de/"
+    },
+    {    
+        "name": "Caterpillar calculator",
+        "date": "2021",
+        "text": "I'm saving for a Caterpillar in Star Citizen, together with a few friends. To keep everyone up-to-date about our progress, I've built this Website, which calculates if we have enough money. It also stores the most recent values in a database.",
+        "link": "https://manuelfahmy.de/projects/caterpillarCalc"
     }
 ]
 
