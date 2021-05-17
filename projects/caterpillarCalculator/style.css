@@ -37,12 +37,13 @@ html, body {
 }
 
 .listEntry:last-of-type {
-    align-self: center;
     margin-top: 5rem;
     background-color: var(--darkerBlue);
     color: white;
     padding: 1rem;
     border-radius: 1rem;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
 .listEntryName, .listEntryUEC {
@@ -162,4 +163,14 @@ input[type=number]::-webkit-outer-spin-button {
 
 #resultWrapper .btn {
     margin-top: 1rem !important;
+}
+
+@media screen and (max-width: 500px) {
+    #contentWrapper {
+        width: 80%;
+        margin-left: 10%;
+    }
+    .listEntryName, .listEntryUEC {
+        font-size: 1rem;
+    }
 }
