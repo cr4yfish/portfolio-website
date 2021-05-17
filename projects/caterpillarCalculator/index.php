@@ -27,8 +27,20 @@
     if($con->connect_error) {
         die("SQL Connection failed!");
     }
-    echo "SQL Connected";
 
+    $sql = "SELECT * FROM USER; ";
+    $result = mysqli_query($con, $sql);
+    $resultCheck = mysqli_num_rows($result);
+
+    if ($resultCheck > 0) {
+        echo "Continued with data";
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo $row['USER'];
+            
+        }
+    } else {
+        echo "ERROR with result fetching!";
+    }
     ?>
 
 
