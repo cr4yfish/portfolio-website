@@ -59,7 +59,7 @@ var projectsJSON = [
         "name": "Caterpillar calculator",
         "date": "2021",
         "text": "I'm saving for a Caterpillar in Star Citizen, together with a few friends. To keep everyone up-to-date about our progress, I've built this Website, which calculates if we have enough money. It also stores the most recent values in a database.",
-        "link": "https://manuelfahmy.de/projects/caterpillarCalc"
+        "link": "https://manuelfahmy.de/projects/caterpillarCalculator"
     }
 ]
 
