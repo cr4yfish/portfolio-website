@@ -121,6 +121,7 @@ html, body {
 
 body {
     overflow-x: hidden;
+    transition: opacity 250ms;
 }
 
 /* --- */

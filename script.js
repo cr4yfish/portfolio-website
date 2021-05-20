@@ -29,3 +29,22 @@ function closeNav() {
   document.getElementById("mainContent").style.marginRight = "0";
   document.getElementById("navbarOpener").style.opacity = "1";
 }
+
+
+function sleep(ms) {
+    
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+async function openSite(x) {
+
+  document.getElementsByTagName("body")[0].style.opacity = "0";
+  await sleep(250);
+  window.open(x + ".html", "_self");
+
+}
+
+function fadeIn() {
+  document.getElementsByTagName("body")[0].style.opacity = "1";
+}

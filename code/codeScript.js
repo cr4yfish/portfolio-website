@@ -95,3 +95,4 @@ for (i = 0; i < projectsJSON.length; i++) {
 
     timelineWrapper.appendChild(entryWrapper);
 }
+

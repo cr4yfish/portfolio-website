@@ -12,6 +12,12 @@
     --lightYellow: #FFE082;
 }
 
+/* set body invisible so it can get faded in */
+body {
+    opacity: 0;
+    transition: all 500ms !important;
+}
+
 html, body {
     z-index: -2;
     overflow-x: hidden;
