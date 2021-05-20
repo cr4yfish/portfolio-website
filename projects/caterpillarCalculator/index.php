@@ -71,12 +71,12 @@
                 </div>
 
                 <div class="listEntry">
-                    <span class="biloLight listEntryName">Gesamt</span>
+                    <span class="biloLight listEntryName">Total</span>
                         <span maxlength="30" id="together" class="biloLight listEntryUEC listEntryInput">0</span>
                 </div>
             </div>
 
-            <button class="biloLight btn btn-primary" onclick="nextExec();">next</button>
+            <button id="nextBTN" class="biloLight btn btn-primary" onclick="nextExec();">next</button>
 
         </div>
         

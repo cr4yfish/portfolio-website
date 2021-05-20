@@ -6,6 +6,7 @@
     --white: #FFFFFF;
     --darkGrey: #707070;
     --darkerBlue: #435761;
+    --foregroundDark: #37474F;
 }
 
 ::selection {
@@ -25,6 +26,7 @@ html, body {
     margin-left: 25%;
     margin-top: 10%;
     width: 50%;
+    transition: all 0.25s;
 }
 
 #calcWrapper {
@@ -32,6 +34,7 @@ html, body {
     width: 100%;
     height: fit-content;
     display: block;
+    transition: all 250ms;
 }
 
 .listEntry {
@@ -148,11 +151,14 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 2rem;
     margin-bottom: 1rem;
     text-decoration: underline;
+    opacity: inherit;
+    transition: all 0.25s;
 }
 
 .isEnough {
     font-size: 1.25rem;
     margin-top: 10rem;
+    opacity: inherit;
 }
 
 .isEnough, #restAmount {
@@ -161,18 +167,21 @@ input[type=number]::-webkit-outer-spin-button {
     position: relative;
     text-align: center;
     color: var(--grey) !important;
+    opacity: inherit;
 }
 
 #resultWrapper {
     z-index: 1;
     position: absolute;
-    background-color: var(--darkerBlue);
+    background-color: var(--foregroundDark);
     box-shadow: 0 3px 20px rgba(0, 0, 0, 0.308);
     border-radius: 1rem;
     width: 100%;
     height: 100%;
     left: 50%;
     transform: translateX(-50%);
+    opacity: 1;
+    transition: opacity 250ms;
 }
 
 #resultWrapper .btn {
