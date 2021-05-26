@@ -88,10 +88,10 @@ for (i = 0; i < projectsJSON.length; i++) {
     entryTitle.setAttribute("onclick", "window.location.href='" + projectsJSON[i].link + "';");
 
     let entryDate = document.createElement("span");
-    entryDate.setAttribute("class", "entryDate rubik_light");
+    entryDate.setAttribute("class", "entryDate rubik_light unselectable");
 
     let entryType = document.createElement("span");
-    entryType.setAttribute("class", "entryDate rubik_light");
+    entryType.setAttribute("class", "entryDate rubik_light unselectable");
     
     let entryText = document.createElement("span");
     entryText.setAttribute("class", "entryText rubik_light");
