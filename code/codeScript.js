@@ -91,7 +91,7 @@ var codeSkilsJSON = [
         "skills": "Search StackOverflow for answers on how to do stuff,"
     },
     {
-        "name": "py",
+        "name": "python",
         "skills": "Automate calculations and build simple but specific calculators that fit my needs,"
     },
     {
