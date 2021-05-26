@@ -13,6 +13,39 @@
 }
 
 
+#popupWrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: #1D1D1D;
+    border-radius: 1rem;
+    box-shadow: 5px 15px 20px rgba(0, 0, 0, 0.267);
+    z-index: 4;
+    height: fit-content;
+    padding: 0.1rem 1rem 1rem 1rem;
+}
+
+#popupWrapper h1  {
+    text-align: center;
+    color: var(--not_black);
+    font-size: 2rem;
+    text-shadow: 1px 0 var(--light_orange), -1px 0 var(--light_orange), 0 1px var(--light_orange), 0 -1px 0 var(--light_orange);
+}
+
+#popupWrapper p {
+    margin: 1rem;
+    color: var(--almost_white);
+}
+
+#opacityLayer {
+    background-color: rgba(0, 0, 0, 0.239);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 3;
+}
+
 #languagesHeader {
     font-size: large !important;
     color: var(--textGrey);
@@ -49,9 +82,13 @@
 
 .grid-child:hover {
     transition: box-shadow 0.5s;
-    box-shadow: 0 4px 15px #000000;
+    box-shadow: 0 0px 10px var(--lightYellow);
 }
 
+.grid-child img {
+    color: var(--almost_white);
+    height: 80px;
+}
 
 #timelineWrapper {
     position: relative;
@@ -148,8 +185,18 @@
     display: inline-block;
 }
 
+@media screen and (max-width: 800px) {
+    .grid-child img {
+        height: 50px;
+        width: auto;
+    }
+}
 
 @media screen and (max-width: 470px) {
+    .grid-child img {
+        height: 40px;
+        width: auto;
+    }
     #content_wrapper {
         width: 80% !important;
         margin-left: 10% !important;
@@ -169,5 +216,18 @@
     }
     .entryDate {
         font-size: 1rem;
+    }
+    #popupWrapper p  {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .grid-child img {
+        height: 24px;
+        width: auto;
+    }
+    #popupWrapper p  {
+        font-size: 0.8rem;
     }
 }

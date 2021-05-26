@@ -73,6 +73,33 @@ var projectsJSON = [
     }
 ]
 
+var codeSkilsJSON = [
+    {
+        "name": "html",
+        "skills": "Build static websites, Prepare javascript webapps, Build the framework for a dynamic website"
+    },
+    {
+        "name": "css",
+        "skills": "Make a website look nearly identical to the design-prototype, Add UX-enhancing interactive elements and animations"
+    },
+    {
+        "name": "js",
+        "skills": "Use vanilla JS to build any feature I want on my websites/webapps, Make interactive design choices that enhance the overall UX"
+    },
+    {
+        "name": "php",
+        "skills": "Search StackOverflow for answers on how to do stuff,"
+    },
+    {
+        "name": "py",
+        "skills": "Automate calculations and build simple but specific calculators that fit my needs,"
+    },
+    {
+        "name": "java",
+        "skills": "Make the same as in Python... but slower,"
+    },
+]
+
 for (i = 0; i < projectsJSON.length; i++) {
     var timelineWrapper = document.getElementById("timelineWrapper");
 
@@ -111,3 +138,53 @@ for (i = 0; i < projectsJSON.length; i++) {
     timelineWrapper.appendChild(entryWrapper);
 }
 
+
+function callPopUp(element) {
+    // get current language
+    currentElement = element.id;
+    var currentLanguage;
+    for (i = 0; i < codeSkilsJSON.length;i++) {
+        if (codeSkilsJSON[i].name == currentElement) {
+            currentLanguage = codeSkilsJSON[i];
+        }
+    }
+
+    
+
+    // build overlay
+
+    var overlayElement = document.createElement("div");
+    overlayElement.setAttribute("id", "opacityLayer");
+    overlayElement.setAttribute("class", "pointer");
+    overlayElement.setAttribute("onclick", "removePopup()");
+
+
+    // build poup
+    var popupWrapperElement = document.createElement("div");
+    popupWrapperElement.setAttribute("id", "popupWrapper");
+
+    var popupHeader = document.createElement("h1");
+    popupHeader.setAttribute("class", "brevia_bold unselectable");
+
+    popupHeader.textContent = currentLanguage.name;
+
+    var popupText = document.createElement("p");
+    popupText.setAttribute("class", "rubik_light");
+
+    popupText.textContent = currentLanguage.skills;
+
+    popupWrapperElement.appendChild(popupHeader);
+    popupWrapperElement.appendChild(popupText);
+
+    var bodyElement = document.getElementsByTagName("body")[0];
+    bodyElement.prepend(overlayElement);
+    bodyElement.prepend(popupWrapperElement);
+   
+
+
+}
+
+function removePopup() {
+    document.getElementById("popupWrapper").remove();
+    document.getElementById("opacityLayer").remove();
+}
