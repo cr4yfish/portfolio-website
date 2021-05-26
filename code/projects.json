@@ -1,35 +1,43 @@
 [
     {    
         "name": "Website for JBN",
-        "date": "2019"
+        "date": "2019",
+        "type": "Live"
     },
     {    
         "name": "Portfolio Website",
-        "date": "2020"
+        "date": "2020",
+        "type": "Live"
     },
     {    
         "name": "ChromNewTab",
-        "date": "2020"
+        "date": "2020",
+        "type": "GitHub"
     },
     {    
         "name": "First React.js App",
-        "date": "2021"
+        "date": "2021",
+        "type": "GitHub"
     },
     {    
         "name": "AnimeScraper",
-        "date": "2021"
+        "date": "2021",
+        "type": "GitHub"
     },
     {    
         "name": "Wallet-Website",
-        "date": "2021"
+        "date": "2021",
+        "type": "GitHub"
     },
     {    
         "name": "isTodayTuesday",
-        "date": "2021"
+        "date": "2021",
+        "type": "Live"
     },
     {    
         "name": "Portfolio Website 2.0",
-        "date": "2021"
+        "date": "2021",
+        "type": "Live"
     }
     
 ]

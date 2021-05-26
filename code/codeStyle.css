@@ -128,6 +128,19 @@
     display: inline-block;
 }
 
+.entryDate::before {
+    content: "";
+    position: absolute;
+    width: calc(100% + 0.2em);
+    height: 1.2em;
+    padding: 0.1em;
+    left: -0.2em;
+    bottom: 0.001em;
+    background-color: var(--textGrey);
+    border-radius: 10px;
+    z-index: -1;
+}
+
 .entryText {
     font-size: 1rem;
     position: relative;
@@ -153,5 +166,8 @@
     }
     #gridWrapper {
         margin-bottom: 4rem !important;
+    }
+    .entryDate {
+        font-size: 1rem;
     }
 }
