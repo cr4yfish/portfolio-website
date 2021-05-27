@@ -138,7 +138,7 @@ for (i = 0; i < projectsJSON.length; i++) {
     tagArray = projectsJSON[i].type.split(",");
 
     for (tagCounter = 0; tagCounter < tagArray.length; tagCounter++) {
-;
+        
         let entryType = document.createElement("span");
         entryType.setAttribute("class", "entryTag entryDate rubik_light unselectable");
         entryType.textContent = tagArray[tagCounter];
