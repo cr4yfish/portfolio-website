@@ -100,6 +100,12 @@ var codeSkilsJSON = [
     },
 ]
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
+
 for (i = 0; i < projectsJSON.length; i++) {
     var timelineWrapper = document.getElementById("timelineWrapper");
 
@@ -139,7 +145,8 @@ for (i = 0; i < projectsJSON.length; i++) {
 }
 
 
-function callPopUp(element) {
+async function callPopUp(element) {
+
     // get current language
     currentElement = element.id;
     var currentLanguage;
@@ -149,42 +156,54 @@ function callPopUp(element) {
         }
     }
 
-    
-
     // build overlay
-
     var overlayElement = document.createElement("div");
     overlayElement.setAttribute("id", "opacityLayer");
     overlayElement.setAttribute("class", "pointer");
     overlayElement.setAttribute("onclick", "removePopup()");
 
 
-    // build poup
+    // build popup
     var popupWrapperElement = document.createElement("div");
     popupWrapperElement.setAttribute("id", "popupWrapper");
 
     var popupHeader = document.createElement("h1");
     popupHeader.setAttribute("class", "brevia_bold unselectable");
 
-    popupHeader.textContent = currentLanguage.name;
-
     var popupText = document.createElement("p");
     popupText.setAttribute("class", "rubik_light");
 
+    // insert text
+    popupHeader.textContent = currentLanguage.name;
     popupText.textContent = currentLanguage.skills;
 
+    // attach
     popupWrapperElement.appendChild(popupHeader);
     popupWrapperElement.appendChild(popupText);
 
     var bodyElement = document.getElementsByTagName("body")[0];
     bodyElement.prepend(overlayElement);
     bodyElement.prepend(popupWrapperElement);
-   
 
+    await sleep(100);
+    popupWrapperElement.style.opacity = "1";
+    popupWrapperElement.style.width = "50%";
+    overlayElement.style.opacity = "1";
 
 }
 
-function removePopup() {
-    document.getElementById("popupWrapper").remove();
-    document.getElementById("opacityLayer").remove();
+async function removePopup() {
+
+    popupWrapperElement = document.getElementById("popupWrapper");
+    overlayElement = document.getElementById("opacityLayer");
+
+    popupWrapperElement.style.width = "0%";
+    overlayElement.style.opacity = "0%";
+
+    await sleep(700);
+    popupWrapperElement.style.opacity = "0%";
+
+    await sleep(300);
+    popupWrapperElement.remove();
+    overlayElement.remove();
 }
