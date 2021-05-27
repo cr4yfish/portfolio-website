@@ -12,6 +12,133 @@
     --lightYellow: #FFE082;
 }
 
+/* from style.css */
+ul {
+    list-style: none;
+}
+
+ul li::before {
+    content: "\2022";
+    color: var(--light_orange);
+    font-weight: 2000;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.btn-primary {
+    position: relative;
+    background: linear-gradient(90deg, var(--light_orange), var(--medium_orange) 51%, var(--light_orange)) var(--x, 0)/ 200%;
+    box-shadow: 0 0 25px var(--medium_orange_trans);
+    border: none;
+    border-radius: 40px;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
+    transition: all 2s cubic-bezier(0.38, 0.13, 0.32, 0.9) ;
+    margin-top: 1vh;
+}
+
+.btn-primary a {
+    color: var(--almost_white);
+    font-size: 1vw;
+}
+
+a {
+    text-decoration: none;
+    color: var(--dark_orange);
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+::selection {
+    background-color: var(--dark_orange);
+    color: var(--material_dark);
+}
+
+@media screen and (max-width: 1000px) {
+    .btn-primary a {
+        font-size: 1.5rem;
+    }
+    .btn-primary {
+        border-radius: 40px;
+        padding-left: 5.75vw;
+        padding-right: 5.75vw;
+        padding-top: 1.6vw;
+        padding-bottom: 1.6vw;
+        margin-top: 1vh;
+    }
+}
+
+body {
+    overflow-x: hidden;
+    transition: opacity 250ms;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html, body {
+    background-color: var(--material_dark);
+    position: absolute;
+    margin: 0;
+    width: 100%;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+body::-webkit-scrollbar {
+    width: 0.25vw;
+    background-color: var(--not_black);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--light_orange);
+    border-radius: 10px;
+}
+
+.brevia_bold {
+    font-family: brevia, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.brevia_medium {
+    font-family: brevia,sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.rubik_regular {
+    font-family: rubik, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.rubik_light {
+    font-family: rubik, sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+/* ====== */
 
 #popupWrapper {
     position: fixed;
@@ -90,6 +217,7 @@
 .grid-child img {
     color: var(--almost_white);
     height: 80px;
+    width: auto;
 }
 
 #timelineWrapper {
