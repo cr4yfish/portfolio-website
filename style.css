@@ -450,7 +450,7 @@ header {
     max-height: 0;
     transition: all 0.5s ease-out, opacity 0.3s;
     margin-top: 0;
-    width: 80%;
+    width: 90%;
     flex-wrap: wrap;
 }
 
@@ -470,18 +470,6 @@ header {
     color: var(--cardBG);
 }
 
-#projects::-webkit-scrollbar {
-    width: 0.25vw;
-}
-#projects::-webkit-scrollbar-track {
-    
-    background-color: var(--not_black);
-}
-#projects::-webkit-scrollbar-thumb {
-    background-color: var(--light_orange);
-    border-radius: 10px;
-}
-
 /* card system */
 
 .card {
@@ -491,6 +479,7 @@ header {
     padding: 2rem;
     border-radius: 1rem;
     width: 10rem;
+    margin-bottom: 3rem;
     height: fit-content;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.212);
     color: var(--almost_white);
@@ -506,9 +495,10 @@ header {
         margin-bottom: 2rem;
         margin-left: 50%;
         transform: translateX(-50%);
+        flex-basis: 100%;
     }
-    #projects {
-        overflow-y: auto;
+    .collapsible_content {
+        width: 100%;
     }
 }
 

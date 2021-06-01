@@ -104,53 +104,56 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+$.getJSON('code/projects.json', function(projectsJSON) {
 
-
-for (i = 0; i < projectsJSON.length; i++) {
-    var timelineWrapper = document.getElementById("timelineWrapper");
-
-    let entryWrapper = document.createElement("div");
-    entryWrapper.setAttribute("class", "entry_wrapper");
-    entryWrapper.setAttribute("data-aos", "fade-up");
-
-    let entryHeader = document.createElement("div");
-    entryHeader.setAttribute("class", "entryHeader");
-
-    let entryTitle = document.createElement("span");
-    entryTitle.setAttribute("class", "entryTitle rubik_regular pointer");
-    // window.open('link.html', '_blank');
-    entryTitle.setAttribute("onclick", "window.open('" + projectsJSON[i].link + "', '_blank');");
-
-    let entryDate = document.createElement("span");
-    entryDate.setAttribute("class", "entryDate rubik_light unselectable");
-
+    for (i = 0; i < projectsJSON.length; i++) {
+        var timelineWrapper = document.getElementById("timelineWrapper");
     
-    let entryText = document.createElement("span");
-    entryText.setAttribute("class", "entryText rubik_light");
-
-    entryTitle.textContent = projectsJSON[i].name;
-    entryDate.textContent = projectsJSON[i].date;
-    entryText.innerHTML = projectsJSON[i].text;
-
-    entryHeader.appendChild(entryTitle);
-    entryHeader.appendChild(entryDate);
-    // tags
-    tagArray = projectsJSON[i].type.split(",");
-
-    for (tagCounter = 0; tagCounter < tagArray.length; tagCounter++) {
+        let entryWrapper = document.createElement("div");
+        entryWrapper.setAttribute("class", "entry_wrapper");
+        entryWrapper.setAttribute("data-aos", "fade-up");
+    
+        let entryHeader = document.createElement("div");
+        entryHeader.setAttribute("class", "entryHeader");
+    
+        let entryTitle = document.createElement("span");
+        entryTitle.setAttribute("class", "entryTitle rubik_regular pointer");
+        // window.open('link.html', '_blank');
+        entryTitle.setAttribute("onclick", "window.open('" + projectsJSON[i].link + "', '_blank');");
+    
+        let entryDate = document.createElement("span");
+        entryDate.setAttribute("class", "entryDate rubik_light unselectable");
+    
         
-        let entryType = document.createElement("span");
-        entryType.setAttribute("class", "entryTag entryDate rubik_light unselectable");
-        entryType.textContent = tagArray[tagCounter];
-
-        entryHeader.appendChild(entryType);
+        let entryText = document.createElement("span");
+        entryText.setAttribute("class", "entryText rubik_light");
+    
+        entryTitle.textContent = projectsJSON[i].name;
+        entryDate.textContent = projectsJSON[i].date;
+        entryText.innerHTML = projectsJSON[i].text;
+    
+        entryHeader.appendChild(entryTitle);
+        entryHeader.appendChild(entryDate);
+        // tags
+        tagArray = projectsJSON[i].type.split(",");
+    
+        for (tagCounter = 0; tagCounter < tagArray.length; tagCounter++) {
+            
+            let entryType = document.createElement("span");
+            entryType.setAttribute("class", "entryTag entryDate rubik_light unselectable");
+            entryType.textContent = tagArray[tagCounter];
+    
+            entryHeader.appendChild(entryType);
+        }
+    
+        entryWrapper.appendChild(entryHeader);
+        entryWrapper.appendChild(entryText);
+    
+        timelineWrapper.appendChild(entryWrapper);
     }
+})
 
-    entryWrapper.appendChild(entryHeader);
-    entryWrapper.appendChild(entryText);
 
-    timelineWrapper.appendChild(entryWrapper);
-}
 
 
 async function callPopUp(element) {
