@@ -493,12 +493,11 @@ header {
     .card {
         padding: 2rem;
         margin-bottom: 2rem;
-        margin-left: 50%;
-        transform: translateX(-50%);
         flex-basis: 100%;
     }
     .collapsible_content {
-        width: 100%;
+        width:75%;
+        justify-content: space-around;
     }
 }
 
