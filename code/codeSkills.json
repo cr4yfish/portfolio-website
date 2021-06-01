@@ -1,0 +1,26 @@
+[
+    {
+        "name": "html",
+        "skills": "Build static websites, Prepare javascript webapps, Build the framework for a dynamic website"
+    },
+    {
+        "name": "css",
+        "skills": "Make a website look nearly identical to the design-prototype, Add UX-enhancing interactive elements and animations"
+    },
+    {
+        "name": "js",
+        "skills": "Use vanilla JS to build any feature I want on my websites/webapps, Make interactive design choices that enhance the overall UX"
+    },
+    {
+        "name": "php",
+        "skills": "Search StackOverflow for answers on how to do stuff,"
+    },
+    {
+        "name": "python",
+        "skills": "Automate calculations and build simple but specific calculators that fit my needs,"
+    },
+    {
+        "name": "java",
+        "skills": "Make the same as in Python... but slower,"
+    }
+]

@@ -10,6 +10,7 @@
     --grey: #5E5E5E;
     --textGrey: #BEBEBE;
     --lightYellow: #FFE082;
+    --cardBG: #303030;
 }
 
 
@@ -447,10 +448,66 @@ header {
     justify-content: space-between;
     overflow: hidden;
     max-height: 0;
-    transition: all 0.5s ease-out;
-    margin-top: 0vw;
+    transition: all 0.5s ease-out, opacity 0.3s;
+    margin-top: 0;
+    width: 80%;
+    flex-wrap: wrap;
 }
 
+.smallHeader {
+    color: var(--grey);
+    text-align: center;
+    margin-bottom: 8rem;
+    font-size: small;
+    flex-basis: 100%;
+}
+
+.collapsible_content h2 {
+    margin-bottom: 2rem;
+}
+
+#page3 h2 {
+    color: var(--cardBG);
+}
+
+/* card system */
+
+.card {
+    opacity: 0;
+    transition: all 0.75s;
+    background-color: var(--cardBG);
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 10rem;
+    height: fit-content;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.212);
+    color: var(--almost_white);
+}
+
+.card:hover {
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.212);
+}
+
+@media screen and (max-width: 850px) {
+    .card {
+        padding: 2rem;
+        margin-bottom: 2rem;
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+    .collapsible_content  {
+        flex-direction: column;
+    }
+}
+
+.card-title {
+    color: var(--almost_white);
+    transform: translateY(-0.5rem);
+}
+
+.card-content {
+    color: var(--textGrey);
+}
 .text_wrapper {
     display: block;
     position: relative;
@@ -613,6 +670,9 @@ ul li::before {
     transform: translateX(-50%);
     width: 15vw;
 }
+
+
+
 
 
 /* footer*/

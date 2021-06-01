@@ -8,12 +8,14 @@
         <meta name="description" content="My personal portfolio.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
+
         
         <link rel="canonical" href="https://manuelfahmy.de/index.html">
         <script src="https://kit.fontawesome.com/d4164139c2.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://use.typekit.net/bgm5mtl.css">
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>  
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     </head>
 
@@ -80,16 +82,25 @@
                         <p class="block_text rubik_light">I am Manuel Fahmy and I'm currently a high school student. I enjoy gaining new skills and experiences, especially with anything related to technology.</p></div>
                     
                     <!-- Hidden content -->
-                    <button class="collapsible expand_btn rubik_light mousepointer">Toggle open</button>
-                    <div class="collapsible_content">
-                        <ul class="text_wrapper">
-                                <li class="text_block rubik_light">I'm 18 years old.</li>
-                                <li class="text_block rubik_light">Located in Germany</li>
-                                <li class="text_block rubik_light">I'm planning on studying CS soon</li>
-                        </ul>
-                        <div class="artwork page2_artwork"><img src="images/page2_artwork.webp" alt="who i am artwork"></div>
-                    </div>
+                    <button class="collapsible expand_btn rubik_light mousepointer">Show more info</button>
 
+                    <div class="collapsible_content">
+
+                        <h2 class="rubik_light smallHeader">fun facts about me</h2>
+
+                        <div class="card about-me-card">
+                            <div class="card-content rubik_light">I'm 18 years old.</div>
+                        </div>
+
+                        <div class="card about-me-card">
+                            <div class="card-content rubik_light">Located in Germany</div>
+                        </div>
+
+                        <div class="card about-me-card">
+                            <div class="card-content rubik_light">I'm planning on studying CS soon</div>
+                        </div>
+
+                    </div>
                 </div>
             </section>
 
@@ -106,22 +117,26 @@
                         </p>
                     </div>
 
-                    <button style="color: #212121;" class="collapsible expand_btn rubik_light mousepointer">Toggle open</button>
+                    <button style="color: #212121;" class="collapsible expand_btn rubik_light mousepointer">Show more info</button>
                     <div class="collapsible_content">
-                        <div id="stuff_wrapper">
-                            <div class="category_chooser"><h1 class="brevia_bold category_text">Coding</h1>
-                            </div>
-                            <div class="grid_layout">
-                                <span class="row1 column1 grid_header brevia_medium">Stuff</span>
-                                <span class="row2 column1 grid_text rubik_light">HTML, CSS and JS</span>
-                                <span class="row3 column1 grid_text rubik_light">Python</span>
-                                <span class="row4 column1 grid_text rubik_light">Java</span>
-                                <span class="row5 column1 grid_text rubik_light">C#</span>
-                                <span class="row1 column2 grid_header brevia_medium">Latest Projects</span>
-                                <span class="row2 column2 grid_text rubik_light">This</span>
-                                <span class="row3 column2 grid_text rubik_light">Website for JBN</span>
-                            </div>
+
+                        <h2 class="rubik_light smallHeader">my latest projects</h2>
+
+                        <div class="card latest-projects-card">
+                            <div class="card-title rubik_light">Portfolio 2.0</div>
+                            <div class="card-content rubik_light">Redesigning my portfolio website (this).</div>
                         </div>
+
+                        <div class="card latest-projects-card">
+                            <div class="card-title rubik_light">Caterpillar Calculator</div>
+                            <div class="card-content rubik_light">Calculating if I have enough in-game money for a ship in star citizen.</div>
+                        </div>
+
+                        <div class="card latest-projects-card">
+                            <div class="card-title rubik_light">Wallet Website</div>
+                            <div class="card-content rubik_light">Creating a dashboard for Crypto-investments.</div>
+                        </div>
+
                     </div>
 
                 </div>
