@@ -470,6 +470,18 @@ header {
     color: var(--cardBG);
 }
 
+#projects::-webkit-scrollbar {
+    width: 0.25vw;
+}
+#projects::-webkit-scrollbar-track {
+    
+    background-color: var(--not_black);
+}
+#projects::-webkit-scrollbar-thumb {
+    background-color: var(--light_orange);
+    border-radius: 10px;
+}
+
 /* card system */
 
 .card {
@@ -495,8 +507,8 @@ header {
         margin-left: 50%;
         transform: translateX(-50%);
     }
-    .collapsible_content  {
-        flex-direction: column;
+    #projects {
+        overflow-y: auto;
     }
 }
 

@@ -62,4 +62,42 @@ function fadeIn() {
   document.getElementsByTagName("body")[0].style.opacity = "1";
 }
 
-console.log($.getJSON("code/projects.json"));
+function drawLatestProjects() {
+
+
+  $.getJSON('code/projects.json', function(result) {
+
+    for(i = 0; i < 3; i++) {
+
+      var parentDiv = document.getElementById("projects");
+
+      var cardElement = document.createElement("div");
+      cardElement.setAttribute("class", "card latest-projects-card");
+
+      var cardTitle = document.createElement("div");
+      cardTitle.setAttribute("class", "card-title rubik_light");
+      cardTitle.textContent = result[i].name;
+      
+
+      var cardContent = document.createElement("div");
+      cardContent.setAttribute("class", "card-content rubik_light");
+
+      if (result[i].text.length > 101) {
+        resultText = result[i].text.substring(0,150) + "...";
+      }
+
+      cardContent.textContent = resultText;
+
+        
+      cardElement.appendChild(cardTitle);
+      cardElement.appendChild(cardContent);
+
+      parentDiv.appendChild(cardElement);
+
+    }
+    
+  });
+
+
+
+}
