@@ -49,6 +49,6 @@ jobs:
           # 
           forceUpload: false # optional
           # 
-          exclude: "['projects/', 'test.test']" # optional, default is []
+          exclude: "['projects/']" # optional, default is []
           # 
           concurrency: 100 # optional, default is 100
