@@ -25,12 +25,30 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: SFTP uploader w/options
+        # You may pin to the exact commit or the version.
+        # uses: zurb/sftp-upload-action@570d645b0fbf7fdd7c7fe6d5291ae5e0f2db5a08
+        uses: zurb/sftp-upload-action@1.3
+        with:
+          # 
+          host: ${{ secrets.FTP_SERVER_NAME}}
+          # 
+          port: 22 # optional, default is 22
+          # 
+          username: ${{ secrets.FTP_SERVER_USER}} # optional, default is root
+          # 
+          password: ${{ secrets.FTP_SERVER_PW}}
+          # 
+          localDir: /
+          # 
+          remoteDir: /
+          # 
+          dryRun: false # optional
+          # 
+          excludeMode: ignore # optional, default is remove
+          # 
+          forceUpload: false # optional
+          # 
+          exclude: "['projects/']" # optional, default is []
+          # 
+          concurrency: 100 # optional, default is 100
