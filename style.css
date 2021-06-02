@@ -226,6 +226,7 @@ header {
 
 #mainContent {
     transition: margin-right 0.5s;
+    overflow: hidden;
 }
 
 /* Page1 */
