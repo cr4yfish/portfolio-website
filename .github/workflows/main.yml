@@ -43,12 +43,12 @@ jobs:
           # 
           remoteDir: /
           # 
-          dryRun: false # optional
+          dryRun: true # optional
           # 
-          excludeMode: ignore # optional, default is remove
+          excludeMode: remove # optional, default is remove
           # 
-          forceUpload: true # optional
+          forceUpload: false # optional
           # 
-          exclude: "['projects/', 'test']" # optional, default is []
+          exclude: "['projects/', 'test.test']" # optional, default is []
           # 
           concurrency: 100 # optional, default is 100
