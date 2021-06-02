@@ -45,7 +45,7 @@ jobs:
           # 
           dryRun: false # optional
           # 
-          excludeMode: remove # optional, default is remove
+          excludeMode: ignore # optional, default is remove
           # 
           forceUpload: false # optional
           # 
