@@ -451,7 +451,7 @@ header {
     max-height: 0;
     transition: all 0.5s ease-out, opacity 0.3s;
     margin-top: 0;
-    width: 90%;
+    width: 50%;
     flex-wrap: wrap;
 }
 
@@ -490,6 +490,12 @@ header {
     box-shadow: 0 15px 15px rgba(0, 0, 0, 0.212);
 }
 
+@media screen and (min-width: 1500px) {
+    .collapsible_content {
+        width: 60%;
+    }
+}
+
 @media screen and (max-width: 850px) {
     .card {
         padding: 2rem;
@@ -503,8 +509,27 @@ header {
 }
 
 .card-title {
+    cursor: pointer;
     color: var(--almost_white);
     transform: translateY(-0.5rem);
+    font-size: 1.5rem;
+    position: relative;
+    display: inline-block;
+    text-decoration: underline;
+    -webkit-text-decoration-color: var(--light_orange);
+    text-decoration-color: var(--light_orange);
+    white-space: normal;
+}
+
+.card-titel:focus {
+    text-decoration: underline;
+    -webkit-text-decoration-color: var(--light_orange);
+    text-decoration-color: var(--light_orange);
+}
+
+.card-title:hover {
+    -webkit-text-decoration-color: var(--medium_orange);
+    text-decoration-color: var(--medium_orange);
 }
 
 .card-content {

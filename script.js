@@ -77,13 +77,29 @@ function drawLatestProjects() {
       var cardTitle = document.createElement("div");
       cardTitle.setAttribute("class", "card-title rubik_light");
       cardTitle.textContent = result[i].name;
-      
 
+      cardTitle.setAttribute("onclick", "window.open('" + result[i].link + "', '_blank');");
+      // window.open('https://manuelfahmy.de/projects/caterpillarCalculator', '_blank');
+      // window.open('https://manuelfahmy.de/projects/caterpillarCalculator', '_blank')
       var cardContent = document.createElement("div");
       cardContent.setAttribute("class", "card-content rubik_light");
 
-      if (result[i].text.length > 101) {
-        resultText = result[i].text.substring(0,150) + "...";
+      if (result[i].text.length > 150) {
+        // text ist 151 zeichen oder länger
+        // text wird nur bis zum 150. zeichen wiedergegeben
+        resultText = result[i].text.substring(0,150) ;
+        
+        if (resultText.split("")[149] == " ") {
+          // text hat ein leerzeichen als letztes zeichen
+ 
+          // 150. zeichen wird abgehakt
+          resultText = result[i].text.substring(0,149) + "...";
+
+        } else {
+          // text hat kein leerzeichen am ende
+
+          resultText = result[i].text.substring(0,150) + "...";
+        }
       }
 
       cardContent.textContent = resultText;
