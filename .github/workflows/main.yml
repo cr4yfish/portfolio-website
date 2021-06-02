@@ -49,6 +49,6 @@ jobs:
           # 
           forceUpload: false # optional
           # 
-          exclude: "['projects/']" # optional, default is []
+          exclude: "['projects/*', 'caterpillarCalculator/']" # optional, default is []
           # 
           concurrency: 100 # optional, default is 100
