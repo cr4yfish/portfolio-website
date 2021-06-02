@@ -41,7 +41,7 @@ jobs:
           # 
           localDir: /
           # 
-          remoteDir: /
+          remoteDir: /main/
           # 
           dryRun: false # optional
           # 
