@@ -47,7 +47,7 @@ jobs:
           # 
           excludeMode: ignore # optional, default is remove
           # 
-          forceUpload: false # optional
+          forceUpload: true # optional
           # 
           exclude: "['projects/', 'test']" # optional, default is []
           # 
