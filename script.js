@@ -12,6 +12,7 @@ for (i = 0; i < coll.length; i++) {
         collapsible_content.style.maxHeight = null;
         collapsible_content.style.marginTop = "0";
         collapsible_content.style.padding = "0"
+        collapsible_content.style.overflow = "hidden";
         this.textContent = "Show more info";
         for(i = 0; i < collapsible_content.children.length; i++) {
           collapsible_content.children[i].style.opacity = "0";
@@ -22,6 +23,7 @@ for (i = 0; i < coll.length; i++) {
         collapsible_content.style.padding = "5rem 1rem 10rem 1rem"
         collapsible_content.style.marginLeft = "50%";
         collapsible_content.style.transform = "translateX(-50%)";
+        collapsible_content.style.overflow = "visible";
         this.textContent = "Hide more info";
         for(i = 0; i < collapsible_content.children.length; i++) {
           collapsible_content.children[i].style.opacity = "1";
@@ -67,7 +69,7 @@ function drawLatestProjects() {
 
   $.getJSON('code/projects.json', function(result) {
 
-    for(i = 0; i < 3; i++) {
+    for(i = 0; i < 4; i++) {
 
       var parentDiv = document.getElementById("projects");
 

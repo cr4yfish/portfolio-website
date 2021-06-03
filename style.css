@@ -467,9 +467,7 @@ header {
     margin-bottom: 2rem;
 }
 
-#page3 h2 {
-    color: var(--cardBG);
-}
+
 
 /* card system */
 
@@ -496,7 +494,7 @@ header {
     }
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 900px) {
     .card {
         padding: 2rem;
         margin-bottom: 2rem;
@@ -508,6 +506,7 @@ header {
     }
 }
 
+
 .card-title {
     cursor: pointer;
     color: var(--almost_white);
@@ -518,7 +517,7 @@ header {
     text-decoration: underline;
     -webkit-text-decoration-color: var(--light_orange);
     text-decoration-color: var(--light_orange);
-    white-space: normal;
+    white-space: normal; 
 }
 
 .card-titel:focus {
@@ -606,6 +605,10 @@ ul li::before {
     max-width: 80%;
     left: 50%;
     transform: translateX(-50%);
+}
+
+#page3 h2 {
+    color: var(--not_black);
 }
 
 .category_chooser {
@@ -700,6 +703,11 @@ ul li::before {
 
 
 
+/* ================ */
+/* ================ */
+/* ================ */
+
+
 
 
 /* footer*/
@@ -739,8 +747,41 @@ footer span {
     color: var(--almost_white);
 }
 
-/* --- */
 
+
+@media screen and (max-width: 1000px) {
+    .footer_inner {
+        left: 50%;
+        transform: translateX(-50%);
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+    .logo_wrapper {
+        align-self: center;
+    }
+    .social_media {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .sc_media_icon:first-of-type {
+        padding-top: 1rem;
+    }
+    .sc_media_icon {
+        padding: 0;
+    }
+}
+
+
+
+/* ================ */
+/* ================ */
+/* ================ */
+
+
+/* @media*/
 
 @media screen and (max-width: 1000px) {
     .sidenav, #navbarOpener {
@@ -750,7 +791,7 @@ footer span {
         top: 70vh;
     }
     .sc_media_icon {
-        font-size: 4vw;
+        font-size: 2.5rem;
     }
     .page4_artwork img {
         margin-top: 5vh;
@@ -767,7 +808,7 @@ footer span {
         display: none;
     }
     .logo img {
-        width: 2vw;
+        width: 1rem;
     }
     .page1_leftside {
         max-width: 100%;
