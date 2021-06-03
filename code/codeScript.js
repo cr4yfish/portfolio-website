@@ -58,7 +58,7 @@ $.getJSON('code/projects.json', function(projectsJSON) {
 
 async function callPopUp(element) {
 
-    $.getJSON('code/codeSkills.json', function(codeSkilsJSON) {
+    $.getJSON('code/codeSkills.json', async function(codeSkilsJSON) {
     
         // get current language
         currentElement = element.id;

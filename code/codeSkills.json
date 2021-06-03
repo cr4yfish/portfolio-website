@@ -1,26 +1,30 @@
 [
     {
         "name": "html",
-        "skills": "Build static websites, Prepare javascript webapps, Build the framework for a dynamic website"
+        "skills": "I can build website wireframes fast and prepare them for css sytlization or for rather simpel Javascript webapps."
     },
     {
         "name": "css",
-        "skills": "Make a website look nearly identical to the design-prototype, Add UX-enhancing interactive elements and animations"
+        "skills": "I can make a website look nearly identical to the design-prototype and add simple UX-enhancing interactive elements and animations, without using Javascript to achieve a wider compatibility."
     },
     {
         "name": "js",
-        "skills": "Use vanilla JS to build any feature I want on my websites/webapps, Make interactive design choices that enhance the overall UX"
+        "skills": "I can use vanilla Javascript to build (practically) any feature I want on my websites/webapps. I can also make interactive design choices that enhance the overall UX."
     },
     {
         "name": "php",
-        "skills": "Search StackOverflow for answers on how to do stuff,"
+        "skills": "I can implement very simple login-systems and use databases together with mySQL."
     },
     {
         "name": "python",
-        "skills": "Automate calculations and build simple but specific calculators that fit my needs,"
+        "skills": "I can automate calculations and build simple, but specific, calculators that fit my needs. I also started to learn machine learning with Tensorflow."
     },
     {
         "name": "java",
-        "skills": "Make the same as in Python... but slower,"
+        "skills": "I can write some simple calculators. I mostly learn Java as an introduction to Object-oriented programming."
+    },
+    {
+        "name": "SQL",
+        "skills": "I can use phpMyAdmin to manage simple databases and connect them to my websites/webapps."
     }
 ]
