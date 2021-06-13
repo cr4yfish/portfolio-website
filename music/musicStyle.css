@@ -62,6 +62,7 @@
     -webkit-text-decoration-color: var(--light_orange);
     text-decoration-color: var(--light_orange);
     white-space: normal;
+    margin-bottom: 1rem;
 }
 @media screen and (min-width: 1000px) {
     .entryTitle:hover::before, .entryTitle:focus::before {
