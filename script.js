@@ -38,7 +38,7 @@ function resetAnimation() {
 
 async function openNav() {
 
-  if (localStorage.getItem("navbarHasBeenOpened") != "true") {
+  //if (localStorage.getItem("navbarHasBeenOpened") != "true") {
       console.log(document.querySelectorAll("#sidebar a"));
 
       // set all items off screen
@@ -48,7 +48,7 @@ async function openNav() {
         navbarItems[i].style.transform = "translateX(200%)";
         navbarItems[i].style.transition = "transform 0.5s"
       }
-  }
+  //}
 
 
   document.getElementById("sidebar").style.width = "250px";
