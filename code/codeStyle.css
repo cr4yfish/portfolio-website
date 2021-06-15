@@ -249,6 +249,7 @@ body::-webkit-scrollbar-thumb {
     -webkit-text-decoration-color: var(--light_orange);
     text-decoration-color: var(--light_orange);
     white-space: normal;
+    margin-bottom: 0.5rem;
 }
 
 .entryTitle:focus {
@@ -256,12 +257,12 @@ body::-webkit-scrollbar-thumb {
     border-radius: 4px;
 }
 
-@media screen and(max-width: 1000px) {
+@media screen and (max-width: 1400px) {
     .entryHeader {
         margin-bottom: 0.5rem;
     }
     .entryTitle {
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
     }
 }
 @media screen and (min-width: 1000px) {
@@ -303,7 +304,7 @@ body::-webkit-scrollbar-thumb {
     content: "";
     position: absolute;
     width: calc(100% + 0.2em);
-    height: 1.2em;
+    height: 1em;
     padding: 0.1em;
     left: -0.2em;
     bottom: 0.001em;
@@ -324,6 +325,12 @@ body::-webkit-scrollbar-thumb {
         height: 50px;
         width: auto;
     }
+    .entryDate {
+        margin: 0.5rem;
+    }
+    .entryTitle {
+        margin-bottom: 0.5rem;
+    }
 }
 
 @media screen and (max-width: 470px) {
@@ -341,9 +348,6 @@ body::-webkit-scrollbar-thumb {
     }
     #timelineWrapper {
         width: 100% !important;
-    }
-    .entryTitle {
-        margin-bottom: 0.5rem !important;
     }
     #gridWrapper {
         margin-bottom: 4rem !important;
