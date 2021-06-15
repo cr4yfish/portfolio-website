@@ -240,10 +240,6 @@ body::-webkit-scrollbar-thumb {
     margin-bottom: 13rem;
 }
 
-.entryHeader {
-    margin-bottom: 0.5rem;
-}
-
 .entryTitle {
     font-size: 1.5rem;
     color: var(--almost_white);
@@ -253,7 +249,6 @@ body::-webkit-scrollbar-thumb {
     -webkit-text-decoration-color: var(--light_orange);
     text-decoration-color: var(--light_orange);
     white-space: normal;
-    margin-bottom: 1rem;
 }
 
 .entryTitle:focus {
@@ -261,12 +256,19 @@ body::-webkit-scrollbar-thumb {
     border-radius: 4px;
 }
 
-
+@media screen and(max-width: 1000px) {
+    .entryHeader {
+        margin-bottom: 0.5rem;
+    }
+    .entryTitle {
+        margin-bottom: 1rem;
+    }
+}
 @media screen and (min-width: 1000px) {
+
     .entryTitle:hover::before, .entryTitle:focus::before {
         transform: scale(1,1);
     }
-
     .entryTitle::before {
         content: "";
         position: absolute;
