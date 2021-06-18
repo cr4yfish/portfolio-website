@@ -69,24 +69,28 @@ body::-webkit-scrollbar-thumb {
     font-family: brevia, sans-serif;
     font-weight: 700;
     font-style: normal;
+    font-display: swap;
 }
 
 .brevia_medium {
     font-family: brevia,sans-serif;
     font-weight: 500;
     font-style: normal;
+    font-display: swap;
 }
 
 .rubik_regular {
     font-family: rubik, sans-serif;
     font-weight: 400;
     font-style: normal;
+    font-display: swap;
 }
 
 .rubik_light {
     font-family: rubik, sans-serif;
     font-weight: 300;
     font-style: normal;
+    font-display: swap;
 }
 
 a {
