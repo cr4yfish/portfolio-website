@@ -20,6 +20,44 @@
 
     <body onload="fadeIn();">
 
+        <div id="entryPopup">
+            <div id="popupLeftSide">
+                <span class="entryTitle pointer rubik_regular">Portfolio Website 2.0</span>
+                <img src="code/thumbnails/portfolio.jpg" alt="portfolio preview" class="popupImage">  
+                <div class="texts"> 
+                    <div class="popupTextWrapper">
+                        <h3 class="textWrapperTitle rubik_regular">Description</h3>
+                        <span class="entryText rubik_light">Current Project. I have some more projects now that I could display. I also got my Webspace back and a new domain. Now it's time to beautify this thing using all the skills I aquired in the past 2 years.</span>
+                    </div>
+                    <div class="popupTextWrapper">
+                        <h3 class="textWrapperTitle rubik_regular">What I learned</h3>
+                        <span class="entryText rubik_light">Current Project. I have some more projects now that I could display. I also got my Webspace back and a new domain. Now it's time to beautify this thing using all the skills I aquired in the past 2 years.</span>
+                    </div>
+                </div> 
+            </div>
+
+            <div id="popupLine"></div>
+
+            <div id="popupRightSide">
+                <div class="sidebarWrapper">
+                    <h3 class="sidebarTitle rubik_light">Year</h3>
+                    <span class="sidebarText rubik_light">2020</span>
+                </div>
+                <div class="sidebarWrapper">
+                    <h3 class="sidebarTitle rubik_light">Tags</h3>
+                    <span class="entryTag entryDate rubik_light unselectable">Live</span>
+                    <span class="entryTag entryDate rubik_light unselectable"> JS</span>
+                    <span class="entryTag entryDate rubik_light unselectable"> CSS</span>
+                </div>
+                <div class="sidebarWrapper">
+                    <h3 class="sidebarTitle rubik_light">Client</h3>
+                    <span class="sidebarText rubik_light">Myself</span>
+                </div>
+            </div>
+
+            <p id="popupClose"  class="rubik_light">Close</p>
+        </div>
+
         <script src="script.js" async defer></script>
         <script src="code/codeScript.js" async defer></script>
 
@@ -31,6 +69,9 @@
         </div>
 
         <div id="content_wrapper">
+
+             
+            
 
             <button class="btn-primary back_btn" style="cursor: pointer;" onclick="window.location.href='index.html';" >
 
@@ -63,7 +104,55 @@
             <h2 class="languagesHeader smallHeader brevia_medium">My Web Projects</h2>
 
             <!-- Content is filled by Javascript -->
-            <div id="timelineWrapper"></div>
+            <div id="timelineWrapper">
+
+                <div index="0" class="entry_wrapper aos-init aos-animate" data-aos="fade-up">
+                    <div class="entryThumbnail"><img src="code/thumbnails/portfolio.jpg" alt="portfolio preview"></div>
+                    <div class="entryHeader">
+                        <span class="entryTitle rubik_regular pointer" onclick="window.open('https://manuelfahmy.de/', '_blank');">Portfolio Website 2.0</span>
+                        <span class="entryDate rubik_light unselectable">2021</span>
+                        <span class="entryTag entryDate rubik_light unselectable">Live</span>
+                        <span class="entryTag entryDate rubik_light unselectable"> JS</span>
+                        <span class="entryTag entryDate rubik_light unselectable"> CSS</span>
+                    </div>
+                    
+                    <span class="entryText rubik_light">Current Project. I have some more projects now that I could display. I also got my Webspace back and a new domain. Now it's time to beautify this thing using all the skills I aquired in the past 2 years.</span>
+                    
+                    <div class="entryMore rubik_light" onclick="readMore(this);">Read more</div>
+                </div>
+
+                <div class="entry_wrapper aos-init aos-animate" data-aos="fade-up">
+                    <div class="entryThumbnail"><img src="code/thumbnails/portfolio.jpg" alt="portfolio preview"></div>
+                    <div class="entryHeader">
+                        <span class="entryTitle rubik_regular pointer" onclick="window.open('https://manuelfahmy.de/', '_blank');">Portfolio Website 2.0</span>
+                        <span class="entryDate rubik_light unselectable">2021</span>
+                        <span class="entryTag entryDate rubik_light unselectable">Live</span>
+                        <span class="entryTag entryDate rubik_light unselectable"> JS</span>
+                        <span class="entryTag entryDate rubik_light unselectable"> CSS</span>
+                    </div>
+                    
+                    <span class="entryText rubik_light">Current Project. I have some more projects now that I could display. I also got my Webspace back and a new domain. Now it's time to beautify this thing using all the skills I aquired in the past 2 years.</span>
+                    
+                    <div class="entryMore rubik_light">Read more</div>
+                </div>
+
+                <div class="entry_wrapper aos-init aos-animate" data-aos="fade-up">
+                    <div class="entryThumbnail"><img src="code/thumbnails/portfolio.jpg" alt="portfolio preview"></div>
+                    <div class="entryHeader">
+                        <span class="entryTitle rubik_regular pointer" onclick="window.open('https://manuelfahmy.de/', '_blank');">Portfolio Website 2.0</span>
+                        <span class="entryDate rubik_light unselectable">2021</span>
+                        <span class="entryTag entryDate rubik_light unselectable">Live</span>
+                        <span class="entryTag entryDate rubik_light unselectable"> JS</span>
+                        <span class="entryTag entryDate rubik_light unselectable"> CSS</span>
+                    </div>
+                    
+                    <span class="entryText rubik_light">Current Project. I have some more projects now that I could display. I also got my Webspace back and a new domain. Now it's time to beautify this thing using all the skills I aquired in the past 2 years.</span>
+                    
+                    <div class="entryMore rubik_light" >Read more</div>
+                </div>
+
+
+            </div>
 
             <span id="sureTheresMore" class="rubik_light">...and more to come</span>
 
