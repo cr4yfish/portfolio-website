@@ -4,6 +4,13 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// remove "no-javascript" function
+(function() {
+    let element = document.getElementById("no-javascript");
+    element.remove();
+    return;
+})();
+
 $.getJSON('code/projects.json', function(projectsJSON) {
 
     for (i = 0; i < projectsJSON.length; i++) {

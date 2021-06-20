@@ -1,4 +1,15 @@
 
+// remove "no-javascript" function
+(function() {
+  let elements = document.getElementsByClassName("no-javascript");
+  console.log(elements);
+  for(i = 0; i < elements.length;i++) {
+    elements[i].remove();
+  }
+  return;
+})();
+
+
 var coll = document.getElementsByClassName("collapsible");
 var i;
 
