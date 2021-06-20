@@ -166,8 +166,6 @@ function readMore(element) {
         // build a popup and paste data, UI is already done
 
         let currentProject = projectsJSON[index];
-        console.log(projectsJSON[index]);
-        console.log(currentProject);
 
         let body = document.getElementsByTagName("body")[0];
 
@@ -183,16 +181,10 @@ function readMore(element) {
         let html = document.getElementsByTagName("html")[0];
             html.style.overflow = "hidden";
 
-        
-
-        let contentWrapper = document.getElementById("content_wrapper");
-
         let entryPopup = document.createElement("div");
             entryPopup.setAttribute("id","entryPopup");
 
         body.prepend(entryPopup);
-
-
         
         let popupLeftSide = document.createElement("div");
             popupLeftSide.setAttribute("id", "popupLeftSide");
@@ -305,6 +297,32 @@ function readMore(element) {
                     sidebarTextClient.setAttribute("class", "sidebarText rubik_light");
                     sidebarTextClient.textContent = currentProject.client;
                 sidebarWrapperClient.appendChild(sidebarTextClient);
+
+            // links
+            let sidebarWrapperLinks = document.createElement("div");
+                sidebarWrapperLinks.setAttribute("class", "sidebarWrapper");
+            popupRightSide.appendChild(sidebarWrapperLinks);
+
+                let sidebarTitleLinks = document.createElement("h3");
+                    sidebarTitleLinks.setAttribute("class", "sidebarTitle rubik_light")
+                    sidebarTitleLinks.textContent = "Links";
+                sidebarWrapperLinks.appendChild(sidebarTitleLinks);
+
+                if (currentProject.hasOwnProperty("extraLinks") == true) {
+                    for (i = 0; i < currentProject.extraLinks.length;i++) {
+
+                        let sidebarTextLinks = document.createElement("span");
+                            sidebarTextLinks.setAttribute("class", "sidebarText rubik_light pointer sidebarExtraLinks");
+                            sidebarTextLinks.textContent = currentProject.extraLinks[i];
+                            // entryTitle.setAttribute("onclick", "window.open('" + projectsJSON[i].link + "', '_blank');");
+                            sidebarTextLinks.setAttribute("onclick", "window.open('" + currentProject.extraLinks[i+1] + "', '_blank');");
+                        sidebarWrapperLinks.appendChild(sidebarTextLinks);
+                        i++;
+
+                    }
+
+                }
+
             
         let popupClose = document.createElement("p");
             popupClose.setAttribute("id", "popupClose");
@@ -315,9 +333,7 @@ function readMore(element) {
 
         await sleep(50);
         entryPopup.style.opacity = "1";
-
     });
-
 }
 
 async function closePopup() {
@@ -334,6 +350,5 @@ async function closePopup() {
     await sleep(250);
 
     popupWrapper.remove();
-
     opacityLayer.remove();
 }

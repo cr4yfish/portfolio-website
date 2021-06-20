@@ -7,7 +7,8 @@
         "type": "Live, JS, API",
         "learned": "Local authorities don't respond to my emails.",
         "client": "None",
-        "thumbnail": "bus.jpg"
+        "thumbnail": "bus.jpg",
+        "extraLinks": ["Live Demo","https://manuelfahmy.de/projects/takeTheBus","GitHub","https://github.com/cr4yfish/takeTheBus"]
     },
     {    
         "name": "Caterpillar calculator",
@@ -17,7 +18,8 @@
         "type": "Live, JS",
         "learned": "I learned how to make a vanilla JS webapp.",
         "client": "Friends & myself",
-        "thumbnail": "cat.jpg"
+        "thumbnail": "cat.jpg",
+        "extraLinks": ["Live Demo","https://manuelfahmy.de/projects/caterpillarCalculator/","GitHub","https://github.com/cr4yfish/caterpillarCalc"]
     },
     {    
         "name": "Portfolio Website 2.0",
@@ -27,7 +29,8 @@
         "type": "Live, JS, CSS",
         "thumbnail": "portfolio.jpg",
         "learned": "I experienced working with JSON and learned to procedurally generate content based the JSON. Also more advanced CSS.",
-        "client": "Myself"
+        "client": "Myself",
+        "extraLinks": ["Live Demo","https://manuelfahmy.de/","Behance","https://www.behance.net/gallery/119595399/My-Portfolio", "GitHub", "https://github.com/cr4yfish/portfolio-website"]
     },
     {    
         "name": "isTodayTuesday",
@@ -37,7 +40,8 @@
         "type": "Live, JS",
         "learned": "Not much.",
         "client": "None",
-        "thumbnail" : "tuesday.jpg"
+        "thumbnail" : "tuesday.jpg",
+        "extraLinks": ["Live Demo","https://manuelfahmy.de/projects/isTodayTuesday/", "Behance", "https://www.behance.net/gallery/119588087/isTodayTuesday" ,"GitHub","https://github.com/cr4yfish/isTodayTuesday"]
     },
     {    
         "name": "Wallet-Website",
@@ -47,7 +51,8 @@
         "type": "GitHub, PHP, JS",
         "learned": "I learned some PHP by building the login system. I also had my first contact with working with a SQL database.",
         "client": "Friends",
-        "thumbnail" : "wallet.jpg"
+        "thumbnail" : "wallet.jpg",
+        "extraLinks": ["Behance","https://www.behance.net/gallery/119596459/Crypto-Portfolio-Website","GitHub","https://github.com/cr4yfish/wallet-website"]
     },
     {    
         "name": "Localhost Dashboard",
@@ -57,7 +62,8 @@
         "type": "Not public",
         "learned": "Placeholder",
         "client": "Myself",
-        "thumbnail" : "dashboard.jpg"
+        "thumbnail" : "dashboard.jpg",
+        "extraLinks": ["GitHub","https://github.com/cr4yfish/dashboardV2"]
     },
     {    
         "name": "AnimeScraper",
@@ -67,7 +73,8 @@
         "type": "GitHub, JS",
         "learned": "Javascript. A lot of Javascript.",
         "client": "None",
-        "thumbnail": "anime.jpg"
+        "thumbnail": "anime.jpg",
+        "extraLinks": ["GitHub","https://github.com/cr4yfish/animeScraper"]
     },
     {    
         "name": "First React.js App",
@@ -104,6 +111,7 @@
         "type": "Live, HTML",
         "learned": "Since this was my first real web-project, I learned a lot of HTML and CSS. JS was very difficult for me back then.",
         "client": "JBN",
-        "thumbnail" : "jbn.jpg"
+        "thumbnail" : "jbn.jpg",
+        "extraLinks": ["Live Demo", "https://jugendbeiratneustadt.de/" ,"GitHub", "https://github.com/cr4yfish/jbn-website"]
     }
 ]
