@@ -16,7 +16,8 @@
         "link": "https://manuelfahmy.de/projects/caterpillarCalculator",
         "type": "Live, JS",
         "learned": "I learned how to make a vanilla JS webapp.",
-        "client": "Friends & myself"
+        "client": "Friends & myself",
+        "thumbnail": "cat.jpg"
     },
     {    
         "name": "Portfolio Website 2.0",
@@ -44,7 +45,8 @@
         "link": "https://github.com/cr4yfish/wallet-website",
         "type": "GitHub, PHP, JS",
         "learned": "I learned some PHP by building the login system. I also had my first contact with working with a SQL database.",
-        "client": "Friends"
+        "client": "Friends",
+        "thumbnail" : "wallet.jpg"
     },
     {    
         "name": "Localhost Dashboard",
@@ -53,7 +55,8 @@
         "link": "",
         "type": "Not public",
         "learned": "Placeholder",
-        "client": "Myself"
+        "client": "Myself",
+        "thumbnail" : "dashboard"
     },
     {    
         "name": "AnimeScraper",
@@ -62,7 +65,8 @@
         "link": "https://github.com/cr4yfish/animeScraper",
         "type": "GitHub, JS",
         "learned": "Javascript. A lot of Javascript.",
-        "client": "None"
+        "client": "None",
+        "thumbnail": "anime.jpg"
     },
     {    
         "name": "First React.js App",
@@ -98,6 +102,7 @@
         "link": "https://jugendbeiratneustadt.de/",
         "type": "Live, HTML",
         "learned": "Since this was my first real web-project, I learned a lot of HTML and CSS. JS was very difficult for me back then.",
-        "client": "JBN"
+        "client": "JBN",
+        "thumbnail" : "jbn.jpg"
     }
 ]
