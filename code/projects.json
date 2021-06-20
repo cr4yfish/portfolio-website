@@ -36,7 +36,8 @@
         "link": "https://manuelfahmy.de/projects/isTodayTuesday/",
         "type": "Live, JS",
         "learned": "Not much.",
-        "client": "None"
+        "client": "None",
+        "thumbnail" : "tuesday.jpg"
     },
     {    
         "name": "Wallet-Website",
@@ -56,7 +57,7 @@
         "type": "Not public",
         "learned": "Placeholder",
         "client": "Myself",
-        "thumbnail" : "dashboard"
+        "thumbnail" : "dashboard.jpg"
     },
     {    
         "name": "AnimeScraper",
