@@ -25,7 +25,8 @@ $.getJSON('code/projects.json', function(projectsJSON) {
         if (projectsJSON[i].thumbnail != undefined) {
 
             let entryThumbnail = document.createElement("div");
-            entryThumbnail.setAttribute("class", "entryThumbnail");
+                entryThumbnail.setAttribute("class", "entryThumbnail");
+                entryThumbnail.setAttribute("alt", projectsJSON[i].name + " preview image.");
 
             let entryImg = document.createElement("img");
                 entryImg.setAttribute("src", "code/thumbnails/" + projectsJSON[i].thumbnail);
@@ -201,7 +202,7 @@ function readMore(element) {
             let thumbnail = document.createElement("img");
                 thumbnail.setAttribute("class","popupImage");
                 thumbnail.setAttribute("src", "code/thumbnails/" + currentProject.thumbnail);
-                thumbnail.setAttribute("alt", " ");
+                thumbnail.setAttribute("alt",  currentProject.name + " preview image.");
             popupLeftSide.appendChild(thumbnail);
 
             let texts = document.createElement("div");
