@@ -277,6 +277,11 @@ body::-webkit-scrollbar-thumb {
     border-radius: 4px;
 }
 
+#popupLeftSide .texts {
+    overflow: auto;
+    height: 46%;
+}
+
 @media screen and (max-width: 1400px) {
     .entryHeader {
         margin-bottom: 0.5rem;
@@ -304,6 +309,9 @@ body::-webkit-scrollbar-thumb {
         transform-origin: 0 95%;
         z-index: -1;
         transition: transform 175ms ease-out;
+    }
+    #popupLeftSide .texts {
+        height: 50%;
     }
 }
 .entryTitle:hover {
@@ -338,6 +346,7 @@ body::-webkit-scrollbar-thumb {
     position: relative;
     color: var(--textGrey);
     display: inline-block;
+    line-height: 1.2;
 }
 
 
@@ -436,15 +445,14 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
+
 @media screen and (max-width: 750px) {
     #popupLeftSide img {
         width: 250px;
     }
-}
-
-#popupLeftSide .texts {
-    overflow: auto;
-    height: 70%;
+    #popupLeftSide .texts {
+        height: 70%;
+    }
 }
 
 .popupTextWrapper {
@@ -612,6 +620,7 @@ body::-webkit-scrollbar-thumb {
     .sidebarWrapper {
         margin-right: 2rem;
         margin-left: 2rem;
+        align-items: center;
     }
 }
 
