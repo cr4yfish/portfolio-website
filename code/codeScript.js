@@ -26,10 +26,10 @@ $.getJSON('code/projects.json', function(projectsJSON) {
 
             let entryThumbnail = document.createElement("div");
                 entryThumbnail.setAttribute("class", "entryThumbnail");
-                entryThumbnail.setAttribute("alt", projectsJSON[i].name + " preview image.");
 
             let entryImg = document.createElement("img");
                 entryImg.setAttribute("src", "code/thumbnails/" + projectsJSON[i].thumbnail);
+                entryImg.setAttribute("alt", projectsJSON[i].name + " preview image.");
 
             entryThumbnail.appendChild(entryImg);
             entryWrapper.appendChild(entryThumbnail);
