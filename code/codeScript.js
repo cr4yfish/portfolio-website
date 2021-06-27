@@ -201,7 +201,7 @@ function readMore(element) {
             let thumbnail = document.createElement("img");
                 thumbnail.setAttribute("class","popupImage");
                 thumbnail.setAttribute("src", "code/thumbnails/" + currentProject.thumbnail);
-                thumbnail.setAttribute("alt", "");
+                thumbnail.setAttribute("alt", " ");
             popupLeftSide.appendChild(thumbnail);
 
             let texts = document.createElement("div");
