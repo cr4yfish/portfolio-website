@@ -291,7 +291,6 @@ body::-webkit-scrollbar-thumb {
     }
 }
 @media screen and (min-width: 1000px) {
-
     .entryTitle:hover::before, .entryTitle:focus::before {
         transform: scale(1,1);
     }
@@ -540,6 +539,9 @@ body::-webkit-scrollbar-thumb {
     }
     .entryTitle {
         margin-bottom: 0.5rem;
+    }
+    .entry_wrapper {
+        width: 100%;
     }
 }
 

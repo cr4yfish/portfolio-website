@@ -1,8 +1,21 @@
+function gototop() {
+  if (window.scrollY>0) {
+      window.scrollTo(0,0)
+  }
+}
+
+function checkGoToTop() {
+  console.log(document.querySelector("body").clientHeight - window.scrollY)
+  if(document.querySelector("body").clientHeight - window.scrollY  < 2000) {
+      document.getElementById("scrollToTop").style.display = "block"
+  } else {
+    document.getElementById("scrollToTop").style.display = "none"
+  }
+}
 
 // remove "no-javascript" function
 (function() {
   let elements = document.getElementsByClassName("no-javascript");
-  console.log(elements);
   for(i = 0; i < elements.length;i++) {
     elements[i].remove();
   }

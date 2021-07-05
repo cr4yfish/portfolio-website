@@ -12,14 +12,17 @@
 
         <link rel="canonical" href="https://manuelfahmy.de/code.html">
         <link rel="stylesheet" href="https://use.typekit.net/bgm5mtl.css">
-        
+        <script src="https://kit.fontawesome.com/d4164139c2.js" crossorigin="anonymous"></script>
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     </head>
 
-    <body onload="fadeIn();">
+    <body onscroll="checkGoToTop();" onload="fadeIn();">
 
+        <div id="scrollToTop" onclick="gototop();">
+            <i class="fas fa-arrow-alt-circle-up"></i>
+        </div>
         
 
         <script src="script.js" async defer></script>

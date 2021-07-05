@@ -14,6 +14,17 @@
 }
 
 
+#scrollToTop {
+    position: fixed;
+    right: 10%;
+    bottom: 5%;
+    z-index: 10;
+    font-size: 40pt;
+    color: var(--almost_white);
+    display: none;
+    cursor: pointer;
+}
+
 
 /* general */
 
