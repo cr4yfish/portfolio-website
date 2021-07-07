@@ -11,75 +11,129 @@ function sleep(ms) {
     return;
 })();
 
-$.getJSON('code/projects.json', function(projectsJSON) {
-
-    for (i = 0; i < projectsJSON.length; i++) {
-        var timelineWrapper = document.getElementById("timelineWrapper");
-    
-        let entryWrapper = document.createElement("div");
-        entryWrapper.setAttribute("class", "entry_wrapper");
-        entryWrapper.setAttribute("data-aos", "fade-up");
-        entryWrapper.setAttribute("index", i);
-    
-        // only get thumbnail if I provided one to avoid errors
-        if (projectsJSON[i].thumbnail != undefined) {
-
-            let entryThumbnail = document.createElement("div");
-                entryThumbnail.setAttribute("class", "entryThumbnail");
-
-            let entryImg = document.createElement("img");
-                entryImg.setAttribute("src", "code/thumbnails/" + projectsJSON[i].thumbnail);
-                entryImg.setAttribute("alt", projectsJSON[i].name + " preview image.");
-
-            entryThumbnail.appendChild(entryImg);
-            entryWrapper.appendChild(entryThumbnail);
-        }
-
-        let entryHeader = document.createElement("div");
-        entryHeader.setAttribute("class", "entryHeader");
-    
-        let entryTitle = document.createElement("span");
-        entryTitle.setAttribute("class", "entryTitle rubik_regular pointer");
-        // window.open('link.html', '_blank');
-        entryTitle.setAttribute("onclick", "window.open('" + projectsJSON[i].link + "', '_blank');");
-    
-        let entryDate = document.createElement("span");
-        entryDate.setAttribute("class", "entryDate rubik_light unselectable");
-    
-        
-        let entryText = document.createElement("span");
-        entryText.setAttribute("class", "entryText rubik_light");
-    
-        entryTitle.textContent = projectsJSON[i].name;
-        entryDate.textContent = projectsJSON[i].date;
-        entryText.innerHTML = projectsJSON[i].text;
-    
-        entryHeader.appendChild(entryTitle);
-        entryHeader.appendChild(entryDate);
-        // tags
-        tagArray = projectsJSON[i].type.split(",");
-    
-        for (tagCounter = 0; tagCounter < tagArray.length; tagCounter++) {
-            
-            let entryType = document.createElement("span");
-            entryType.setAttribute("class", "entryTag entryDate rubik_light unselectable");
-            entryType.textContent = tagArray[tagCounter];
-    
-            entryHeader.appendChild(entryType);
-        }
-    
-        let entryMore = document.createElement("div");
-            entryMore.setAttribute("class", "entryMore rubik_light");
-            entryMore.setAttribute("onclick", "readMore(this);")
-            entryMore.textContent = "Read more";
-        
-        entryWrapper.appendChild(entryHeader);
-        entryWrapper.appendChild(entryText);
-        entryWrapper.appendChild(entryMore);
-    
-        timelineWrapper.appendChild(entryWrapper);
-    }
+// add event listener to catergories input
+document.getElementById("projectFilter").addEventListener("change", function(e) {
+    getProjects(e.target.value, "cat");
 })
+
+
+// add event listener to search input
+let timeout = null;
+document.getElementById("projectSearch").addEventListener("input", function(e) {
+    clearTimeout(timeout)
+    
+    timeout = setTimeout(function() {
+        console.log(e.target.value)
+        // check if input is empty, if so just call all projects, will throw error otherwise
+        if(e.target.value == "") {
+            getProjects("", "all");
+        } else {
+            getProjects(e.target.value, "name");
+        }
+    }, 500);
+
+})
+
+// draw projects at start
+getProjects("", "all");
+
+async function getProjects(key, grabAll) {
+    const host = "85.214.156.68";
+    let url;
+
+    // clear current projects
+    let childNodes = document.getElementById("timelineWrapper").childNodes
+    for(let i = childNodes.length-1; i >= 0; i--) {
+        childNodes[i].remove();
+    };
+
+    if(grabAll == "all") {
+        url =`http://${host}:3000/getProjects`
+        
+    } else if(grabAll == "name"){
+        url =`http://${host}:3000/getProjects/name/${key}`
+
+    } else if(grabAll == "cat") {
+        url =`http://${host}:3000/getProjects/cat/${key}`
+    }
+
+    fetch(url)
+
+    .then(response => response.json())
+    
+    .then(projectsJSON => {
+        console.log(projectsJSON);
+        for (i = 0; i < projectsJSON.length; i++) {
+            var timelineWrapper = document.getElementById("timelineWrapper");
+        
+            let entryWrapper = document.createElement("div");
+            entryWrapper.setAttribute("class", "entry_wrapper");
+            entryWrapper.setAttribute("data-aos", "fade-up");
+            entryWrapper.setAttribute("index", i);
+        
+            // only get thumbnail if I provided one to avoid errors
+            if (projectsJSON[i].thumbnail != undefined) {
+    
+                let entryThumbnail = document.createElement("div");
+                    entryThumbnail.setAttribute("class", "entryThumbnail");
+    
+                let entryImg = document.createElement("img");
+                    entryImg.setAttribute("src", "code/thumbnails/" + projectsJSON[i].thumbnail);
+                    entryImg.setAttribute("alt", projectsJSON[i].name + " preview image.");
+    
+                entryThumbnail.appendChild(entryImg);
+                entryWrapper.appendChild(entryThumbnail);
+            }
+    
+            let entryHeader = document.createElement("div");
+            entryHeader.setAttribute("class", "entryHeader");
+        
+            let entryTitle = document.createElement("span");
+            entryTitle.setAttribute("class", "entryTitle rubik_regular pointer");
+            // window.open('link.html', '_blank');
+            entryTitle.setAttribute("onclick", "window.open('" + projectsJSON[i].link + "', '_blank');");
+        
+            let entryDate = document.createElement("span");
+            entryDate.setAttribute("class", "entryDate rubik_light unselectable");
+        
+            
+            let entryText = document.createElement("span");
+            entryText.setAttribute("class", "entryText rubik_light");
+        
+            entryTitle.textContent = projectsJSON[i].name;
+            entryDate.textContent = projectsJSON[i].date;
+            entryText.innerHTML = projectsJSON[i].text;
+        
+            entryHeader.appendChild(entryTitle);
+            entryHeader.appendChild(entryDate);
+            // tags
+            tagArray = projectsJSON[i].type.split(",");
+        
+            for (tagCounter = 0; tagCounter < tagArray.length; tagCounter++) {
+                
+                let entryType = document.createElement("span");
+                entryType.setAttribute("class", "entryTag entryDate rubik_light unselectable");
+                entryType.textContent = tagArray[tagCounter];
+        
+                entryHeader.appendChild(entryType);
+            }
+        
+            let entryMore = document.createElement("div");
+                entryMore.setAttribute("class", "entryMore rubik_light");
+                entryMore.setAttribute("onclick", "readMore(this);")
+                entryMore.textContent = "Read more";
+            
+            entryWrapper.appendChild(entryHeader);
+            entryWrapper.appendChild(entryText);
+            entryWrapper.appendChild(entryMore);
+        
+            timelineWrapper.appendChild(entryWrapper);
+        }
+    })
+      
+}
+
+
 
 
 
@@ -153,7 +207,11 @@ function readMore(element) {
 
     let index = element.parentNode.getAttribute("index");
 
-    $.getJSON('code/projects.json', async function(projectsJSON) {
+
+    fetch("http://85.214.156.68:3000/getProjects")
+    .then(response => response.json())
+
+    .then(async function(projectsJSON) {
  
         /*
         "name": "Take the Bus",

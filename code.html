@@ -11,11 +11,20 @@
         <link rel="stylesheet" href="extraPageStyle.css">
 
         <link rel="canonical" href="https://manuelfahmy.de/code.html">
+
+         <!-- Typekit -->
         <link rel="stylesheet" href="https://use.typekit.net/bgm5mtl.css">
+         <!-- Awesome -->
         <script src="https://kit.fontawesome.com/d4164139c2.js" crossorigin="anonymous"></script>
+
+         <!-- AOSs CSS -->
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!-- AOSs JS -->
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+         <!-- JQUERY -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
     </head>
 
     <body onscroll="checkGoToTop();" onload="fadeIn();">
@@ -68,7 +77,22 @@
 
             <h2  class="smallHeader brevia_medium unselectable">Scroll down to view my projects</h2>
         
-            <h2 class="languagesHeader smallHeader brevia_medium">My Web Projects</h2>
+            <h2 class="languagesHeader smallHeader brevia_medium">My Projects</h2>
+
+            <form id="filter" action="">
+                <div>
+                    <select name="project-type-filter" id="projectFilter">
+                        <option value="all">All</option>
+                        <option value="web">Web Projects</option>
+                        <option value="desktop">Desktop Projects</option>
+                    </select>
+                </div>
+                <div>
+                    <input name="projectSearch" id="projectSearch" type="text" placeholder="Search projects">
+                    <label class="rubik_light" for="projectSearch" id="projectLabel">search</label>
+                </div>
+
+            </form>
 
             <!-- Content is filled by Javascript -->
             <div id="timelineWrapper">

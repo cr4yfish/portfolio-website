@@ -5,7 +5,7 @@ function gototop() {
 }
 
 function checkGoToTop() {
-  console.log(document.querySelector("body").clientHeight - window.scrollY)
+ 
   if(document.querySelector("body").clientHeight - window.scrollY  < 2000) {
       document.getElementById("scrollToTop").style.display = "block"
   } else {
