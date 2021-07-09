@@ -154,7 +154,7 @@ body::-webkit-scrollbar-thumb {
     overflow: hidden;
     padding: 0.1rem 1rem 1rem 1rem;
     opacity: 0;
-    transition: width 1s, opacity 0.2s;
+    transition: width 0.5s, opacity 0.1s;
 }
 
     #popupWrapper h1  {
@@ -271,6 +271,12 @@ body::-webkit-scrollbar-thumb {
     background-color: var(--material_dark);
     color: #EE7727;
     padding: 0.25em;
+}
+
+@media (max-width: 500px) {
+    #projectLabel {
+        background-color: var(--not_black);
+    }
 }
 
 

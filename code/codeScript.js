@@ -1,3 +1,5 @@
+const host = "https://cr4yfish.digital:8443";
+
 AOS.init();
 
 function sleep(ms) {
@@ -23,7 +25,6 @@ document.getElementById("projectSearch").addEventListener("input", function(e) {
     clearTimeout(timeout)
     
     timeout = setTimeout(function() {
-        console.log(e.target.value)
         // check if input is empty, if so just call all projects, will throw error otherwise
         if(e.target.value == "") {
             getProjects("", "all");
@@ -38,7 +39,7 @@ document.getElementById("projectSearch").addEventListener("input", function(e) {
 getProjects("", "all");
 
 async function getProjects(key, grabAll) {
-    const host = "85.214.156.68";
+
     let url;
 
     // clear current projects
@@ -48,13 +49,13 @@ async function getProjects(key, grabAll) {
     };
 
     if(grabAll == "all") {
-        url =`http://${host}:3000/getProjects`
+        url =`${host}/getProjects`
         
     } else if(grabAll == "name"){
-        url =`http://${host}:3000/getProjects/name/${key}`
+        url =`${host}/getProjects/name/${key}`
 
     } else if(grabAll == "cat") {
-        url =`http://${host}:3000/getProjects/cat/${key}`
+        url =`${host}/getProjects/cat/${key}`
     }
 
     fetch(url)
@@ -62,7 +63,20 @@ async function getProjects(key, grabAll) {
     .then(response => response.json())
     
     .then(projectsJSON => {
-        console.log(projectsJSON);
+        if(projectsJSON.length == 0) {
+            let notice = document.createElement("h2");
+                notice.textContent = "No projects matched given query"
+                notice.setAttribute("id", "notice");
+                notice.setAttribute("class", "brevia_medium languageHeader smallHeader");
+            document.getElementById("timelineWrapper").appendChild(notice);
+        } else {
+            try {
+                document.getElementById("notice").remove();
+            }
+            catch {
+                console.log("no notice found");
+            }
+        }
         for (i = 0; i < projectsJSON.length; i++) {
             var timelineWrapper = document.getElementById("timelineWrapper");
         
@@ -135,9 +149,6 @@ async function getProjects(key, grabAll) {
 
 
 
-
-
-
 async function callPopUp(element) {
 
     $.getJSON('code/codeSkills.json', async function(codeSkilsJSON) {
@@ -180,7 +191,7 @@ async function callPopUp(element) {
         bodyElement.prepend(overlayElement);
         bodyElement.prepend(popupWrapperElement);
 
-        await sleep(100);
+        await sleep(60);
         popupWrapperElement.style.opacity = "1";
         popupWrapperElement.style.width = "50%";
         overlayElement.style.opacity = "1";
@@ -207,8 +218,10 @@ function readMore(element) {
 
     let index = element.parentNode.getAttribute("index");
 
+    const url =`${host}/getProjects`
 
-    fetch("http://85.214.156.68:3000/getProjects")
+    fetch(url)
+
     .then(response => response.json())
 
     .then(async function(projectsJSON) {
@@ -274,7 +287,7 @@ function readMore(element) {
 
                     let titleDesc = document.createElement("h3");
                         titleDesc.setAttribute("class", "textWrapperTitle rubik_regular");
-                        titleDesc.textContent = "Descritption";
+                        titleDesc.textContent = "Description";
                     popupTextWrapperText.appendChild(titleDesc);
 
                     let entryText = document.createElement("span");
