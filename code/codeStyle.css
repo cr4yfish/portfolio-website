@@ -249,7 +249,6 @@ body::-webkit-scrollbar-thumb {
 
 #projectSearch, #projectFilter  {
     background: none;
-
     color: var(--light_orange);
     border-radius: 9px;
     font-size: 16pt;
@@ -290,9 +289,7 @@ body::-webkit-scrollbar-thumb {
     background-color: var(--material_dark);
     border: solid 2px var(--light_orange) !important;
 }
-#projectFilter option:hover {
-    background-color: red !important;
-}
+
 
 
 /* ENTRIES */

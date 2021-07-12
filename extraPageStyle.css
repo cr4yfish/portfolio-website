@@ -33,6 +33,7 @@ body {
 html, body {
     z-index: -2;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 .bigHeader {

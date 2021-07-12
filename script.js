@@ -113,10 +113,18 @@ function fadeIn() {
   document.getElementsByTagName("body")[0].style.opacity = "1";
 }
 
+
+
 function drawLatestProjects() {
 
+  const host = "https://cr4yfish.digital:8443";
+  const url =`${host}/getProjects`
 
-  $.getJSON('code/projects.json', function(result) {
+  fetch(url)
+
+    .then(response => response.json())
+    
+    .then(result => {
 
     for(i = 0; i < 4; i++) {
 
@@ -129,7 +137,8 @@ function drawLatestProjects() {
       cardTitle.setAttribute("class", "card-title rubik_light");
       cardTitle.textContent = result[i].name;
 
-      cardTitle.setAttribute("onclick", "window.open('" + result[i].link + "', '_blank');");
+      // redirect to code.html and scroll to card
+      cardTitle.setAttribute("onclick", "window.open('https://manuelfahmy.de/main/code.html#" + i + "', '_self');");
       // window.open('https://manuelfahmy.de/projects/caterpillarCalculator', '_blank');
       // window.open('https://manuelfahmy.de/projects/caterpillarCalculator', '_blank')
       var cardContent = document.createElement("div");

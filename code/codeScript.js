@@ -1,3 +1,14 @@
+// scroll to hash
+
+(async function scrollToHash() {
+    await sleep(700);
+    location.href = location.hash;
+})();
+
+
+
+
+//const host = "https://localhost:8443";
 const host = "https://cr4yfish.digital:8443";
 
 AOS.init();
@@ -83,7 +94,7 @@ async function getProjects(key, grabAll) {
             let entryWrapper = document.createElement("div");
             entryWrapper.setAttribute("class", "entry_wrapper");
             entryWrapper.setAttribute("data-aos", "fade-up");
-            entryWrapper.setAttribute("index", i);
+            entryWrapper.setAttribute("id", i);
         
             // only get thumbnail if I provided one to avoid errors
             if (projectsJSON[i].thumbnail != undefined) {
@@ -216,7 +227,7 @@ async function removePopup() {
 
 function readMore(element) {
 
-    let index = element.parentNode.getAttribute("index");
+    let index = element.parentNode.getAttribute("id");
 
     const url =`${host}/getProjects`
 
