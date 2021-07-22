@@ -1,12 +1,12 @@
 // scroll to hash
 
-(async function scrollToHash() {
-    await sleep(700);
-    location.href = location.hash;
-})();
-
-
-
+if(location.hash != "") {
+    (async function scrollToHash() {
+        await sleep(700);
+        location.href = location.hash;
+    })();
+    
+}
 
 //const host = "https://localhost:8443";
 const host = "https://cr4yfish.digital:8443";
@@ -85,7 +85,7 @@ async function getProjects(key, grabAll) {
                 document.getElementById("notice").remove();
             }
             catch {
-                console.log("no notice found");
+                
             }
         }
         for (i = 0; i < projectsJSON.length; i++) {
@@ -227,16 +227,19 @@ async function removePopup() {
 
 function readMore(element) {
 
-    let index = element.parentNode.getAttribute("id");
+    // get name of project
+    let projectName = element.parentNode.querySelector(".entryTitle").textContent;
 
-    const url =`${host}/getProjects`
+    // get single project with name
+    const url =`${host}/getProjects/name/${projectName}`;
+
 
     fetch(url)
 
     .then(response => response.json())
 
     .then(async function(projectsJSON) {
- 
+        
         /*
         "name": "Take the Bus",
         "date": "2021",
@@ -248,7 +251,7 @@ function readMore(element) {
 
         // build a popup and paste data, UI is already done
 
-        let currentProject = projectsJSON[index];
+        let currentProject = projectsJSON[0];
 
         let body = document.getElementsByTagName("body")[0];
 
