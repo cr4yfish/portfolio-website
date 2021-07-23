@@ -9,7 +9,7 @@
     },
     {
         "name": "js",
-        "skills": "I can use vanilla Javascript to build (practically) any feature I want on my websites/webapps. I can also make interactive design choices that enhance the overall UX."
+        "skills": "I can use Javascript to build (practically) any feature I want on my websites/webapps. I can also make interactive design choices that enhance the overall UX."
     },
     {
         "name": "php",
@@ -26,5 +26,9 @@
     {
         "name": "SQL",
         "skills": "I can use phpMyAdmin to manage simple databases and connect them to my websites/webapps."
+    },
+    {
+        "name": "VueJS",
+        "skills" : "I can use Vue to make my life easier when building webapps that can be broken down in components."
     }
 ]

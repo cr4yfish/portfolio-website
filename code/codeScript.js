@@ -162,11 +162,18 @@ async function getProjects(key, grabAll) {
 
 async function callPopUp(element) {
 
-    $.getJSON('code/codeSkills.json', async function(codeSkilsJSON) {
-    
+    const url =`${host}/getSkills`;
+
+    fetch(url)
+
+    .then(response => response.json())
+
+    .then(async function(codeSkilsJSON) {
+
         // get current language
         currentElement = element.id;
         var currentLanguage;
+
         for (i = 0; i < codeSkilsJSON.length;i++) {
             if (codeSkilsJSON[i].name == currentElement) {
                 currentLanguage = codeSkilsJSON[i];
