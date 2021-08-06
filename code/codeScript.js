@@ -422,10 +422,8 @@ function readMore(element) {
                 sidebarWrapperLinks.appendChild(sidebarTitleLinks);
 
                 if (currentProject.hasOwnProperty("extraLinks") == true) {
-                    console.log(currentProject.extraLinks.length);
 
                     if(currentProject.extraLinks.length != 0) {
-                        console.log("has extra links")
 
                         for (i = 0; i < currentProject.extraLinks.length;i++) {
     
@@ -439,7 +437,6 @@ function readMore(element) {
                         }
 
                     } else {
-                        console.log("does not has extra links")
     
                         let sidebarTextLinks = document.createElement("span");
                             sidebarTextLinks.setAttribute("class", "sidebarText rubik_light pointer");
