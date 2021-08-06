@@ -46,6 +46,26 @@ document.getElementById("projectSearch").addEventListener("input", function(e) {
 
 })
 
+
+// DIY material design input field
+
+
+let inputField = document.getElementById("projectSearch")
+
+    inputField.addEventListener("focus", function(e) {
+        document.getElementById("projectLabel").style.transform = "translateY(-1.55em)"
+    })
+
+    inputField.addEventListener("blur", function(e) {
+        if(e.target.value == "") {
+            document.getElementById("projectLabel").style.transform = "translateY(0) translateX(0.5em)"
+        }
+
+    })
+
+
+
+
 // draw projects at start
 getProjects("", "all");
 
@@ -402,27 +422,43 @@ function readMore(element) {
                 sidebarWrapperLinks.appendChild(sidebarTitleLinks);
 
                 if (currentProject.hasOwnProperty("extraLinks") == true) {
-                    for (i = 0; i < currentProject.extraLinks.length;i++) {
+                    console.log(currentProject.extraLinks.length);
 
+                    if(currentProject.extraLinks.length != 0) {
+                        console.log("has extra links")
+
+                        for (i = 0; i < currentProject.extraLinks.length;i++) {
+    
+                            let sidebarTextLinks = document.createElement("span");
+                                sidebarTextLinks.setAttribute("class", "sidebarText rubik_light pointer sidebarExtraLinks");
+                                sidebarTextLinks.textContent = currentProject.extraLinks[i];
+                                // entryTitle.setAttribute("onclick", "window.open('" + projectsJSON[i].link + "', '_blank');");
+                                sidebarTextLinks.setAttribute("onclick", "window.open('" + currentProject.extraLinks[i+1] + "', '_blank');");
+                            sidebarWrapperLinks.appendChild(sidebarTextLinks);
+                            i++;
+                        }
+
+                    } else {
+                        console.log("does not has extra links")
+    
                         let sidebarTextLinks = document.createElement("span");
-                            sidebarTextLinks.setAttribute("class", "sidebarText rubik_light pointer sidebarExtraLinks");
-                            sidebarTextLinks.textContent = currentProject.extraLinks[i];
-                            // entryTitle.setAttribute("onclick", "window.open('" + projectsJSON[i].link + "', '_blank');");
-                            sidebarTextLinks.setAttribute("onclick", "window.open('" + currentProject.extraLinks[i+1] + "', '_blank');");
+                            sidebarTextLinks.setAttribute("class", "sidebarText rubik_light pointer");
+                            sidebarTextLinks.textContent = "none";
                         sidebarWrapperLinks.appendChild(sidebarTextLinks);
-                        i++;
-
                     }
-
-                }
-
+                } 
             
-        let popupClose = document.createElement("p");
+        let popupClose = document.createElement("a");
             popupClose.setAttribute("id", "popupClose");
             popupClose.setAttribute("class", "rubik_light");
-            popupClose.setAttribute("onclick", "closePopup();")
             popupClose.textContent = "Close";
-        entryPopup.appendChild(popupClose);
+
+        let popupCloseButton = document.createElement("button");
+            popupCloseButton.setAttribute("class",  "btn-primary back_btn btn-modern")
+            popupCloseButton.appendChild(popupClose);
+            popupCloseButton.setAttribute("onclick", "closePopup();")
+
+        entryPopup.appendChild(popupCloseButton);
 
         await sleep(50);
         entryPopup.style.opacity = "1";

@@ -28,6 +28,7 @@ ul li::before {
 }
 
 .btn-primary {
+    cursor: pointer;
     position: relative;
     background: linear-gradient(90deg, var(--light_orange), var(--medium_orange) 51%, var(--light_orange)) var(--x, 0)/ 200%;
     box-shadow: 0 0 25px var(--medium_orange_trans);
@@ -39,6 +40,18 @@ ul li::before {
     padding-bottom: 0.5vw;
     transition: all 2s cubic-bezier(0.38, 0.13, 0.32, 0.9) ;
     margin-top: 1vh;
+}
+
+.btn-modern {
+    background: none !important;
+    background-color: var(--textBgGrey) !important;
+    border-radius: 9px !important;
+    box-shadow: none !important;
+    transition: all 0.25s !important;
+}
+
+.btn-modern:hover {
+    background-color: var(--medium_orange) !important;
 }
 
 .btn-primary a {
@@ -106,13 +119,13 @@ html, body {
 }
 
 body::-webkit-scrollbar {
-    width: 0.25vw;
-    background-color: var(--not_black);
+    width: 0.25vw !important;
+    background-color: var(--not_black) !important;
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: var(--light_orange);
-    border-radius: 10px;
+    background-color: var(--light_orange) !important;
+    border-radius: 10px !important;
 }
 
 .brevia_bold {
@@ -167,6 +180,7 @@ body::-webkit-scrollbar-thumb {
     #popupWrapper p {
         margin: 1rem;
         color: var(--almost_white);
+        font-size: 2em;
     }
 
 #opacityLayer {
@@ -266,10 +280,11 @@ body::-webkit-scrollbar-thumb {
 #projectLabel {
     position: absolute;
     margin-left: 1em;
-    transform: translateY(-1.55em);
     background-color: var(--material_dark);
     color: #EE7727;
     padding: 0.25em;
+    transform: translateX(0.5em);
+    transition: transform 0.25s;
 }
 
 @media (max-width: 500px) {
@@ -297,10 +312,10 @@ body::-webkit-scrollbar-thumb {
 .entryThumbnail {
     position: relative;
     overflow: hidden;
-    width: calc(100% + 3rem);
+    width: calc(100% + 5rem);
     height: 5rem;
-    margin-left: -1.5rem;
-    transform: translateY(-1.5rem);
+    margin-left: -2.5rem;
+    transform: translateY(-2.5rem);
     border-radius: 1rem 1rem 0rem 0rem;
 }
 
@@ -315,7 +330,7 @@ body::-webkit-scrollbar-thumb {
     background-color: #272727;
     border-radius: 1rem;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.061);
-    padding: 1.5rem;
+    padding: 2.5rem;
     display: block;
     flex-direction: column;
     width: 70%;
@@ -325,7 +340,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .entryTitle {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: var(--almost_white);
     position: relative;
     display: inline-block;
@@ -402,7 +417,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .entryText {
-    font-size: 1rem;
+    font-size: 1.5rem;
     position: relative;
     color: var(--textGrey);
     display: inline-block;
@@ -414,7 +429,7 @@ body::-webkit-scrollbar-thumb {
     color: var(--light_orange);
     position: relative;
     text-align: center;
-    font-size: small;
+    font-size: 1.35em;
     text-decoration: underline;
     margin-top: 1rem;
     cursor: pointer;
@@ -430,32 +445,33 @@ body::-webkit-scrollbar-thumb {
     z-index: 5;
     background-color: var(--material_dark);
     border-radius: 1rem;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.103);
     padding: 2rem;
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    display: flex;
-    overflow-y: hidden;
+    display: block;
+    overflow-y: auto !important;
     overflow-x: hidden;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
-    height: 75vh;
+    height: 85vh;
     width: 75%;
     opacity: 0;
     transition: opacity 0.25s;
 }
 
-#entryPopup ::-webkit-scrollbar {
-    width: 0.25vw;
-    background-color: var(--not_black);
+#entryPopup::-webkit-scrollbar {
+    width: 0.25vw !important;
+    background-color: var(--not_black) !important;
 }
 
-#entryPopup ::-webkit-scrollbar-thumb {
-    background-color: var(--light_orange);
-    border-radius: 10px;
+#entryPopup::-webkit-scrollbar-thumb {
+    background-color: var(--light_orange) !important;
+    border-radius: 10px !important;
 }
+
 
 @media screen and (min-width: 2000px) {
     #entryPopup {
@@ -487,16 +503,26 @@ body::-webkit-scrollbar-thumb {
 
 #popupLeftSide {
     position: relative;
-    width: 75%;
     overflow: hidden;
+    width: 100%;
+    flex-grow: 2;
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    flex-direction: column;
 }
 
 #popupLeftSide img {
     width: 600px;
     margin-top: 1em;
-    margin-right: 50%;
-    border: solid 0.5rem var(--material_dark);
+    margin-bottom: 1em;
+    border: solid 0.25rem var(--light_orange);
     border-radius: 1rem;
+
 }
 
 @media screen and (max-width: 1000px) {
@@ -517,35 +543,52 @@ body::-webkit-scrollbar-thumb {
 
 .popupTextWrapper {
     margin-bottom: 1rem;
+    background-color: #292929;
+    padding: .75rem;
+    border-radius: 0.5rem;
+}
+
+.popupTextWrapper h3 {
+    font-size: 1.5em;
 }
 
 #entryPopup h3 {
     color: var(--light_orange);
     margin-bottom: 0.5em;
+    margin-top: 0;
 }
 
 #popupLine {
+    width: 90%;
+    height: 0.25rem;
     background-color: var(--textBgGrey);
-    width: 0.25rem;
     border-radius: 1rem;
     margin-right: 2rem;
     margin-left: 2rem;
 }
 
-
 #popupRightSide {
+    flex-grow: unset;
+    bottom: -3rem;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
     position: relative;
     width: fit-content;
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
 }
-
 
 .sidebarWrapper {
     height: fit-content;
     display: flex;
     flex-direction: column;
+    margin-bottom: 1em;
+    align-items: center;
+    font-size: 2em;
 }
 
 .sidebarWrapper span {
@@ -557,6 +600,7 @@ body::-webkit-scrollbar-thumb {
     text-align: center;
     margin-bottom: 1.25rem;
     width: fit-content;
+    font-size: .75em;
 }
 
 #sidebarLink {
@@ -580,13 +624,29 @@ body::-webkit-scrollbar-thumb {
     text-align: center;
     position: relative;
     flex-basis: 10px;
+    bottom: 0 !important;
+    margin: 0 !important;
+    color: var(--almost_white) !important;
+    font-family: brevia, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none !important;
+}
 
+#entryPopup button {
+    margin-top: 3rem;
 }
 
 #popupClose , #sidebarLink {
     color: var(--light_orange);
     text-decoration: underline;
     cursor: pointer;
+    top: unset;
+    bottom: -1.5rem;
+    margin-top: 3rem;
+    left: 0;
+    width: unset;
+    flex-basis: unset;
 }
 
 #popupClose:hover , #sidebarLink:hover {
