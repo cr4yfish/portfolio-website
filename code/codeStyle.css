@@ -349,6 +349,7 @@ body::-webkit-scrollbar-thumb {
     text-decoration-color: var(--light_orange);
     white-space: normal;
     margin-bottom: 0.5rem;
+    text-align: center;
 }
 
 .entryTitle:focus {
@@ -397,10 +398,21 @@ body::-webkit-scrollbar-thumb {
 
 .entryDate, .entryTag {
     margin-left: 1rem;
-    font-size: 1.3rem;
+    font-size: 2rem;
     position: relative;
     display: inline-block; 
     color: var(--textGrey);
+}
+
+.sidebarWrapper .sidebarExtraLinks, .sidebarWrapper .entryTag {
+    background-color: var(--textBgGrey);
+    border-radius: 9px;
+    padding: .25em;
+    text-decoration: none;
+}
+
+.sidebarWrapper .sidebarExtraLinks:hover {
+    background-color: var(--medium_orange);
 }
 
 .entryTag::before {
@@ -572,21 +584,24 @@ body::-webkit-scrollbar-thumb {
     bottom: -3rem;
     text-align: center;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     position: relative;
     width: fit-content;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin-left: 50%;
     transform: translateX(-50%);
-    align-items: center;
+    align-items: flex-start;
 }
 
 .sidebarWrapper {
+    background-color: #292929;
+    padding: 0.5em;
+    border-radius: 9px;
     height: fit-content;
     display: flex;
     flex-direction: column;
-    margin-bottom: 1em;
+    margin: 1em;
     align-items: center;
     font-size: 2em;
 }
@@ -601,6 +616,10 @@ body::-webkit-scrollbar-thumb {
     margin-bottom: 1.25rem;
     width: fit-content;
     font-size: .75em;
+}
+
+.sidebarWrapper .entryTag:last-of-type {
+    margin-bottom: 0;
 }
 
 #sidebarLink {
@@ -634,7 +653,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 #entryPopup button {
-    margin-top: 3rem;
+    margin-top: 5rem;
 }
 
 #popupClose , #sidebarLink {
@@ -666,6 +685,9 @@ body::-webkit-scrollbar-thumb {
     }
     .entry_wrapper {
         width: 100%;
+    }
+    #popupRightSide {
+        flex-wrap: wrap;
     }
 }
 
