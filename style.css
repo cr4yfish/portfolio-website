@@ -506,7 +506,7 @@ header {
 /* about me */
 
 .about-me-card {
-    width: 80% ;
+    width: 100% ;
     height: fit-content;
     display: flex;
     flex-direction: row;
