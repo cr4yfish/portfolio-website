@@ -8,6 +8,13 @@ if(location.hash != "") {
     
 }
 
+// prevent form submit default
+document.querySelector("#projectSearch").addEventListener("submit", function(e) {
+    e.preventDefault();
+})
+
+
+
 //const host = "https://localhost:8443";
 const host = "https://cr4yfish.digital:8443";
 
@@ -163,9 +170,11 @@ async function getProjects(key, grabAll) {
                 entryHeader.appendChild(entryType);
             }
         
-            let entryMore = document.createElement("div");
-                entryMore.setAttribute("class", "entryMore rubik_light");
+            let entryMore = document.createElement("button");
+                entryMore.setAttribute("class", "entryMore btn-primary back_btn btn-modern brevia_bold");
                 entryMore.setAttribute("onclick", "readMore(this);")
+                entryMore.setAttribute("tabindex", "0");
+                entryMore.style.marginTop = "1.5rem";
                 entryMore.textContent = "Read more";
             
             entryWrapper.appendChild(entryHeader);
@@ -178,6 +187,22 @@ async function getProjects(key, grabAll) {
       
 }
 
+
+// make read more button keyboard accessible
+
+(async function readMoreAccess() {
+    await sleep(200);
+    let buttons = document.querySelectorAll(".entryMore");
+    console.log(buttons);
+
+    buttons.forEach(button => {
+        button.addEventListener("keyup", function(event) {
+            if(event.keyCode == 13) {
+                readMore(event.target);
+            }
+        })
+    })
+})();
 
 
 async function callPopUp(element) {
@@ -454,6 +479,7 @@ function readMore(element) {
             popupCloseButton.setAttribute("class",  "btn-primary back_btn btn-modern")
             popupCloseButton.appendChild(popupClose);
             popupCloseButton.setAttribute("onclick", "closePopup();")
+            popupCloseButton.setAttribute("tabindex", "1")
 
         entryPopup.appendChild(popupCloseButton);
 

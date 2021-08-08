@@ -47,7 +47,7 @@ html, body {
 }
 
 .smallHeader {
-    color: var(--grey);
+    color: #C1C1C1;
     text-align: center;
     margin-bottom: 8rem;
     font-size: small;
@@ -101,7 +101,7 @@ html, body {
     width: fit-content;
     display: block;
     position: relative;
-    color: var(--grey);
+    color: #C1C1C1;
     margin-left: 50%;
     transform: translateX(-50%);
 }
@@ -110,4 +110,8 @@ html, body {
     padding: 0.5rem 2.5rem 0.5rem 2.5rem !important;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.back_btn a {
+    color: var(--almost_white) !important;
 }

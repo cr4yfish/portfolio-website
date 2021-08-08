@@ -25,6 +25,11 @@
     position: relative;
 }
 
+    .btn:focus-visible {
+        outline: webkit-focus-ring-color auto 1px !important;
+    }
+
+
 .btn-primary {
     cursor: pointer;
     position: relative;
@@ -40,30 +45,22 @@
     margin-top: 1vh;
 }
 
-.btn-primary a {
-    color: var(--almost_white);
-    font-size: 1vw;
-}
+    .btn-primary a {
+        color: #532800;
+        font-size: 1vw;
+        transition: all 0.25s;
+    }
 
-.btn-primary{
-    background: linear-gradient(90deg, var(--light_orange), var(--medium_orange) 51%, var(--light_orange)) var(--x, 0)/ 200%;
-    box-shadow: 0 0 25px var(--medium_orange_trans);
-}
+    .btn-primary:hover { 
+        --x: 100%; 
+        box-shadow: 5px 2px 25px var(--medium_orange);
+        transition: all 0.5s cubic-bezier(0.38, 0.13, 0.32, 0.9);
+    }
 
-.btn-primary:hover { --x: 100%; 
-    box-shadow: 5px 2px 25px var(--medium_orange);
-    transition: all 0.5s cubic-bezier(0.38, 0.13, 0.32, 0.9);
-}
+    .btn-primary:focus {
+        background-color: var(--light_orange);
+    }
 
-.btn-primary:focus {
-    background-color: var(--light_orange);
-    outline: none;
-}
-
-.btn-primary a {
-    color: var(--almost_white);
-    font-size: 1vw;
-}
 
 .btn-modern {
     background: none;
@@ -73,14 +70,14 @@
     transition: all 0.25s;
 }
 
-.btn-modern:hover {
-    background-color: var(--medium_orange);
-}
+    .btn-modern:hover {
+        background-color: var(--dark_orange);
+    }
+
 
 .expand_btn {
     border: none;
     text-decoration: none;
-    outline: 0;
     background: none;
     left: 50%;
     text-align: center;
@@ -89,14 +86,12 @@
     color: var(--material_dark);
     margin-top: 10vh;
     transform: translateX(-50%);
-    transition: 2s all !important;
+    transition: .5s all !important;
     text-shadow: 0 0 0;
     background-color: #ffaf81;
 }
 
-.expand_btn:hover {
-    transition: 750ms all !important;
-}
+
 
 @media screen and (max-width: 1000px) {
     .btn-primary{

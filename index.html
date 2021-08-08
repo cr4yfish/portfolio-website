@@ -8,7 +8,6 @@
         <meta name="description" content="My personal portfolio.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
-
         <link rel="stylesheet" href="buttons.css">
         <link rel="canonical" href="https://manuelfahmy.de/index.html">
         <script src="https://kit.fontawesome.com/d4164139c2.js" crossorigin="anonymous"></script>
@@ -34,11 +33,11 @@
                     </span>
                     
                 <div data-aos-duration="900" data-aos="fade-down" class="header_menu unselectable">
-                    <a onclick="openSite('code');" class="pointer rubik_regular menu_item">Coding</a>
+                    <a tabindex="0" onkeydown="openSite('code');" onclick="openSite('code');" class="pointer rubik_regular menu_item">Coding</a>
                     <a href="https://www.behance.net/cr4yfish" rel="noopener" target="_blank" class="rubik_regular menu_item">Design</a>
                     <a href="https://www.instagram.com/manuelfahmyz/" rel="noopener"  class="pointer rubik_regular menu_item">Photography</a>
                     <a href="https://closeupstudios.net/" target="_blank" class="rubik_regular menu_item">Filmmaking</a>
-                    <a onclick="openSite('music');" class="pointer rubik_regular menu_item">Music</a>
+                    <a tabindex="0" onkeydown="openSite('code');" onclick="openSite('music');" class="pointer rubik_regular menu_item">Music</a>
                 </div>
 
                 <i id="navbarOpener" onclick="openNav();"  class="fas fa-bars pointer"></i>
@@ -142,7 +141,7 @@
                             <button class="btn btn-primary btn-modern collapsible expand_btn rubik_light mousepointer">Show more info</button>
                             <div id="projects" class="collapsible_content">
 
-                                <h2 class="rubik_light smallHeader">my latest projects</h2>
+                                <h2 style="color: #dfdfdf;" class="rubik_light smallHeader">my latest projects</h2>
 
                                 <!-- Filled by javascript -->
                                 <span class="no-javascript rubik_regular ">Please enable Javascript.</span>

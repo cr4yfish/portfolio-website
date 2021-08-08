@@ -135,7 +135,16 @@ function drawLatestProjects() {
 
       var cardTitle = document.createElement("div");
       cardTitle.setAttribute("class", "card-title rubik_light");
+      cardTitle.setAttribute("tabindex", "0");
       cardTitle.textContent = result[i].name;
+
+      // make latest projects titles keyboard accessible
+      cardTitle.addEventListener("keyup", function(event) {
+        if(event.keyCode == 13) {
+          window.open("https://manuelfahmy.de/main/code.html#" + i, "_self" )
+        }
+      })
+
 
       // redirect to code.html and scroll to card
       cardTitle.setAttribute("onclick", "window.open('https://manuelfahmy.de/main/code.html#" + i + "', '_self');");
@@ -177,3 +186,5 @@ function drawLatestProjects() {
 
 
 }
+
+

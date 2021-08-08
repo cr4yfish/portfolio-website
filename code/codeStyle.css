@@ -269,6 +269,10 @@ body::-webkit-scrollbar-thumb {
     height: 100%;
 }
 
+#projectSearch:focus-visible ,#projectFilter:focus-visible {
+    background: rgba(243, 243, 243, 0.034);
+}
+
 #projectFilter option {
     background-color: var(--material_dark);
     border: solid 2px var(--light_orange) !important;
@@ -407,20 +411,15 @@ body::-webkit-scrollbar-thumb {
 
 
 .entryMore {
-    color: var(--light_orange);
+    color: var(--almost_white);
     position: relative;
     text-align: center;
     font-size: 1.35em;
-    text-decoration: underline;
     margin-top: 1rem;
     cursor: pointer;
     transition: text-shadow 0.15s, color 0.15s;
 }
 
-.entryMore:hover {
-    color: var(--textGrey);
-    text-shadow: 0 0 15px var(--textGrey);
-}
 
 #entryPopup {
     z-index: 5;
