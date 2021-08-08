@@ -321,8 +321,8 @@ body::-webkit-scrollbar-thumb {
     -webkit-text-decoration-color: var(--light_orange);
     text-decoration-color: var(--light_orange);
     white-space: normal;
-    margin-bottom: 0.5rem;
     text-align: center;
+    margin-bottom: .5rem !important;
 }
 
 .entryTitle:focus {
@@ -370,7 +370,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .entryDate, .entryTag {
-    margin-left: 1rem;
+    margin: .5rem;
     font-size: 2rem;
     position: relative;
     display: inline-block; 
@@ -466,7 +466,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 @media screen and (max-width: 500px) {
-
+    .entryTitle {
+        width: 100%;
+    }
     #entryPopup {
         height: 70%
     }
@@ -679,7 +681,7 @@ body::-webkit-scrollbar-thumb {
         margin-bottom: 4rem !important;
     }
     .entryDate {
-        font-size: 1rem;
+        font-size: 1.35rem;
     }
     #popupWrapper p  {
         font-size: 0.9rem;
