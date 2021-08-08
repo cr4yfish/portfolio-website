@@ -273,37 +273,7 @@ header {
     color: #ABABAB;
 }
 
-.btn-primary{
-    position: relative;
-    background: linear-gradient(90deg, var(--light_orange), var(--medium_orange) 51%, var(--light_orange)) var(--x, 0)/ 200%;
-    box-shadow: 0 0 25px var(--medium_orange_trans);
-    border: none;
-    border-radius: 40px;
-    padding-left: 3vw;
-    padding-right: 3vw;
-    padding-top: 0.5vw;
-    padding-bottom: 0.5vw;
-    transition: all 2s cubic-bezier(0.38, 0.13, 0.32, 0.9) ;
-    margin-top: 1vh;
-}
 
-.btn-primary:hover { --x: 100%; 
-    box-shadow: 5px 2px 25px var(--medium_orange);
-    transition: all 0.5s cubic-bezier(0.38, 0.13, 0.32, 0.9);
-}
-
-
-
-
-.btn-primary:focus {
-    background-color: var(--light_orange);
-    outline: none;
-}
-
-.btn-primary a {
-    color: var(--almost_white);
-    font-size: 1vw;
-}
 
 
 /* picture stuff */
@@ -436,27 +406,7 @@ header {
     text-align: center;
 }
 
-.expand_btn {
-    border: none;
-    text-decoration: none;
-    outline: 0;
-    background: none;
-    left: 50%;
-    text-align: center;
-    position: relative;
-    font-size: 0.75rem;
-    color: var(--medium_orange);
-    margin-top: 10vh;
-    transform: translateX(-50%) !important;
-    transition: 2s all !important;
-    text-shadow: 0 0 0;
-}
 
-.expand_btn:hover {
-    color: var(--light_orange);
-    text-shadow: 0 0 10px var(--medium_orange);
-    transition: 750ms all !important;
-}
 
 .collapsible_content {
     position: relative;
@@ -899,17 +849,6 @@ footer span {
         left: 50%;
         text-align: center;
         transform: translateX(-50%);
-    }
-    .btn-primary{
-        border-radius: 40px;
-        padding-left: 5.75vw;
-        padding-right: 5.75vw;
-        padding-top: 1.6vw;
-        padding-bottom: 1.6vw;
-        margin-top: 1vh;
-    }
-    .btn-primary a {
-        font-size: 1.5rem;
     }
     .btn_contact {
         margin-top: 5vh;

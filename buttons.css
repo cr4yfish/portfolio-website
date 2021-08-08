@@ -1,0 +1,113 @@
+:root {
+    --light_orange: #F7AB3C;
+    --medium_orange: #F1811C;
+    --medium_orange_trans: #f17f1c81;
+    --dark_orange: #EE6B21;
+    --almost_white: #F3F3F3;
+    --not_black: #252525;
+    --nice_purple: #811CF1;
+    --material_dark: #212121;
+    --grey: #5E5E5E;
+    --textGrey: #BEBEBE;
+    --textBgGrey: #3D4244;
+    --lightYellow: #FFE082;
+}
+
+.btn {
+    border: none;
+    border-radius: 40px;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
+    transition: all 2s cubic-bezier(0.38, 0.13, 0.32, 0.9);
+    margin-top: 1vh;
+    position: relative;
+}
+
+.btn-primary {
+    cursor: pointer;
+    position: relative;
+    background: linear-gradient(90deg, var(--light_orange), var(--medium_orange) 51%, var(--light_orange)) var(--x, 0)/ 200%;
+    box-shadow: 0 0 25px var(--medium_orange_trans);
+    border: none;
+    border-radius: 40px;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
+    transition: all 2s cubic-bezier(0.38, 0.13, 0.32, 0.9) ;
+    margin-top: 1vh;
+}
+
+.btn-primary a {
+    color: var(--almost_white);
+    font-size: 1vw;
+}
+
+.btn-primary{
+    background: linear-gradient(90deg, var(--light_orange), var(--medium_orange) 51%, var(--light_orange)) var(--x, 0)/ 200%;
+    box-shadow: 0 0 25px var(--medium_orange_trans);
+}
+
+.btn-primary:hover { --x: 100%; 
+    box-shadow: 5px 2px 25px var(--medium_orange);
+    transition: all 0.5s cubic-bezier(0.38, 0.13, 0.32, 0.9);
+}
+
+.btn-primary:focus {
+    background-color: var(--light_orange);
+    outline: none;
+}
+
+.btn-primary a {
+    color: var(--almost_white);
+    font-size: 1vw;
+}
+
+.btn-modern {
+    background: none;
+    background-color: var(--textBgGrey);
+    border-radius: 9px;
+    box-shadow: none ;
+    transition: all 0.25s;
+}
+
+.btn-modern:hover {
+    background-color: var(--medium_orange);
+}
+
+.expand_btn {
+    border: none;
+    text-decoration: none;
+    outline: 0;
+    background: none;
+    left: 50%;
+    text-align: center;
+    position: relative;
+    font-size: 0.75rem;
+    color: var(--material_dark);
+    margin-top: 10vh;
+    transform: translateX(-50%);
+    transition: 2s all !important;
+    text-shadow: 0 0 0;
+    background-color: #ffaf81;
+}
+
+.expand_btn:hover {
+    transition: 750ms all !important;
+}
+
+@media screen and (max-width: 1000px) {
+    .btn-primary{
+        border-radius: 40px;
+        padding-left: 5.75vw;
+        padding-right: 5.75vw;
+        padding-top: 1.6vw;
+        padding-bottom: 1.6vw;
+        margin-top: 1vh;
+    }
+    .btn-primary a {
+        font-size: 1.5rem;
+    }
+}

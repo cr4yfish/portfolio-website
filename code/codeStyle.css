@@ -27,37 +27,6 @@ ul li::before {
     margin-left: -1em;
 }
 
-.btn-primary {
-    cursor: pointer;
-    position: relative;
-    background: linear-gradient(90deg, var(--light_orange), var(--medium_orange) 51%, var(--light_orange)) var(--x, 0)/ 200%;
-    box-shadow: 0 0 25px var(--medium_orange_trans);
-    border: none;
-    border-radius: 40px;
-    padding-left: 3vw;
-    padding-right: 3vw;
-    padding-top: 0.5vw;
-    padding-bottom: 0.5vw;
-    transition: all 2s cubic-bezier(0.38, 0.13, 0.32, 0.9) ;
-    margin-top: 1vh;
-}
-
-.btn-modern {
-    background: none !important;
-    background-color: var(--textBgGrey) !important;
-    border-radius: 9px !important;
-    box-shadow: none !important;
-    transition: all 0.25s !important;
-}
-
-.btn-modern:hover {
-    background-color: var(--medium_orange) !important;
-}
-
-.btn-primary a {
-    color: var(--almost_white);
-    font-size: 1vw;
-}
 
 a {
     text-decoration: none;
