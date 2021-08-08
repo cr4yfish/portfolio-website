@@ -193,7 +193,6 @@ async function getProjects(key, grabAll) {
 (async function readMoreAccess() {
     await sleep(200);
     let buttons = document.querySelectorAll(".entryMore");
-    console.log(buttons);
 
     buttons.forEach(button => {
         button.addEventListener("keyup", function(event) {

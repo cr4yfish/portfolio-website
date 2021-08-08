@@ -88,7 +88,7 @@ html, body {
 }
 
 body::-webkit-scrollbar {
-    width: 0.25vw !important;
+    width: 0.5rem !important;
     background-color: var(--not_black) !important;
 }
 
@@ -443,7 +443,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 #entryPopup::-webkit-scrollbar {
-    width: 0.25vw !important;
+    width: 0.5rem !important;
     background-color: var(--not_black) !important;
 }
 
