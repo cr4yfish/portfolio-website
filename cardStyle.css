@@ -1,0 +1,166 @@
+:root {
+    --cardBG: #303030;
+}
+
+
+/* card system */
+
+.collapsible_card {
+    opacity: 0;
+}
+
+.card {
+    transition: all 0.75s;
+    background-color: var(--cardBG);
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 10rem;
+    margin-bottom: 3rem;
+    height: fit-content;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.212);
+    color: var(--almost_white);
+}
+
+.card:hover {
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.212);
+}
+
+
+.about-me-card {
+    width: 100% ;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.about-me-card-left {
+    width: 100%;
+    height: 100%;
+    word-wrap: break-word;
+}
+
+
+.about-me-card-title {
+    color: #FFAF81 !important;
+    font-family: brevia, sans-serif !important;
+    font-weight: 700 !important;
+    font-style: normal !important;
+    font-display: swap !important;
+    font-size: 2rem;
+    margin-bottom: .5rem;
+    word-break: break-word;
+}
+
+.about-me-card-content  {
+    word-break: break-word;
+    font-size: 1.5em;
+}
+
+.about-me-card-right {
+    transform: translateX(15%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.about-me-card-image {
+    width: 25rem;
+}
+
+
+
+
+
+.card-title {
+    cursor: pointer;
+    color: var(--almost_white);
+    transform: translateY(-0.5rem);
+    font-size: 1.5rem;
+    position: relative;
+    display: inline-block;
+    text-decoration: underline;
+    -webkit-text-decoration-color: var(--light_orange);
+    text-decoration-color: var(--light_orange);
+    white-space: normal; 
+}
+
+.card-titel:focus {
+    text-decoration: underline;
+    -webkit-text-decoration-color: var(--light_orange);
+    text-decoration-color: var(--light_orange);
+}
+
+.card-title:hover {
+    -webkit-text-decoration-color: var(--medium_orange);
+    text-decoration-color: var(--medium_orange);
+}
+
+.card-content {
+    color: var(--textGrey);
+}
+
+.code_card {
+    height: 14rem;
+}
+
+
+.code_image {
+    width: 18rem;
+}
+
+
+.code_card:last-child {
+    margin-bottom: 0;
+}
+
+
+@media screen and (min-width: 1500px) {
+    .collapsible_content {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .code_card {
+        height: fit-content;
+    }
+    .card {
+        padding: 2rem;
+        margin-bottom: 2rem;
+        flex-basis: 100%;
+    }
+    .collapsible_content {
+        width:75%;
+        justify-content: space-around;
+    }
+    .about-me-card-right {
+        justify-content: flex-start;
+        margin-top: 0rem;
+        transform: translateX(0);
+        display: flex;
+        flex-direction: column;
+    }
+    .about-me-card {
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .about-me-card-image {
+        width: 15rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .about-me-card-image {
+        width: 9rem;
+        transform: translateY(10%);
+    }
+}
+
+

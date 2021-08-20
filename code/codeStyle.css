@@ -204,6 +204,32 @@ body::-webkit-scrollbar-thumb {
     width: auto;
 }
 
+#skillsWrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.skillGroup {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px #EE7727;
+    background-color: #ffffff08;
+    padding: 1rem 3rem;
+    margin-bottom: 2rem;
+    border-radius: 9px;
+}
+
+
+.skillGroup legend {
+    color: #EE7727;
+    padding: .5rem;
+}
+
 #timelineWrapper {
     position: relative;
     margin-left: 50%;
@@ -333,6 +359,7 @@ body::-webkit-scrollbar-thumb {
 #popupLeftSide .texts {
     overflow: auto;
     height: 46%;
+    width: 100%;
 }
 
 @media screen and (max-width: 1400px) {
@@ -407,6 +434,7 @@ body::-webkit-scrollbar-thumb {
     color: var(--textGrey);
     display: inline-block;
     line-height: 1.2;
+    width: 100%;
 }
 
 

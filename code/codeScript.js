@@ -15,8 +15,9 @@ document.querySelector("#projectSearch").addEventListener("submit", function(e) 
 
 
 
-//const host = "https://localhost:8443";
+//const host = "http://localhost:8443";
 const host = "https://cr4yfish.digital:8443";
+
 
 AOS.init();
 
@@ -33,7 +34,16 @@ function sleep(ms) {
 
 // add event listener to catergories input
 document.getElementById("projectFilter").addEventListener("change", function(e) {
-    getProjects(e.target.value, "cat");
+
+    // find out if search bar is empty -> get value, replace all spaces and check if there's less than 2 chars left
+        if(document.getElementById("projectSearch").value.replace(" ", "").length < 2) {
+            // search bar is empty
+            getProjects(e.target.value, "all");
+        } else {
+            // something's in the search bar
+            getProjects(e.target.value, document.getElementById("projectSearch").value);
+        }
+    
 })
 
 
@@ -43,11 +53,11 @@ document.getElementById("projectSearch").addEventListener("input", function(e) {
     clearTimeout(timeout)
     
     timeout = setTimeout(function() {
-        // check if input is empty, if so just call all projects, will throw error otherwise
-        if(e.target.value == "") {
-            getProjects("", "all");
+        // check if filter is all, if so just call all projects, will throw error otherwise
+        if(e.target.value.replace(" ", "").length == 0) {
+            getProjects(document.getElementById("projectFilter").value, "all");
         } else {
-            getProjects(e.target.value, "name");
+            getProjects(document.getElementById("projectFilter").value, e.target.value);
         }
     }, 500);
 
@@ -55,8 +65,6 @@ document.getElementById("projectSearch").addEventListener("input", function(e) {
 
 
 // DIY material design input field
-
-
 let inputField = document.getElementById("projectSearch")
 
     inputField.addEventListener("focus", function(e) {
@@ -67,16 +75,19 @@ let inputField = document.getElementById("projectSearch")
         if(e.target.value == "") {
             document.getElementById("projectLabel").style.transform = "translateY(0) translateX(0.5em)"
         }
-
     })
 
 
 
 
-// draw projects at start
-getProjects("", "all");
+// draw all projects at start
+getProjects("all", "");
 
-async function getProjects(key, grabAll) {
+async function getProjects(type, name) {
+
+    const CATEGORY = "project"
+    // x -> project type
+    // y -> project name
 
     let url;
 
@@ -86,21 +97,38 @@ async function getProjects(key, grabAll) {
         childNodes[i].remove();
     };
 
-    if(grabAll == "all") {
-        url =`${host}/getProjects`
-        
-    } else if(grabAll == "name"){
-        url =`${host}/getProjects/name/${key}`
 
-    } else if(grabAll == "cat") {
-        url =`${host}/getProjects/cat/${key}`
+    
+
+    // project type = all && project name = whatever -> get All projects
+    if(type == "all" && (name == "" || name == " " || name == undefined) ) {
+        url = `projectDetails/${CATEGORY}/all/all`
+    } 
+    // search for certain project in all types
+    else if(name != "" && type == "all") {
+        url = `projectDetails/${CATEGORY}/${name}/all`
+    } 
+    // search for certain project in certain type
+    else {
+        url = `projectDetails/${CATEGORY}/${name}/${type}`
     }
 
-    fetch(url)
+    const requestUrl = `${host}/${url}`;
+
+    const options = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    }
+
+    fetch(requestUrl, options)
 
     .then(response => response.json())
     
     .then(projectsJSON => {
+        //console.log(projectsJSON);
+
         if(projectsJSON.length == 0) {
             let notice = document.createElement("h2");
                 notice.textContent = "No projects matched given query"
@@ -116,22 +144,33 @@ async function getProjects(key, grabAll) {
             }
         }
         for (i = 0; i < projectsJSON.length; i++) {
+
+            const currentProject = projectsJSON[i];
+
+            //console.log(currentProject);
+
             var timelineWrapper = document.getElementById("timelineWrapper");
-        
+    
             let entryWrapper = document.createElement("div");
             entryWrapper.setAttribute("class", "entry_wrapper");
             entryWrapper.setAttribute("data-aos", "fade-up");
             entryWrapper.setAttribute("id", i);
+            entryWrapper.setAttribute("data-projectId", currentProject._id)
         
             // only get thumbnail if I provided one to avoid errors
-            if (projectsJSON[i].thumbnail != undefined) {
+            if (currentProject.imageName != "") {
     
                 let entryThumbnail = document.createElement("div");
                     entryThumbnail.setAttribute("class", "entryThumbnail");
     
                 let entryImg = document.createElement("img");
-                    entryImg.setAttribute("src", "code/thumbnails/" + projectsJSON[i].thumbnail);
-                    entryImg.setAttribute("alt", projectsJSON[i].name + " preview image.");
+
+                // load image async from creating card, so the card order stays correct
+                getImage(projectsJSON[i].imageName)
+                .then( function(imageUrl) {
+                    entryImg.src = imageUrl;
+                })
+                    entryImg.setAttribute("alt", currentProject.name + " preview image.");
     
                 entryThumbnail.appendChild(entryImg);
                 entryWrapper.appendChild(entryThumbnail);
@@ -143,7 +182,7 @@ async function getProjects(key, grabAll) {
             let entryTitle = document.createElement("span");
             entryTitle.setAttribute("class", "entryTitle rubik_regular pointer");
             // window.open('link.html', '_blank');
-            entryTitle.setAttribute("onclick", "window.open('" + projectsJSON[i].link + "', '_blank');");
+            entryTitle.setAttribute("onclick", "window.open('" + currentProject.link + "', '_blank');");
         
             let entryDate = document.createElement("span");
             entryDate.setAttribute("class", "entryDate rubik_light unselectable");
@@ -152,14 +191,14 @@ async function getProjects(key, grabAll) {
             let entryText = document.createElement("span");
             entryText.setAttribute("class", "entryText rubik_light");
         
-            entryTitle.textContent = projectsJSON[i].name;
-            entryDate.textContent = projectsJSON[i].date;
-            entryText.innerHTML = projectsJSON[i].text;
+            entryTitle.textContent = currentProject.name;
+            entryDate.textContent = currentProject.date;
+            entryText.innerHTML = currentProject.desc;
         
             entryHeader.appendChild(entryTitle);
             entryHeader.appendChild(entryDate);
             // tags
-            tagArray = projectsJSON[i].type.split(",");
+            tagArray = currentProject.type.split(",");
         
             for (tagCounter = 0; tagCounter < tagArray.length; tagCounter++) {
                 
@@ -182,6 +221,9 @@ async function getProjects(key, grabAll) {
             entryWrapper.appendChild(entryMore);
         
             timelineWrapper.appendChild(entryWrapper);
+
+
+
         }
     })
       
@@ -279,10 +321,10 @@ async function removePopup() {
 function readMore(element) {
 
     // get name of project
-    let projectName = element.parentNode.querySelector(".entryTitle").textContent;
+    let projectId = element.parentNode.getAttribute("data-projectId");
 
-    // get single project with name
-    const url =`${host}/getProjects/name/${projectName}`;
+    // get single project with ID
+    const url =`${host}/getProjectById/${projectId}`;
 
 
     fetch(url)
@@ -302,7 +344,7 @@ function readMore(element) {
 
         // build a popup and paste data, UI is already done
 
-        let currentProject = projectsJSON[0];
+        let currentProject = projectsJSON;
 
         let body = document.getElementsByTagName("body")[0];
 
@@ -337,7 +379,12 @@ function readMore(element) {
 
             let thumbnail = document.createElement("img");
                 thumbnail.setAttribute("class","popupImage");
-                thumbnail.setAttribute("src", "code/thumbnails/" + currentProject.thumbnail);
+                //thumbnail.setAttribute("src", "code/thumbnails/" + currentProject.thumbnail);
+                getImage(currentProject.imageName)
+                .then(function (img) {
+                    thumbnail.src = img;
+                })
+                
                 thumbnail.setAttribute("alt",  currentProject.name + " preview image.");
             popupLeftSide.appendChild(thumbnail);
 
@@ -357,7 +404,7 @@ function readMore(element) {
 
                     let entryText = document.createElement("span");
                         entryText.setAttribute("class", "entryText rubik_light");
-                        entryText.innerHTML = currentProject.text;
+                        entryText.innerHTML = currentProject.desc;
                     popupTextWrapperText.appendChild(entryText);
 
                 // what i learned
@@ -502,4 +549,36 @@ async function closePopup() {
 
     popupWrapper.remove();
     opacityLayer.remove();
+}
+
+
+function getImage(imageName) {
+
+    return new Promise(function (resolve, reject) {
+        //console.log(imageName)
+        if(imageName == "") {
+            resolve(imageName)
+        }
+
+        const url = `getImage/${imageName}`;
+        const requestUrl = `${host}/${url}`
+    
+        const options = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }
+        
+        fetch(requestUrl, options)
+    
+        .then(response => response.blob())
+    
+        .then(imageBlob => {
+            const imageUrl = URL.createObjectURL(imageBlob);
+            //console.log(imageUrl);
+            resolve(imageUrl);
+        })
+    })
+    
 }
