@@ -551,6 +551,12 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
+@media screen and (max-width: 350px) {
+    #popupLeftSide img {
+        width: 200px;
+    }
+}
+
 .popupTextWrapper {
     margin-bottom: 1rem;
     background-color: #292929;
