@@ -118,7 +118,7 @@ function fadeIn() {
 function drawLatestProjects() {
 
   const host = "https://cr4yfish.digital:8443";
-  const url =`${host}/projectAllDetails`
+  const url =`${host}/projectDetails/project/all/all`
 
   fetch(url)
 
