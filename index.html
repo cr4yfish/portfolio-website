@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="https://use.typekit.net/bgm5mtl.css">
 
         
+        
     </head>
 
     <body onload="drawLatestProjects();">
@@ -63,7 +64,14 @@
         <section id="page1" class="content_wrapper">
             <div class="page1_leftside">
                 <div data-aos-duration="700" data-aos="fade-right" class="brevia_bold big_h1">Hi there,</div>
-                <p data-aos-duration="700" data-aos="flip-up" class="rubik_regular intro_p">I'm Manuel. I do a lot of stuff, so feel free to take a look around.</p>
+
+                
+
+                <p data-aos-duration="700" data-aos="flip-up" class="rubik_regular intro_p">
+                    I'm Manuel.<br>I am a <span id="typed"></span>
+                </p>
+
+             
                 <button tabindex="0" class="btn btn-primary" style="cursor: pointer;" onclick="window.location.href='#page2';" >
                     <a class="brevia_bold">About me</a></button>
             </div>
@@ -188,7 +196,35 @@
         </div>
     </footer>
 
+    <script src="/typed.min.js"></script>
     <script type="text/javascript" src="script.js" async defer></script>
+
+    <script>
+        // Can also be included with a regular script tag
+
+        var options = {
+            strings: [
+            'Developer.', 
+            'Musician',
+            'Filmmaker',
+            'Photographer',
+            'Designer',
+
+            ],
+            typeSpeed: 50,
+            backSpeed: 40,
+            backDelay: 3000,
+            shuffle: true,
+            loop: true,
+            loopCount: Infinity,
+            showCursor: false,
+            smartBackspace: true,
+
+        };
+
+        var typed = new Typed('#typed', options);
+    </script>
+   
 
 
 </div>

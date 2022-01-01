@@ -225,9 +225,19 @@ header {
     font-size: 1.5rem;
     color: var(--almost_white);
 }
+
 .sidenav a:first-child {
     color: var(--dark_orange) !important;
-} 
+}
+
+.sidenav a:first-child:hover {
+    text-shadow: 0 0 15px #ee6c2163;
+}
+
+.sidenav a:hover {
+    text-shadow: 0 0 15px #61C1EC;
+}
+
 #navbarOpener {
     opacity: 1;
     display: none;
@@ -269,11 +279,14 @@ header {
 
 .intro_p {
     margin-top: 1vh;
-    font-size: 1vw;
+    font-size: 1rem;
     color: #ABABAB;
 }
 
-
+#typed {
+    color: #61C1EC;
+    text-shadow: 0 0 15px #61C1EC;
+}
 
 
 /* picture stuff */

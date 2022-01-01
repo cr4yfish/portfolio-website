@@ -23,6 +23,7 @@ function checkGoToTop() {
 })();
 
 
+
 var coll = document.getElementsByClassName("collapsible");
 var i;
 
