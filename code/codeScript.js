@@ -1,5 +1,9 @@
-// scroll to hash
+// host variable, change to localhost if debugging backend
+    //const host = "http://localhost:8443";
+    const host = "https://cr4yfish.digital:8443";
+//
 
+// scroll to hash provided by clicking on a project links on the homepage
 if(location.hash != "") {
     (async function scrollToHash() {
         await sleep(700);
@@ -12,12 +16,6 @@ if(location.hash != "") {
 document.querySelector("#projectSearch").addEventListener("submit", function(e) {
     e.preventDefault();
 })
-
-
-
-//const host = "http://localhost:8443";
-const host = "https://cr4yfish.digital:8443";
-
 
 AOS.init();
 
@@ -38,10 +36,10 @@ document.getElementById("projectFilter").addEventListener("change", function(e) 
     // find out if search bar is empty -> get value, replace all spaces and check if there's less than 2 chars left
         if(document.getElementById("projectSearch").value.replace(" ", "").length < 2) {
             // search bar is empty
-            getProjects(e.target.value, "all");
+            drawTimelineProjects(e.target.value, "all");
         } else {
             // something's in the search bar
-            getProjects(e.target.value, document.getElementById("projectSearch").value);
+            drawTimelineProjects(e.target.value, document.getElementById("projectSearch").value);
         }
     
 })
@@ -55,9 +53,9 @@ document.getElementById("projectSearch").addEventListener("input", function(e) {
     timeout = setTimeout(function() {
         // check if filter is all, if so just call all projects, will throw error otherwise
         if(e.target.value.replace(" ", "").length == 0) {
-            getProjects(document.getElementById("projectFilter").value, "all");
+            drawTimelineProjects(document.getElementById("projectFilter").value, "all");
         } else {
-            getProjects(document.getElementById("projectFilter").value, e.target.value);
+            drawTimelineProjects(document.getElementById("projectFilter").value, e.target.value, true);
         }
     }, 500);
 
@@ -78,155 +76,290 @@ let inputField = document.getElementById("projectSearch")
     })
 
 
+// draw all projects from server at start
+// OLD SYSTEM -> getProjects("all", "");
+drawTimelineProjects()
 
+// clean localStorages
+localStorage.removeItem("imageArray");
+localStorage.removeItem("projects");
 
-// draw all projects at start
-getProjects("all", "");
+function clearProjects(except = []) {
+    return new Promise((resolve, reject) => {
+        let excpetionsArray = [];
+        let excepted = [];
 
-async function getProjects(type, name) {
-
-    const CATEGORY = "project"
-    // x -> project type
-    // y -> project name
-
-    let url;
-
-    // clear current projects
-    let childNodes = document.getElementById("timelineWrapper").childNodes
-    for(let i = childNodes.length-1; i >= 0; i--) {
-        childNodes[i].remove();
-    };
-
-
+        except.forEach(project => { excpetionsArray.push(project._id) });
+        // clear current projects
+        let childNodes = document.getElementById("timelineWrapper").childNodes;
     
+        for(let i = childNodes.length-1; i >= 0; i--) {
+            if(!excpetionsArray.includes(childNodes[i].id) || childNodes[i].id == undefined) {
+                childNodes[i].remove();
+            } else {
+                // childNodes[i] should show up in results
+                excepted.push(childNodes[i]._id);
+            }
+        };
 
-    // project type = all && project name = whatever -> get All projects
-    if(type == "all" && (name == "" || name == " " || name == undefined) ) {
-        url = `projectDetails/${CATEGORY}/all/all`
-    } 
-    // search for certain project in all types
-    else if(name != "" && type == "all") {
-        url = `projectDetails/${CATEGORY}/${name}/all`
-    } 
-    // search for certain project in certain type
-    else {
-        url = `projectDetails/${CATEGORY}/${name}/${type}`
+        resolve(excepted);
+    })
+
+}
+
+// draws projects from server, all if no parameters given
+function drawTimelineProjects(type = "all", name = "", except = false) {
+
+
+    // change this if client side
+    let callToFunction;
+
+    // client has local copy of projects
+    if(localStorage.getItem("projects")) {
+        callToFunction = getLocalProjects(type, name);
+    } else {
+        callToFunction = getProjects(type, name);
     }
 
-    const requestUrl = `${host}/${url}`;
+    callToFunction.then(projects => {
 
-    const options = {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json"
-        },
-    }
-
-    fetch(requestUrl, options)
-
-    .then(response => response.json())
-    
-    .then(projectsJSON => {
-        //console.log(projectsJSON);
-
-        if(projectsJSON.length == 0) {
+        // only draws projects if there are any, if not -> make notice about it
+        if(projects.length == 0) {
+            clearProjects();
             let notice = document.createElement("h2");
                 notice.textContent = "No projects matched given query"
                 notice.setAttribute("id", "notice");
                 notice.setAttribute("class", "brevia_medium languageHeader smallHeader");
             document.getElementById("timelineWrapper").appendChild(notice);
         } else {
+            // draw projects
+        
+            if(except) {
+                clearProjects(projects).then(except => {
+                    if(except.length == 0) {
+                        // no projects have been excepted -> something is wrong
+                        projects.forEach(project => makeProjectsWrapper(project));
+                    }
+                })
+            } else {
+                clearProjects();
+                projects.forEach(project => makeProjectsWrapper(project));
+            }
+
             try {
                 document.getElementById("notice").remove();
             }
-            catch {
-                
+            catch (e) {
+                // will only log an expected error, so no need to log in production
+                //console.log(e);
             }
-        }
-        for (i = 0; i < projectsJSON.length; i++) {
-
-            const currentProject = projectsJSON[i];
-
-            //console.log(currentProject);
-
-            var timelineWrapper = document.getElementById("timelineWrapper");
-    
-            let entryWrapper = document.createElement("div");
-            entryWrapper.setAttribute("class", "entry_wrapper");
-            entryWrapper.setAttribute("data-aos", "fade-up");
-            entryWrapper.setAttribute("id", i);
-            entryWrapper.setAttribute("data-projectId", currentProject._id)
-        
-            // only get thumbnail if I provided one to avoid errors
-            if (currentProject.imageName != "") {
-    
-                let entryThumbnail = document.createElement("div");
-                    entryThumbnail.setAttribute("class", "entryThumbnail");
-    
-                let entryImg = document.createElement("img");
-
-                // load image async from creating card, so the card order stays correct
-                getImage(projectsJSON[i].imageName)
-                .then( function(imageUrl) {
-                    entryImg.src = imageUrl;
-                })
-                    entryImg.setAttribute("alt", currentProject.name + " preview image.");
-    
-                entryThumbnail.appendChild(entryImg);
-                entryWrapper.appendChild(entryThumbnail);
-            }
-    
-            let entryHeader = document.createElement("div");
-            entryHeader.setAttribute("class", "entryHeader");
-        
-            let entryTitle = document.createElement("span");
-            entryTitle.setAttribute("class", "entryTitle rubik_regular pointer");
-            // window.open('link.html', '_blank');
-            entryTitle.setAttribute("onclick", "window.open('" + currentProject.link + "', '_blank');");
-        
-            let entryDate = document.createElement("span");
-            entryDate.setAttribute("class", "entryDate rubik_light unselectable");
-        
-            
-            let entryText = document.createElement("span");
-            entryText.setAttribute("class", "entryText rubik_light");
-        
-            entryTitle.textContent = currentProject.name;
-            entryDate.textContent = currentProject.date;
-            entryText.innerHTML = currentProject.desc;
-        
-            entryHeader.appendChild(entryTitle);
-            entryHeader.appendChild(entryDate);
-            // tags
-            tagArray = currentProject.type.split(",");
-        
-            for (tagCounter = 0; tagCounter < tagArray.length; tagCounter++) {
-                
-                let entryType = document.createElement("span");
-                entryType.setAttribute("class", "entryTag entryDate rubik_light unselectable");
-                entryType.textContent = tagArray[tagCounter];
-        
-                entryHeader.appendChild(entryType);
-            }
-        
-            let entryMore = document.createElement("button");
-                entryMore.setAttribute("class", "entryMore btn-primary back_btn btn-modern brevia_bold");
-                entryMore.setAttribute("onclick", "readMore(this);")
-                entryMore.setAttribute("tabindex", "0");
-                entryMore.style.marginTop = "1.5rem";
-                entryMore.textContent = "Read more";
-            
-            entryWrapper.appendChild(entryHeader);
-            entryWrapper.appendChild(entryText);
-            entryWrapper.appendChild(entryMore);
-        
-            timelineWrapper.appendChild(entryWrapper);
-
-
-
         }
     })
+}
+
+
+
+// retrieves all or specific (searched) projects from localStorage
+function getLocalProjects(type = "all", name = "") {
+    return new Promise((resolve, reject) => {
+        // parse to JSON, is now Array of objects
+        const projects = JSON.parse(localStorage.getItem("projects"));
+
+        // use this array to store filtered or stored values
+        let resultArr = [];
+
+        if(name == "all") {
+            name = "";
+        }
+    
+        // get all projects
+        if(type == "all" && (name == "" || name == " " || name == undefined || name == "all") ) {
+            resolve(projects);
+        } 
+        // search for certain project-name in all types
+        else if(name != "" && type == "all") {
+            // convert to lower case and remove whitespace
+            const searchString = name.toLowerCase().replace(" ", "");
+
+            projects.forEach(project => {
+                // clean project name as well
+                const currentProjectName = project.name.toLowerCase().replace(" ", "");
+                // contains string
+                if(currentProjectName.includes(searchString)) {
+                    resultArr.push(project);
+                }
+            })
+            resolve(resultArr);
+        } 
+        // search for all projects in certain type
+        else if(name == "" && type != "all") {
+            const searchedType = type;
+
+            projects.forEach(project => {
+                const currentType = project.projectType;
+
+                if(searchedType == currentType) {
+                    resultArr.push(project);
+                }
+            })
+            resolve(resultArr);
+        }
+        // search for certain project-name in certain type
+        else {
+            const searchString = name.toLowerCase().replace(" ", "");
+            const searchedType = type;
+
+            projects.forEach(project => {
+                // clean project name as well
+                const currentProjectName = project.name.toLowerCase().replace(" ", "");
+                const currentType = project.projectType;
+
+                // contains string and is of searched type
+                if(currentProjectName.includes(searchString) && searchedType == currentType) {
+                    resultArr.push(project);
+                }
+            })
+            resolve(resultArr);
+        }
+  
+    })
+
+}
+
+// retrieves all or specific (searched) projects from server
+async function getProjects(type = "all", name = "") {
+    return new Promise((resolve, reject) => {
+
+        // remove old client-side projects copy
+        localStorage.removeItem("projects");
+
+        let isAll = false;
+
+        const CATEGORY = "project"
+    
+        let url;
+    
+        // project type = all && project name = whatever -> get All projects
+        if(type == "all" && (name == "" || name == " " || name == undefined) ) {
+            url = `projectDetails/${CATEGORY}/all/all`
+            isAll = true;
+        } 
+        // search for certain project in all types
+        else if(name != "" && type == "all") {
+            url = `projectDetails/${CATEGORY}/${name}/all`
+        } 
+        // search for certain project in certain type
+        else {
+            url = `projectDetails/${CATEGORY}/${name}/${type}`
+        }
+    
+        const requestUrl = `${host}/${url}`;
+    
+        const options = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }
+    
+        fetch(requestUrl, options)
+    
+        .then(response => response.json())
+        
+        .then(projectsJSON => {
+
+            // store projects locally, if they're all
+            if(isAll) {
+                let projectArr = [];
+                projectsJSON.forEach(project => {
+                    projectArr.push(project);
+                })
+                localStorage.setItem("projects", JSON.stringify(projectArr));
+
+            }
+
+            resolve(projectsJSON);
+        })
+    })
+
       
+}
+
+// appends project element on the timeline
+function makeProjectsWrapper(currentProject) {
+
+    var timelineWrapper = document.getElementById("timelineWrapper");
+    
+    let entryWrapper = document.createElement("div");
+    entryWrapper.setAttribute("class", `entry_wrapper`);
+    entryWrapper.setAttribute("data-aos", "fade-up");
+    entryWrapper.setAttribute("id", currentProject._id);
+    entryWrapper.setAttribute("data-projectId", currentProject._id)
+
+    // only get thumbnail if I provided one to avoid errors
+    if (currentProject.imageName != "") {
+
+        let entryThumbnail = document.createElement("div");
+            entryThumbnail.setAttribute("class", "entryThumbnail");
+
+        let entryImg = document.createElement("img");
+
+        // load image async from creating card, so the card order stays correct
+        getImage(currentProject.imageName, currentProject._id)
+        .then( function(imageUrl) {
+            entryImg.src = imageUrl;
+        })
+            entryImg.setAttribute("alt", currentProject.name + " preview image.");
+
+        entryThumbnail.appendChild(entryImg);
+        entryWrapper.appendChild(entryThumbnail);
+    }
+
+    let entryHeader = document.createElement("div");
+    entryHeader.setAttribute("class", "entryHeader");
+
+    let entryTitle = document.createElement("span");
+    entryTitle.setAttribute("class", "entryTitle rubik_regular pointer");
+    // window.open('link.html', '_blank');
+    entryTitle.setAttribute("onclick", "window.open('" + currentProject.link + "', '_blank');");
+
+    let entryDate = document.createElement("span");
+    entryDate.setAttribute("class", "entryDate rubik_light unselectable");
+
+    
+    let entryText = document.createElement("span");
+    entryText.setAttribute("class", "entryText rubik_light");
+
+    entryTitle.textContent = currentProject.name;
+    entryDate.textContent = currentProject.date;
+    entryText.innerHTML = currentProject.desc;
+
+    entryHeader.appendChild(entryTitle);
+    entryHeader.appendChild(entryDate);
+    // tags
+    tagArray = currentProject.type.split(",");
+
+    for (tagCounter = 0; tagCounter < tagArray.length; tagCounter++) {
+        
+        let entryType = document.createElement("span");
+        entryType.setAttribute("class", "entryTag entryDate rubik_light unselectable");
+        entryType.textContent = tagArray[tagCounter];
+
+        entryHeader.appendChild(entryType);
+    }
+
+    let entryMore = document.createElement("button");
+        entryMore.setAttribute("class", "entryMore btn-primary back_btn btn-modern brevia_bold");
+        entryMore.setAttribute("onclick", "readMore(this);")
+        entryMore.setAttribute("tabindex", "0");
+        entryMore.style.marginTop = "1.5rem";
+        entryMore.textContent = "Read more";
+    
+    entryWrapper.appendChild(entryHeader);
+    entryWrapper.appendChild(entryText);
+    entryWrapper.appendChild(entryMore);
+
+    timelineWrapper.appendChild(entryWrapper);
 }
 
 
@@ -245,95 +378,60 @@ async function getProjects(type, name) {
     })
 })();
 
+// retrieves single project by id from client
+function getLocalProjectById(id) {
+    return new Promise((resolve, reject) => {
 
-async function callPopUp(element) {
+        const projects = JSON.parse(localStorage.getItem("projects"));
 
-    const url =`${host}/getSkills`;
-
-    fetch(url)
-
-    .then(response => response.json())
-
-    .then(async function(codeSkilsJSON) {
-
-        // get current language
-        currentElement = element.id;
-        var currentLanguage;
-
-        for (i = 0; i < codeSkilsJSON.length;i++) {
-            if (codeSkilsJSON[i].name == currentElement) {
-                currentLanguage = codeSkilsJSON[i];
+        projects.forEach(project => {
+            if(project._id == id) {
+                resolve(project);
+                return;
             }
-        }
+        })
 
-        // build overlay
-        var overlayElement = document.createElement("div");
-        overlayElement.setAttribute("id", "opacityLayer");
-        overlayElement.setAttribute("class", "pointer");
-        overlayElement.setAttribute("onclick", "removePopup()");
-
-
-        // build popup
-        var popupWrapperElement = document.createElement("div");
-        popupWrapperElement.setAttribute("id", "popupWrapper");
-
-        var popupHeader = document.createElement("h1");
-        popupHeader.setAttribute("class", "brevia_bold unselectable");
-
-        var popupText = document.createElement("p");
-        popupText.setAttribute("class", "rubik_light");
-
-        // insert text
-        popupHeader.textContent = currentLanguage.name;
-        popupText.textContent = currentLanguage.skills;
-
-        // attach
-        popupWrapperElement.appendChild(popupHeader);
-        popupWrapperElement.appendChild(popupText);
-
-        var bodyElement = document.getElementsByTagName("body")[0];
-        bodyElement.prepend(overlayElement);
-        bodyElement.prepend(popupWrapperElement);
-
-        await sleep(60);
-        popupWrapperElement.style.opacity = "1";
-        popupWrapperElement.style.width = "50%";
-        overlayElement.style.opacity = "1";
     })
 }
 
-async function removePopup() {
+// retrieves single project by id from server
+function getProjectById(id) {
+    return new Promise((resolve, reject) => {
+        // get single project with ID
+        const url =`${host}/getProjectById/${id}`;
 
-    popupWrapperElement = document.getElementById("popupWrapper");
-    overlayElement = document.getElementById("opacityLayer");
+        fetch(url)
 
-    popupWrapperElement.style.width = "0%";
-    overlayElement.style.opacity = "0%";
+        .then(response => response.json())
 
-    await sleep(500);
-    popupWrapperElement.style.opacity = "0%";
+        .then(function(project) { 
 
-    await sleep(500);
-    popupWrapperElement.remove();
-    overlayElement.remove();
-}
+            resolve(project);
+
+        })
+    })
+} 
 
 function readMore(element) {
 
     // get name of project
     let projectId = element.parentNode.getAttribute("data-projectId");
 
-    // get single project with ID
-    const url =`${host}/getProjectById/${projectId}`;
+
+    // change this if client side
+    let callToFunction;
+
+    // client has local copy of projects
+    if(localStorage.getItem("projects")) {
+        callToFunction = getLocalProjectById(projectId);
+    } else {
+        callToFunction = getProjectById(projectId);
+    }
 
 
-    fetch(url)
-
-    .then(response => response.json())
-
-    .then(async function(projectsJSON) {
+    callToFunction.then(async function(projectsJSON) {
         
-        /*
+        /* PATTERN:
         "name": "Take the Bus",
         "date": "2021",
         "text": "I wanted to start learning true backend development. So I got the idea to create a backend API that I could call from a frontend Website. For the execution, I got the idea to create a public transport route planning Webapp for my local transport services. The backend API will handle requests from the Webapp and takes the route as input and gives an output in form of the best found route. The output will then be handled by the frontend JS and displayed in a popup.",
@@ -341,8 +439,6 @@ function readMore(element) {
         "type": "In Development, JS, Backend, API",
         "learned": "Local authorities don't respond to my emails."
         */
-
-        // build a popup and paste data, UI is already done
 
         let currentProject = projectsJSON;
 
@@ -371,16 +467,13 @@ function readMore(element) {
 
             let entryTitle = document.createElement("div");
                 entryTitle.setAttribute("class", "entryTitle pointer rubik_regular");
-                //window.open('https://manuelfahmy.de/', '_blank');
-                //window.open(https://manuelfahmy.de/, '_blank');
                 entryTitle.setAttribute("onclick", "window.open('" + currentProject.link + "', '_blank');");
                 entryTitle.textContent = currentProject.name;
             popupLeftSide.appendChild(entryTitle);
 
             let thumbnail = document.createElement("img");
                 thumbnail.setAttribute("class","popupImage");
-                //thumbnail.setAttribute("src", "code/thumbnails/" + currentProject.thumbnail);
-                getImage(currentProject.imageName)
+                getImage(currentProject.imageName, currentProject._id)
                 .then(function (img) {
                     thumbnail.src = img;
                 })
@@ -552,7 +645,7 @@ async function closePopup() {
 }
 
 
-function getImage(imageName) {
+function getImage(imageName, projectID) {
 
     return new Promise(function (resolve, reject) {
         //console.log(imageName)
@@ -560,25 +653,70 @@ function getImage(imageName) {
             resolve(imageName)
         }
 
-        const url = `getImage/${imageName}`;
-        const requestUrl = `${host}/${url}`
-    
-        const options = {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            },
-        }
+        // image array is present, requested image should be in here
+        if(localStorage.getItem("imageArray")) {
+            const imageArray = JSON.parse(localStorage.getItem("imageArray"));
+
+            imageArray.forEach(image => {
+                // requested image is already downloaded
+                if(image.projectID == projectID) {
+                    resolve(image.imageUrl);
+                }
+            })
+        } 
+
+        // get image from server side
+        else {
+
+            const url = `getImage/${imageName}`;
+            const requestUrl = `${host}/${url}`
         
-        fetch(requestUrl, options)
+            const options = {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            }
+            
+            fetch(requestUrl, options)
+        
+            .then(response => response.blob())
+        
+            .then(imageBlob => {
+                const imageUrl = URL.createObjectURL(imageBlob);
+                //console.log(imageUrl);
     
-        .then(response => response.blob())
+                // cache image in localStorage
+                    const newObj = {
+                        imageUrl: imageUrl,
+                        projectID: projectID,
+                    }
+                    let imageArr = [];
+                    let isDuplicate = false;
     
-        .then(imageBlob => {
-            const imageUrl = URL.createObjectURL(imageBlob);
-            //console.log(imageUrl);
-            resolve(imageUrl);
-        })
+                    // set imageArr to already existing array, if it exists
+                    if(localStorage.getItem("imageArray")) {
+                        imageArr = JSON.parse(localStorage.getItem("imageArray"));
+                    }
+    
+                    // search arr for duplicate
+                    imageArr.forEach(image => {
+                        if(image.projectID == newObj.projectID) {
+                            isDuplicate = true;
+                        }
+                    })
+    
+                    // push new image into array, if not a duplicate
+                    if(!isDuplicate) {
+                        imageArr.push(newObj);
+                        localStorage.setItem("imageArray",JSON.stringify(imageArr));
+                    }
+                //
+    
+                resolve(imageUrl);
+            })
+        }
+
     })
     
 }

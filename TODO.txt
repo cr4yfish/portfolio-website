@@ -1,4 +1,14 @@
 -- TODO --
 
+
 -> DONE
     Task: Add SSL compatibility
+
+    Task: Implement IndexedDB to replace server requests for projects when searching or filtering
+        Notice: Firefox incognito doesn't support IndexedDB, so the old system has to be activated as fallback
+    Note: I Implemented it using localStorage now, so no need for fallback
+
+    Task: Cache blob images
+
+    Task: Instead of re-rendering all project upon a search, 
+    remove all but the results, which should make the search experience much more smooth

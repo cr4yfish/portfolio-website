@@ -142,15 +142,13 @@ function drawLatestProjects() {
       // make latest projects titles keyboard accessible
       cardTitle.addEventListener("keyup", function(event) {
         if(event.keyCode == 13) {
-          window.open("https://manuelfahmy.de/main/code.html#" + i, "_self" )
+          window.open("https://manuelfahmy.de/main/code.html#" + result[i]._id, "_self" )
         }
       })
 
 
       // redirect to code.html and scroll to card
-      cardTitle.setAttribute("onclick", "window.open('https://manuelfahmy.de/main/code.html#" + i + "', '_self');");
-      // window.open('https://manuelfahmy.de/projects/caterpillarCalculator', '_blank');
-      // window.open('https://manuelfahmy.de/projects/caterpillarCalculator', '_blank')
+      cardTitle.setAttribute("onclick", "window.open('https://manuelfahmy.de/main/code.html#" + result[i]._id + "', '_self');");
       var cardContent = document.createElement("div");
       cardContent.setAttribute("class", "card-content rubik_light");
 
