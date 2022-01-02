@@ -296,6 +296,8 @@ function makeProjectsWrapper(currentProject) {
     entryWrapper.setAttribute("id", currentProject._id);
     entryWrapper.setAttribute("data-projectId", currentProject._id)
 
+    let wrapperDiv = document.createElement("div");
+
     // only get thumbnail if I provided one to avoid errors
     if (currentProject.imageName != "") {
 
@@ -312,7 +314,7 @@ function makeProjectsWrapper(currentProject) {
             entryImg.setAttribute("alt", currentProject.name + " preview image.");
 
         entryThumbnail.appendChild(entryImg);
-        entryWrapper.appendChild(entryThumbnail);
+        wrapperDiv.appendChild(entryThumbnail);
     }
 
     let entryHeader = document.createElement("div");
@@ -354,9 +356,13 @@ function makeProjectsWrapper(currentProject) {
         entryMore.setAttribute("tabindex", "0");
         entryMore.style.marginTop = "1.5rem";
         entryMore.textContent = "Read more";
+
     
-    entryWrapper.appendChild(entryHeader);
-    entryWrapper.appendChild(entryText);
+    
+    wrapperDiv.appendChild(entryHeader);
+    wrapperDiv.appendChild(entryText);
+
+    entryWrapper.appendChild(wrapperDiv);
     entryWrapper.appendChild(entryMore);
 
     timelineWrapper.appendChild(entryWrapper);

@@ -123,6 +123,11 @@ body::-webkit-scrollbar-thumb {
 
 /* ====== */
 
+#content_wrapper {
+    margin-left: 0% !important;
+    width: 100% !important;
+}
+
 #popupWrapper {
     position: fixed;
     top: 50%;
@@ -212,6 +217,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .skillGroup {
+    max-width: 75rem;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
@@ -231,9 +237,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 #timelineWrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
     position: relative;
-    margin-left: 50%;
-    transform: translateX(-50%);
     width: 100%;
 }
 
@@ -330,13 +338,16 @@ body::-webkit-scrollbar-thumb {
     border-radius: 1rem;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.061);
     padding: 2.5rem;
-    display: block;
+    display: flex;
     flex-direction: column;
-    width: 70%;
-    margin-left: 50%;
-    transform: translateX(-50%) !important;
-    margin-bottom: 7rem;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 29rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
 }
+
 
 .entryTitle {
     font-size: 2rem;
@@ -676,6 +687,12 @@ body::-webkit-scrollbar-thumb {
     color: var(--textGrey);
 }
 
+@media screen and (max-width: 1100px) {
+    .entry_wrapper {
+        margin-left: 0;
+    }
+}
+
 @media screen and (max-width: 800px) {
     .grid-child img {
         height: 50px;
@@ -699,10 +716,6 @@ body::-webkit-scrollbar-thumb {
     .grid-child img {
         height: 40px;
         width: auto;
-    }
-    #content_wrapper {
-        width: 80% !important;
-        margin-left: 10% !important;
     }
     #title {
         margin-bottom: 4rem !important;
