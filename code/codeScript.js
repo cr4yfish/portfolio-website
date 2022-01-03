@@ -61,6 +61,13 @@ document.getElementById("projectSearch").addEventListener("input", function(e) {
 
 })
 
+// un-focuses searchInput on enter, very handy on mobile
+document.getElementById("projectSearch").addEventListener("keydown", function(e) {
+    if(e.key == "Enter") {
+        e.target.blur();
+    }
+})
+
 
 // DIY material design input field
 let inputField = document.getElementById("projectSearch")
