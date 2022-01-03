@@ -184,8 +184,9 @@ function getLocalProjects(type = "all", name = "") {
             projects.forEach(project => {
                 // clean project name as well
                 const currentProjectName = project.name.toLowerCase().replace(" ", "");
+                const currentProjectTags = project.type.toLowerCase().replace(",","").replace(" ", "");
                 // contains string
-                if(currentProjectName.includes(searchString)) {
+                if(currentProjectName.includes(searchString) || currentProjectTags.includes(searchString)) {
                     resultArr.push(project);
                 }
             })
@@ -212,10 +213,11 @@ function getLocalProjects(type = "all", name = "") {
             projects.forEach(project => {
                 // clean project name as well
                 const currentProjectName = project.name.toLowerCase().replace(" ", "");
+                const currentProjectTags = project.type.toLowerCase().replace(",","").replace(" ", "");
                 const currentType = project.projectType;
 
                 // contains string and is of searched type
-                if(currentProjectName.includes(searchString) && searchedType == currentType) {
+                if((currentProjectName.includes(searchString) || currentProjectTags.includes(searchString)) && searchedType == currentType) {
                     resultArr.push(project);
                 }
             })
