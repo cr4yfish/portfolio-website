@@ -63,7 +63,7 @@ document.getElementById("projectSearch").addEventListener("input", function(e) {
 
 // un-focuses searchInput on enter, very handy on mobile
 document.getElementById("projectSearch").addEventListener("keydown", function(e) {
-    if(e.key == "Enter") {
+    if(e.keyCode == 13) {
         e.target.blur();
     }
 })
