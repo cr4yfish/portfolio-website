@@ -8,8 +8,41 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="blogStyle.css">
+        <script src="https://kit.fontawesome.com/d4164139c2.js" crossorigin="anonymous"></script>
+
     </head>
-    <body>
+
+    <body onload="getLatest();">
+
+        <main>
+            <header>
+                <div>
+                    <h1>Blog</h1>
+                    <div id="headerUnderline"></div>
+                </div>
+                <div>
+                    <i id="navbarOpener" onclick="openNav();"  class="fas fa-bars pointer"></i>
+
+                    <div id="sidebar" class="sidenav">
+                
+                        <a onclick="closeNav();"><i class="fas fa-times pointer"></i></a>
+                
+                        <a href="/">Home</a>
+                        <a href="news.html">News</a>
+                
+                    </div>
+                </div>
+
+            </header>
+
+            <div id="mainContent">
+                <p>Latest</p>
+
+                <div id="latest"></div>
+            </div>
+            
+        </main>
         
         <script>
             fetch("http://localhost:8443/blog/request/0/all/all/all/all/all")
@@ -19,6 +52,7 @@
             })
         </script>
         
-        <script src="" async defer></script>
+        <script src="sidebarLogic.js"></script>
+        <script src="blogScript.js" async defer></script>
     </body>
 </html>
