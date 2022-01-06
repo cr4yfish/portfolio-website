@@ -9,11 +9,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../style.css">
         <link rel="stylesheet" href="blogStyle.css">
+        <link rel="stylesheet" href="../code/codeStyle.css">
+        <link rel="stylesheet" href="../buttons.css">
+        <link rel="stylesheet" href="../cardStyle.css">
+        <link rel="stylesheet" href="../extraPageStyle.css">
+
         <script src="https://kit.fontawesome.com/d4164139c2.js" crossorigin="anonymous"></script>
 
     </head>
 
-    <body onload="getLatest();">
+    <body onload="getCurrentTab();getLatest();">
 
         <main>
             <header>
@@ -21,23 +26,36 @@
                     <h1>Blog</h1>
                     <div id="headerUnderline"></div>
                 </div>
-                <div>
                     <i id="navbarOpener" onclick="openNav();"  class="fas fa-bars pointer"></i>
 
                     <div id="sidebar" class="sidenav">
                 
                         <a onclick="closeNav();"><i class="fas fa-times pointer"></i></a>
                 
-                        <a href="/">Home</a>
-                        <a href="news.html">News</a>
+                        <a id="homeAnchor" href="/">Home</a>
+                        <a id="newsAnchor" href="news.html">News</a>
                 
                     </div>
-                </div>
 
             </header>
 
-            <div id="mainContent">
-                <p>Latest</p>
+            <div id="content_wrapper">
+                <h2 class="languagesHeader smallHeader brevia_medium">Latest Articles</h2>
+    
+                <div id="filter">
+                    <div>
+                        <select name="project-type-filter" id="projectFilter">
+                            <option value="all">All</option>
+                            <option value="web">Web Projects</option>
+                            <option value="desktop">Desktop Projects</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input id="projectSearch" type="text">
+                        <label class="rubik_light" for="projectSearch" id="projectLabel">search</label>
+                    </div>
+    
+                </div>
 
                 <div id="latest"></div>
             </div>
@@ -51,6 +69,7 @@
                 console.log(res);
             })
         </script>
+        
         
         <script src="sidebarLogic.js"></script>
         <script src="blogScript.js" async defer></script>

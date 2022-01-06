@@ -6,7 +6,6 @@ function sleep(ms) {
 // navigation system
 
 async function openNav() {
-
     // set all items off screen
     var navbarItems = document.querySelectorAll("#sidebar a");
   
@@ -32,7 +31,7 @@ async function openNav() {
   
   function closeNav() {
     document.getElementById("sidebar").style.width = "0";
-    document.getElementById("mainContent").style.marginRight = "0";
+    document.getElementById("content_wrapper").style.marginRight = "0";
     document.getElementById("navbarOpener").style.opacity = "1";
   }
 
