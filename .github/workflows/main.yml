@@ -22,12 +22,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      #Run OWASP Scan
-      - name: ZAP Scan
-        uses: zaproxy/action-full-scan@v0.3.0
-        with:
-          target: 'https://www.zaproxy.org/'
-      
       - name: SFTP uploader w/options
         uses: zurb/sftp-upload-action@1.3
         with:
