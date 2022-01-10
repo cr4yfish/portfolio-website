@@ -99,3 +99,9 @@ header h1 {
 .entryTitleText {
     margin-left: 1rem;
 }
+
+@media screen and (max-width: 500px) {
+    #projectLabel {
+        background-color: var(--material_dark) !important;
+    }
+}
