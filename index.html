@@ -13,15 +13,16 @@
 
 
         <link rel="canonical" href="https://manuelfahmy.de/index.html">
-        <script src="https://kit.fontawesome.com/d4164139c2.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://use.typekit.net/bgm5mtl.css">
 
         
         
     </head>
 
-    <body onload="drawLatestProjects();">
-          
+    <body onload="drawLatestProjects();openExpandSection();">
+        
+        <div id="colorOverlay" onclick="closeNav()"></div>
 
         <div id="scrollToTop" onclick="gototop();">
             <i class="fas fa-arrow-alt-circle-up"></i>
@@ -37,10 +38,10 @@
                     
                 <div data-aos-duration="900" data-aos="fade-down" class="header_menu unselectable">
                     <a tabindex="0" onkeydown="openSite('code');" onclick="openSite('code');" class="pointer rubik_regular menu_item">Coding</a>
-                    <a href="https://www.behance.net/cr4yfish" rel="noopener" target="_blank" class="rubik_regular menu_item">Design</a>
-                    <a href="https://www.instagram.com/manuelfahmyz/" rel="noopener"  class="pointer rubik_regular menu_item">Photography</a>
-                    <a href="https://closeupstudios.net/" target="_blank" class="rubik_regular menu_item">Filmmaking</a>
-                    <a tabindex="0" onkeydown="openSite('code');" onclick="openSite('music');" class="pointer rubik_regular menu_item">Music</a>
+                    <a href="https://www.behance.net/cr4yfish" rel="noopener" target="_blank" class="rubik_regular menu_item">Design<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://www.instagram.com/manuelfahmyz/" rel="noopener"  class="pointer rubik_regular menu_item">Photography<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://closeupstudios.net/" target="_blank" class="rubik_regular menu_item">Filmmaking<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a tabindex="0" onkeydown="openSite('music');" onclick="openSite('music');" class="pointer rubik_regular menu_item">Music</a>
                 </div>
 
                 <i id="navbarOpener" onclick="openNav();"  class="fas fa-bars pointer"></i>
@@ -49,9 +50,9 @@
 
                     <a onclick="closeNav();"><i class="fas fa-times pointer"></i></a>
                     <a href="code.html" class="rubik_regular">Coding</a>
-                    <a href="https://www.behance.net/cr4yfish" class="rubik_regular">Design</a>
-                    <a href="photography.html" class="rubik_regular">Photography</a>
-                    <a href="https://closeupstudios.net/" class="rubik_regular">Filmmaking</a>
+                    <a href="https://www.behance.net/cr4yfish" class="rubik_regular">Design<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="photography.html" class="rubik_regular">Photography<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://closeupstudios.net/" class="rubik_regular">Filmmaking<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     <a href="music.html" class="rubik_regular">Music</a>
 
                 </div>
@@ -72,8 +73,13 @@
                 </p>
 
              
-                <button tabindex="0" class="btn btn-primary" style="cursor: pointer;" onclick="window.location.href='#page2';" >
+                <button tabindex="0" class="btn btn-primary" style="cursor: pointer;" onclick="window.location.href='#page2';document.getElementById('about_me_expand_btn').click()" >
                     <a class="brevia_bold">About me</a></button>
+                </button>
+                <!--
+                <button tabindex="0" class="btn btn-secondary" style="cursor: pointer;" onclick="window.open('blog/index.html','_blank')">
+                    <a class="brevia_bold">My Blog (Beta)</a>
+                </button>-->
             </div>
             <span class="picture_wrapper ">
                 <img src="images/lines.webp" id="lines" class="unselectable" alt="">
@@ -91,10 +97,10 @@
                     <h1 class="pages_header brevia_bold">Who I am</h1>
                     <div class="fancy_spacer"></div>
                     <div class="parahraph_wrapper">
-                        <p class="block_text rubik_light">I am Manuel Fahmy and I'm currently studying computer science at <a href="https://www.fh-aachen.de/">FH Aachen</a> and I'm working as a Javascript & C# developer. I enjoy gaining new skills and experiences, especially with anything related to technology and taking challenges to become better at what I do is esential to my lifestyle.</p></div>
+                        <p class="block_text rubik_light">I'm Manuel Fahmy and I'm currently studying computer science at <a href="https://www.fh-aachen.de/">FH Aachen</a> while also working as a Javascript & C# developer.</p></div>
                     
                     <!-- Hidden content -->
-                    <button class="btn btn-primary btn-modern collapsible expand_btn rubik_light mousepointer">Show more info</button>
+                    <button id="about_me_expand_btn" class="btn btn-primary btn-modern collapsible expand_btn rubik_light mousepointer">Show more info</button>
 
                     <div class="collapsible_content">
 
@@ -144,17 +150,18 @@
                             <h1 class="pages_header brevia_bold">What I do</h1>
                             <div class="fancy_spacer"></div>
                             <div class="parahraph_wrapper">
-                                <p class="block_text rubik_light">Currently, I focus on learning full-stack web development and expanding my knowledge in other fields of technology and design.
+                                <p class="block_text rubik_light">Currently, I focus on learning pentesting while also continuing to learn fullstack web development.
                                 </p>
                             </div>
 
-                            <button class="btn btn-primary btn-modern collapsible expand_btn rubik_light mousepointer">Show more info</button>
+                            <button id="what_i_do_expand_btn" class="btn btn-primary btn-modern collapsible expand_btn rubik_light mousepointer">Show more info</button>
                             <div id="projects" class="collapsible_content">
 
                                 <h2 style="color: #dfdfdf;" class="rubik_light smallHeader">my latest projects</h2>
 
                                 <!-- Filled by javascript -->
                                 <span class="no-javascript rubik_regular ">Please enable Javascript.</span>
+                                
                             </div>
 
                         </div>

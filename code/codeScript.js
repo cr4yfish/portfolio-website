@@ -1,6 +1,8 @@
+
+// Deprecated: HOST was moved to script.js
 // host variable, change to localhost if debugging backend
     //const host = "http://localhost:8443";
-    const host = "https://cr4yfish.digital:8443";
+   // const host = "https://cr4yfish.digital:8443";
 //
 
 // scroll to hash provided by clicking on a project links on the homepage
@@ -25,9 +27,14 @@ function sleep(ms) {
 
 // remove "no-javascript" function
 (function() {
-    let element = document.getElementById("no-javascript");
-    element.remove();
-    return;
+    try {
+        let element = document.getElementById("no-javascript");
+        element.remove();
+        return;
+    } catch(e) {
+        console.error(e);
+    }
+ 
 })();
 
 // add event listener to catergories input

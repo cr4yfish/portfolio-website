@@ -13,7 +13,7 @@ function checkGoToTop() {
   }
 }
 
-// remove "no-javascript" function
+  // remove "no-javascript" function
 (function() {
   let elements = document.getElementsByClassName("no-javascript");
   for(i = 0; i < elements.length;i++) {
@@ -21,6 +21,12 @@ function checkGoToTop() {
   }
   return;
 })();
+
+async function openExpandSection() {
+  await sleep(500);
+  document.getElementById("about_me_expand_btn").click();
+  document.getElementById("what_i_do_expand_btn").click();
+}
 
 
 
@@ -36,7 +42,6 @@ for (i = 0; i < coll.length; i++) {
     if (collapsible_content.style.maxHeight){
         collapsible_content.style.maxHeight = null;
         collapsible_content.style.marginTop = "0";
-        collapsible_content.style.padding = "0"
         collapsible_content.style.overflow = "hidden";
         this.textContent = "Show more info";
         for(i = 0; i < collapsible_content.children.length; i++) {
@@ -45,7 +50,6 @@ for (i = 0; i < coll.length; i++) {
     } else {
         collapsible_content.style.maxHeight = collapsible_content.scrollHeight + "px";
         collapsible_content.style.marginTop = "1rem";
-        collapsible_content.style.padding = "5rem 1rem 10rem 1rem"
         collapsible_content.style.marginLeft = "50%";
         collapsible_content.style.transform = "translateX(-50%)";
         collapsible_content.style.overflow = "visible";
@@ -75,6 +79,8 @@ async function openNav() {
   document.getElementById("sidebar").style.width = "250px";
   //document.getElementById("mainContent").style.marginRight = "250px";
   document.getElementById("navbarOpener").style.opacity = "0";
+  document.getElementById("colorOverlay").style.display = "block";
+  
 
   // fade the items back in one by one
   await sleep(50);
@@ -84,15 +90,18 @@ async function openNav() {
 
     await sleep(50);
   }
-
-  localStorage.setItem("navbarHasBeenOpened", "true");
   
+  localStorage.setItem("navbarHasBeenOpened", "true");
+  document.getElementById("colorOverlay").style.opacity = "1";
 }
 
-function closeNav() {
+async function closeNav() {
   document.getElementById("sidebar").style.width = "0";
   document.getElementById("mainContent").style.marginRight = "0";
   document.getElementById("navbarOpener").style.opacity = "1";
+  document.getElementById("colorOverlay").style.opacity = "0";
+  await sleep(250);
+  document.getElementById("colorOverlay").style.display = "none";
 }
 
 
@@ -115,21 +124,59 @@ function fadeIn() {
 }
 
 
-
+const host = "https://cr4yfish.digital:8443";
 function drawLatestProjects() {
 
-  const host = "https://cr4yfish.digital:8443";
+  
   const url =`${host}/projectDetails/project/all/all`
 
   fetch(url)
 
     .then(response => response.json())
     
-    .then(result => {
-
-    for(i = 0; i < 4; i++) {
-
+    .then(async result => {
       var parentDiv = document.getElementById("projects");
+
+      // make big card for first result
+      const bigProject = result[0];
+
+      const firstTags = bigProject.type.split(",");
+      const card = document.createElement("div");
+      card.setAttribute("id", bigProject._id);
+      card.setAttribute("class", "card big_project_card collapsible_card");
+      card.setAttribute("onclick", `window.open("https://manuelfahmy.de/main/code.html#${bigProject._id}", '_self');`)
+        
+      card.innerHTML = 
+      `
+      <div id="firstProjectPadding">
+      <div class="card-content rubik_light about-me-card-title">${bigProject.name}</div>
+      <div class="big_project_card_tags">
+          <span class="tag rubik_light">Live</span>
+      </div>
+      <div class="about-me-card-content rubik_light">${bigProject.desc}</div>
+      </div>
+      `
+      parentDiv.appendChild(card);
+
+      // replace background image
+      getImage(bigProject.imageName, bigProject._id).then(imageUrl => {
+        console.log("imageUrl:",imageUrl);
+        document.documentElement.style.setProperty("--imageUrl", `url(${imageUrl})`);
+      })
+
+      const firstTagParent = document.getElementById(bigProject._id).querySelector(".big_project_card_tags");
+      // make tags
+      firstTags.forEach(tag => {
+        const tagEle = document.createElement("span");
+          tagEle.setAttribute("class", "tag rubik_light");
+          tagEle.textContent = tag;
+          firstTagParent.appendChild(tagEle)
+      })
+    
+      // rest
+    for(i = 1; i < 4; i++) {
+
+      
 
       var cardElement = document.createElement("div");
       cardElement.setAttribute("class", "card latest-projects-card");
@@ -153,19 +200,14 @@ function drawLatestProjects() {
       cardContent.setAttribute("class", "card-content rubik_light");
 
       if (result[i].desc.length > 150) {
-        // text ist 151 zeichen oder länger
-        // text wird nur bis zum 150. zeichen wiedergegeben
+        // text is 151 chars or longer
         resultText = result[i].desc.substring(0,150) ;
         
         if (resultText.split("")[149] == " ") {
-          // text hat ein leerzeichen als letztes zeichen
- 
-          // 150. zeichen wird abgehakt
+          // text has white space as last char
           resultText = result[i].desc.substring(0,149) + "...";
 
         } else {
-          // text hat kein leerzeichen am ende
-
           resultText = result[i].desc.substring(0,150) + "...";
         }
       }
@@ -186,4 +228,64 @@ function drawLatestProjects() {
 
 }
 
+// copied from codeScript.js -> update if original changed
+function getImage(imageName, projectID) {
 
+  return new Promise(function (resolve, reject) {
+      console.log(imageName)
+      if(imageName == "") {
+          resolve(imageName)
+      }
+
+      const url = `getImage/${imageName}`;
+      const requestUrl = `${host}/${url}`
+  
+      const options = {
+          method: "GET",
+          headers: {
+              "Content-Type": "application/json"
+          },
+      }
+      
+      fetch(requestUrl, options)
+  
+      .then(response => response.blob())
+  
+      .then(imageBlob => {
+          const imageUrl = URL.createObjectURL(imageBlob);
+          //console.log(imageUrl);
+
+          // cache image in localStorage
+              const newObj = {
+                  imageUrl: imageUrl,
+                  projectID: projectID,
+              }
+              let imageArr = [];
+              let isDuplicate = false;
+
+              // set imageArr to already existing array, if it exists
+              if(localStorage.getItem("imageArray")) {
+                  imageArr = JSON.parse(localStorage.getItem("imageArray"));
+              }
+
+              // search arr for duplicate
+              imageArr.forEach(image => {
+                  if(image.projectID == newObj.projectID) {
+                      isDuplicate = true;
+                  }
+              })
+
+              // push new image into array, if not a duplicate
+              if(!isDuplicate) {
+                  imageArr.push(newObj);
+                  localStorage.setItem("imageArray",JSON.stringify(imageArr));
+              }
+          //
+
+          resolve(imageUrl);
+      })
+      
+
+  })
+  
+}

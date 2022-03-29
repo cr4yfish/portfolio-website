@@ -1,5 +1,6 @@
 :root {
-    --cardBG: #303030;
+    --cardBG: #303030b3;
+    --imageUrl: url('https://images.unsplash.com/photo-1633712151902-d29018f73b63?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
 }
 
 
@@ -22,7 +23,7 @@
 }
 
 .card:hover {
-    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.212);
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.212);
 }
 
 
@@ -74,10 +75,6 @@
     width: 25rem;
 }
 
-
-
-
-
 .card-title {
     cursor: pointer;
     color: var(--almost_white);
@@ -121,6 +118,75 @@
 }
 
 
+.big_project_card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 33px;
+    height: 14rem;
+    padding: 0 !important;
+    overflow: hidden;
+    background: var(--nice_purple_trans);
+    transition: background .5s, box-shadow .25s;
+    cursor: pointer;
+    width: 100%;
+}
+
+.big_project_card::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: inherit;
+    border-radius: 33px;
+    z-index: -1;
+    opacity: 0.5;
+    transition: opacity .5s;
+    background-image: var(--imageUrl);
+}
+
+.big_project_card:hover::before {
+    opacity: 1;
+}
+
+#firstProjectPadding {
+    padding: 2rem;
+}
+
+.big_project_card .about-me-card-title {
+    margin: 0;
+}
+
+.big_project_card_tags {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
+.big_project_card .tag {
+    background-color: #64acff5b;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: .5rem;
+    padding: .35rem 1rem;
+}
+
+.big_project_card .tag:last-child {
+    margin-right: 0;
+}
+
+.big_project_card .about-me-card-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-line;
+    font-size: 1em;
+}
+
 @media screen and (min-width: 1500px) {
     .collapsible_content {
         width: 60%;
@@ -160,6 +226,9 @@
     .about-me-card-image {
         width: 9rem;
         transform: translateY(10%);
+    }
+    .big_project_card {
+        height: 17rem;
     }
 }
 
