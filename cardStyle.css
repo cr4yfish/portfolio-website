@@ -229,7 +229,7 @@
         flex-basis: 100%;
     }
     .latest-projects-card {
-        height: 7rem;
+        height: 8rem;
     }
     .collapsible_content {
         width:75%;
@@ -262,6 +262,7 @@
     .about-me-card-title {
         font-size: 16pt;
     }
+    .latest-projects-card {
+        height: 13rem;
+    }
 }
-
-
