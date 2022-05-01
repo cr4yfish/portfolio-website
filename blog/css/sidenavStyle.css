@@ -1,0 +1,47 @@
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 12;
+    top: 0;
+    right: 0;
+    background-color: var(--bg_purple);
+    box-shadow: -5px 0px 15px rgba(0, 0, 0, 0.061);
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.sidenav a {
+    width: 60%;
+}
+
+.sidenav a:first-child {
+    color: var(--bright_purple) !important;
+    width: 85%;
+    font-size: 18pt;
+    cursor: pointer;
+}
+
+.sidenav a:first-child:hover {
+    text-shadow: 0 0 15px  var(--nice_purple);
+}
+
+#navbarOpener {
+    opacity: 1;
+    position: fixed;
+    z-index: 4;
+    right: 2rem;
+    font-size: 2rem;
+    color: white;
+    transition: opacity 0.5s;
+    cursor: pointer;
+}
+
+#navbarOpener:hover {
+    color: var(--nice_purple);
+}

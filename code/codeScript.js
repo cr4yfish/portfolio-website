@@ -10,8 +10,11 @@ if(location.hash != "") {
     (async function scrollToHash() {
         await sleep(700);
         location.href = location.hash;
+        // highlight element with color
+        const id = location.hash.replace("#", "");
+        console.log(id)
+        document.getElementById(`${id}`).style.backgroundColor = "#422e1a7d";
     })();
-    
 }
 
 // prevent form submit default
@@ -346,7 +349,7 @@ function makeProjectsWrapper(currentProject) {
 
     
     let entryText = document.createElement("span");
-    entryText.setAttribute("class", "entryText rubik_light");
+    entryText.setAttribute("class", "entryText roboto light");
 
     entryTitle.textContent = currentProject.name;
     entryDate.textContent = currentProject.date;
@@ -358,7 +361,6 @@ function makeProjectsWrapper(currentProject) {
     tagArray = currentProject.type.split(",");
 
     for (tagCounter = 0; tagCounter < tagArray.length; tagCounter++) {
-        
         let entryType = document.createElement("span");
         entryType.setAttribute("class", "entryTag entryDate rubik_light unselectable");
         entryType.textContent = tagArray[tagCounter];
@@ -367,7 +369,7 @@ function makeProjectsWrapper(currentProject) {
     }
 
     let entryMore = document.createElement("button");
-        entryMore.setAttribute("class", "entryMore btn-primary back_btn btn-modern brevia_bold");
+        entryMore.setAttribute("class", "entryMore btn btn-hollow-white back_btn brevia_bold");
         entryMore.setAttribute("onclick", "readMore(this);")
         entryMore.setAttribute("tabindex", "0");
         entryMore.style.marginTop = "1.5rem";
@@ -518,7 +520,7 @@ function readMore(element) {
                     popupTextWrapperText.appendChild(titleDesc);
 
                     let entryText = document.createElement("span");
-                        entryText.setAttribute("class", "entryText rubik_light");
+                        entryText.setAttribute("class", "entryText roboto light");
                         entryText.innerHTML = currentProject.desc;
                     popupTextWrapperText.appendChild(entryText);
 
@@ -637,7 +639,7 @@ function readMore(element) {
             popupClose.textContent = "Close";
 
         let popupCloseButton = document.createElement("button");
-            popupCloseButton.setAttribute("class",  "btn-primary back_btn btn-modern")
+            popupCloseButton.setAttribute("class",  "btn btn-hollow-white back_btn")
             popupCloseButton.appendChild(popupClose);
             popupCloseButton.setAttribute("onclick", "closePopup();")
             popupCloseButton.setAttribute("tabindex", "1")

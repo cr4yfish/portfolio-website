@@ -27,7 +27,9 @@
 
     </head>
 
-    <body onload="fadeIn();">
+    <div id="checker"></div>
+    <div id="bg"></div>
+    <body>
 
         <div id="scrollToTop" onclick="gototop();">
             <i class="fas fa-arrow-alt-circle-up"></i>
@@ -45,109 +47,101 @@
 
         <div id="content_wrapper">
 
-            <button class="btn-primary back_btn btn-modern" style="cursor: pointer;" onclick="window.location.href='index.html';" >
+            <button class="btn btn-secondary back_btn" style="cursor: pointer;" onclick="window.location.href='index.html';" >
 
                 <a class="brevia_bold">Back</a></button>
 
-            <h1 id="title" class="rubik_light">//Code</h1>
+            <h1 id="title" class="poppins">Code</h1>
 
-            <h2 class="languagesHeader smallHeader brevia_medium">Technologies</h2>
+            <h2 class="languagesHeader smallHeader brevia_medium">My tech stack</h2>
 
             <div id="skillsWrapper">
 
+         
+    
                 <fieldset class="skillGroup">
                     <legend class="rubik_light">Web Development</legend>
-                    <div class="card about-me-card code_card">
-                        <div class="about-me-card-left">
-                            <div class="card-content rubik_light about-me-card-title">HTML / CSS / JAVASCRIPT
-        
-                            </div>
-                            <div class="about-me-card-content rubik_light">I can use HTML/CSS and JS to build modern frontend Websites and Webapps.</div>
-                        </div>
-                        <div class="about-me-card-right">
-                            <img class="about-me-card-image code_image " src="images/code/js_icon.png" alt="frontend icon">
-                        </div>
-                    </div>
-        
-                    <div class="card about-me-card code_card">
-                        <div class="about-me-card-left">
-                            <div class="card-content rubik_light about-me-card-title">NODE.JS / EXPRESS.JS
-        
-                            </div>
-                            <div class="about-me-card-content rubik_light">I can use Node and Express to build backend services.
-                                
-                            </div>
-                        </div>
-                        <div class="about-me-card-right">
-                            <img class="about-me-card-image code_image " src="images/code/nodejs_icon.png" alt="frontend icon">
-                        </div>
+
+                    <div class="skillCard">
+                        <img class="about-me-card-image code_image " src="images/code/js.png" alt="frontend icon">
+                        <div class="roboto ">JS</div>
                     </div>
 
+                    <div class="skillCard">
+                        <img class="about-me-card-image code_image " src="images/code/nodejs.png" alt="frontend icon">
+                        <div class="roboto ">Node.js</div>
+                    </div>
+
+                    <div class="skillCard">
+                        <img class="about-me-card-image code_image " src="images/code/react.png" alt="frontend icon">
+                        <div class="roboto ">React.js</div>
+                    </div>
+
+                    <div class="skillCard">
+                        <img class="about-me-card-image code_image " src="images/code/next.png" alt="frontend icon">
+                        <div class="roboto ">Next.js</div>
+                    </div>
+
+                    <div class="skillCard">
+                        <img class="about-me-card-image code_image " src="images/code/express.png" alt="frontend icon">
+                        <div class="roboto ">Express.js</div>
+                    </div>
+
+                    <div class="skillCard">
+                        <img class="about-me-card-image code_image " src="images/code/ejs.png" alt="frontend icon">
+                        <div class="roboto ">ejs</div>
+                    </div>
                 </fieldset>
-               
-    
+
                 <fieldset class="skillGroup">
                     <legend class="rubik_light">Computing</legend>
 
-                    <div class="card about-me-card code_card">
-                        <div class="about-me-card-left">
-                            <div class="card-content rubik_light about-me-card-title">PYTHON
-        
-                            </div>
-                            <div class="about-me-card-content rubik_light">I can automate calculations and build simple but specific, calculators that fit my needs. I also started to learn machine learning with Tensorflow.
-                                
-                            </div>
-                        </div>
-                        <div class="about-me-card-right">
-                            <img class="about-me-card-image code_image " src="images/code/python_icon.png" alt="frontend icon">
-                        </div>
+                    <div class="skillCard">
+                        <img class="about-me-card-image code_image " src="images/code/cpp.png" alt="frontend icon">
+                        <div class="roboto ">C++</div>
                     </div>
 
-                    <div class="card about-me-card code_card">
-                        <div class="about-me-card-left">
-                            <div class="card-content rubik_light about-me-card-title">C#
-        
-                            </div>
-                            <div class="about-me-card-content rubik_light">I can use C# to build and maintain backend APIs.
-                                
-                            </div>
-                        </div>
-                        <div class="about-me-card-right">
-                            <img class="about-me-card-image code_image " src="images/code/cs_icon.png" alt="frontend icon">
-                        </div>
+                    <div class="skillCard">
+                        <img class="about-me-card-image code_image " src="images/code/cs.png" alt="frontend icon">
+                        <div class="roboto ">C#</div>
                     </div>
 
-                    <div class="card about-me-card code_card">
-                        <div class="about-me-card-left">
-                            <div class="card-content rubik_light about-me-card-title">C++
-        
-                            </div>
-                            <div class="about-me-card-content rubik_light">I can build fast programs to calculate things and automate tasks.
-                                
-                            </div>
-                        </div>
-                        <div class="about-me-card-right">
-                            <img class="about-me-card-image code_image " src="images/code/cpp_icon.png" alt="frontend icon">
-                        </div>
+                    <div class="skillCard">
+                        <img class="about-me-card-image code_image " src="images/code/python.png" alt="frontend icon">
+                        <div class="roboto ">Python</div>
                     </div>
 
-                    <div class="card about-me-card code_card">
-                        <div class="about-me-card-left">
-                            <div class="card-content rubik_light about-me-card-title">JAVA
-        
-                            </div>
-                            <div class="about-me-card-content rubik_light">I can build simple, object oriented programs to automate stuff. I mainly used it to automate my Math homework back in school.
-                                
-                            </div>
-                        </div>
-                        <div class="about-me-card-right">
-                            <img class="about-me-card-image code_image " src="images/code/java_icon.png" alt="frontend icon">
-                        </div>
+                    <div class="skillCard">
+                        <img class="about-me-card-image code_image " src="images/code/seaborn.png" alt="frontend icon">
+                        <div class="roboto ">Seaborn</div>
                     </div>
 
                 </fieldset>
 
+                <fieldset class="skillGroup">
+                    <legend class="rubik_light">Database/CMS</legend>
 
+                    <div class="skillCard">
+                        <img class="about-me-card-image code_image " src="images/code/sql.png" alt="frontend icon">
+                        <div class="roboto">SQL</div>
+                    </div>
+
+                    <div class="skillCard">
+                        <img class="about-me-card-image code_image " src="images/code/nedb.png" alt="frontend icon">
+                        <div class="roboto ">Nedb</div>
+                    </div>
+
+                    <div class="skillCard">
+                        <img class="about-me-card-image code_image " src="images/code/sanity.png" alt="frontend icon">
+                        <div class="roboto ">Sanity</div>
+                    </div>
+
+                    <div class="skillCard">
+                        <img class="about-me-card-image code_image " src="images/code/wordpress.png" alt="frontend icon">
+                        <div class="roboto ">Wordpr.</div>
+                    </div>
+
+                </fieldset>
             </div>
 
             
@@ -166,7 +160,7 @@
                 </div>
                 <div>
                     <input id="projectSearch" type="text">
-                    <label class="rubik_light" for="projectSearch" id="projectLabel">search</label>
+                    <label class="roboto light" for="projectSearch" id="projectLabel">search</label>
                 </div>
 
             </div>

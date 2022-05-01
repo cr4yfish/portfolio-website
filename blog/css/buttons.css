@@ -1,0 +1,34 @@
+.btn {
+    outline: none;
+    border: none;
+    padding: .75rem 2rem;
+    text-align: center;
+    font-size: 16pt;
+    margin: .5rem;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 9px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .25s all;
+}
+
+.btn_primary{
+    background-color: var(--bright_purple);
+    color: var(--dark_purple);
+    box-shadow: 0 0 15px var(--bright_purple);
+    transition: all .25s;
+}
+
+.btn_primary:hover {
+    background-color: var(--nice_purple);
+    box-shadow: 0 0 15px var(--nice_purple);
+}
+
+.disabled {
+    background-color: var(--vdark_purple);
+    color: var(--textGrey);
+    box-shadow: none;
+}

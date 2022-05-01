@@ -1,0 +1,154 @@
+/* Spotlight cards */
+.spotlightSlide {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2.5rem 1rem;
+    width: 13rem !important;
+    height: 20rem;
+    color: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 33px;
+    background-image: linear-gradient( #000000ce, 80%, rgba(0, 0, 0, 0.249)),
+    url('https://images.unsplash.com/photo-1648765825798-57d76ecd38e3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-right: 1rem;
+    transition: all .5s;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .spotlightSlide {
+        width: 7rem !important;
+        height: 12rem;
+        border-radius: 22px;
+    }
+}
+
+.spotlightSlide:first-of-type {
+    margin-left: 1rem;
+}
+
+.spotlightSlide:hover {
+    transform: rotateX(-10deg) translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+    margin-right: 1rem;
+}
+
+.spotlightTitle {
+    font-size: 20pt;
+    font-weight: bold;
+    word-wrap: break-word;
+}
+
+.spotlightMeta {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: fit-content;
+}
+
+.spotlightDate {
+    font-size: 12pt;
+    font-weight: lighter;
+    margin-bottom: .25em;
+}
+
+.spotlightAuthor {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.spotlightAuthorImage {
+    margin-right: .5em;
+    background-color: aliceblue;
+    border-radius: 100%;
+    width: 24px;
+    height: 24px;
+}
+
+.spotlightAuthorName {
+    font-size: 16pt;
+    font-weight: lighter;
+}
+
+
+
+.article_card {
+    background-color: var(--vdark_purple);
+    border-radius: 33px;
+    height: 20rem;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.article_card .article_image {
+    background-color: rgb(85, 44, 44);
+    border-radius: 33px 33px 0 0;
+    width: 100%;
+    height: 100%;
+}
+
+.article_card .article_content {
+    padding: 1rem;
+    padding-bottom: 2rem;
+}
+
+.article_card .content_header {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+.article_card .meta {
+    font-size: 12pt;
+    font-weight: 100;
+}
+
+.article_card .title {
+    font-size: 16pt;
+    font-weight: 500;
+}
+
+.article_card .tags {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-content: center;
+}
+
+.article_card .tag {
+    padding: .25rem 1rem;
+    color: var(--material_dark);
+    background-color: var(--lightestOrange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: .5em;
+    border-radius: 33px;
+}
+
+.article_card .tag:first-child {
+    margin-left: 0;
+}
+
+.article_card .subtitle {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-line;
+    font-size: 1em;
+    font-weight: 300;
+}

@@ -1,5 +1,5 @@
 // DIY material design input field
-let inputField = document.getElementById("projectSearch")
+let inputField = document.getElementById("articleSearch")
 
     inputField.addEventListener("focus", function(e) {
         document.getElementById("projectLabel").style.transform = "translateY(-1.55em)"
@@ -11,35 +11,20 @@ let inputField = document.getElementById("projectSearch")
         }
     })
 
-function getCurrentTab() {
-    const docTitle = document.title;
 
-    switch (docTitle) {
-        case "Manuel's Blog":
-            document.getElementById("homeAnchor").style.backgroundColor = "#F8CD86";
-            document.getElementById("homeAnchor").style.color = "#252525";
-            break;
-        case "News":
-            document.getElementById("newsAnchor").style.backgroundColor = "#F8CD86";
-            document.getElementById("newsAnchor").style.color = "#252525";
-            break;
-    }
+function sleep(ms) {
+    
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-const host = "http://localhost:8443";
+const host = "http://localhost:30005";
 
 // add event listener to search input
 let timeout = null;
-document.getElementById("projectSearch").addEventListener("input", function(e) {
+document.getElementById("articleSearch").addEventListener("input", function(e) {
     clearTimeout(timeout)
-    
     timeout = setTimeout(function() {
-        // check if filter is all, if so just call all projects, will throw error otherwise
-        if(e.target.value.replace(" ", "").length == 0) {
-            getLatest(0, "all", document.getElementById("projectFilter").value);
-        } else {
-            getLatest(0, e.target.value, document.getElementById("projectFilter").value,);
-        }
+        getLatest(0, document.getElementById("articleSearch").value);
     }, 500);
 
 })
@@ -51,7 +36,7 @@ function clearProjects(except = []) {
 
         except.forEach(project => { excpetionsArray.push(project._id) });
         // clear current projects
-        let childNodes = document.getElementById("latest").childNodes;
+        let childNodes = document.getElementById("latest_articles").childNodes;
     
         for(let i = childNodes.length-1; i >= 0; i--) {
             if(!excpetionsArray.includes(childNodes[i].id) || childNodes[i].id == undefined) {
@@ -61,54 +46,65 @@ function clearProjects(except = []) {
                 excepted.push(childNodes[i]._id);
             }
         };
-
         resolve(excepted);
     })
+}
 
+function disableArticles(articles) {
+    articles.forEach(article => {
+        document.getElementById(article._id).style.display = "none";
+    })
+}
+
+function enableArticles(articles) {
+    articles.forEach(article => {
+        document.getElementById(article._id).style.display = "flex";
+    })
 }
 
 function getLatest(numberOfResponses = 0, search = "all") {
-
+    const parent = document.getElementById("latest_articles");
+    console.log("Search:", search);
     // local storage exists
-    if(localStorage.getItem("articles") && (search.length != 0 && search != "all")) {
+    if(localStorage.getItem("articles")) {
         console.log("Rendering client side");
         search = search.toLowerCase();
-        const parent = document.getElementById("latest");
+        
         let localArticles = JSON.parse(localStorage.getItem("articles"));
 
+        // sum of all articles that should be displayed
         let resArray = [];
 
         if(search != "all") {
             localArticles.forEach(article => {
-                if(article.content.title.toLowerCase().includes(search) || 
-                    article.content.subtitle.toLowerCase().includes(search) || 
-                    article.meta.category.toLowerCase().includes(search) || 
-                    article.meta.author.toLowerCase().includes(search) ||
-                    article.content.htmlText.toLowerCase().includes(search) ||
-                    article.meta.tags.toLowerCase().includes(search)) {
+                if( !article.content.title.toLowerCase().includes(search)    && 
+                    !article.content.subtitle.toLowerCase().includes(search) && 
+                    !article.meta.category.toLowerCase().includes(search)    && 
+                    !article.meta.author.toLowerCase().includes(search)      &&
+                    !article.content.htmlText.toLowerCase().includes(search) &&
+                    !article.meta.tags.toLowerCase().includes(search)
+                    )
+                {
                     resArray.push(article);
                 }
             })
             localArticles = resArray;
         }
-
-        console.log("Local articles:",localArticles);
         
         if(parent.childNodes.length == 0) {
             localArticles.forEach(article => {
                 makeProjectsWrapper(article, parent);
             })
         } else {
-            console.log("Clearing projects, except for", localArticles);
-            clearProjects(localArticles);
+            console.log("Disabling articles:", localArticles);
+            disableArticles(localArticles);
         }
 
     } else {
-        fetch(`http://localhost:8443/blog/request/0/${search}/all/all/all/all`)
+        fetch(`${host}/blog/request/0/${search}/all/all/all/all`)
         .then(res => res.json())
         .then(res => {
             console.log(res);
-            const parent = document.getElementById("latest");
     
             // make local storage
             localStorage.removeItem("articles");
@@ -116,6 +112,8 @@ function getLatest(numberOfResponses = 0, search = "all") {
     
             // clear old projects
             clearProjects();
+
+            makeSpotlights(res);
     
             res.forEach(article => {
                 makeProjectsWrapper(article, parent);
@@ -127,85 +125,44 @@ function getLatest(numberOfResponses = 0, search = "all") {
 function makeProjectsWrapper(currentProject, parent) {
     
     let entryWrapper = document.createElement("div");
-    entryWrapper.setAttribute("class", `entry_wrapper`);
+    entryWrapper.setAttribute("class", `article_card`);
     entryWrapper.setAttribute("data-aos", "fade-up");
     entryWrapper.setAttribute("id", currentProject._id);
     entryWrapper.setAttribute("data-projectId", currentProject._id)
 
-    let wrapperDiv = document.createElement("div");
+    entryWrapper.innerHTML = 
+    `
+    <div class="article_image"></div>
+    <div class="article_content">
+        <div class="content_header">
+            <span class="meta">${currentProject.meta.author} on ${new Date(parseInt(currentProject.log.timestamp)).toDateString()}</span>
+            <span class="title">${currentProject.content.title}</span>
+        </div>
+        <div class="tags"></div>
+        <div class="subtitle">${currentProject.content.subtitle}</div>
+    </div>
+    `
+    parent.appendChild(entryWrapper);
 
-    //only get thumbnail if I provided one to avoid errors
+    // image
     if (currentProject.imageName != "") {
-
-        let entryThumbnail = document.createElement("div");
-            entryThumbnail.setAttribute("class", "entryThumbnail");
-
-        let entryImg = document.createElement("img");
-
         //load image async from creating card, so the card order stays correct
         getImage(currentProject.imageName, currentProject._id)
         .then( function(imageUrl) {
-            entryImg.src = imageUrl;
+            document.getElementById(currentProject._id).querySelector(".article_image").style.backgroundImage = `url('${imageUrl}')`;
         })
-            entryImg.setAttribute("alt", currentProject.content.title + " preview image.");
-
-        entryThumbnail.appendChild(entryImg);
-        wrapperDiv.appendChild(entryThumbnail);
     }
 
-    let entryHeader = document.createElement("div");
-    entryHeader.setAttribute("class", "entryHeader");
-
-    let entryTitle = document.createElement("div");
-    entryTitle.setAttribute("class", "entryTitle rubik_regular");
-    // window.open('link.html', '_blank');
-    //entryTitle.setAttribute("onclick", "window.open('" + currentProject.link + "', '_blank');");
-
-    let entryTitleText = document.createElement("span");
-        entryTitleText.setAttribute("class", "entryTitleText rubik_regular pointer")
-
-    let entryAuthor = document.createElement("span");
-    entryAuthor.setAttribute("class", "entryDate rubik_light unselectable");
-
-    
-    let entryText = document.createElement("span");
-    entryText.setAttribute("class", "entryText rubik_light");
-
-    entryTitleText.textContent = currentProject.content.title;
-    entryAuthor.textContent = currentProject.meta.author;
-    entryText.innerHTML = currentProject.content.htmlText;
-
-    entryHeader.appendChild(entryTitle);
-    entryTitle.appendChild(entryTitleText);
-    entryTitle.appendChild(entryAuthor);
     // tags
     tagArray = currentProject.meta.tags.split(",");
-
-    for (tagCounter = 0; tagCounter < tagArray.length; tagCounter++) {
-        
-        let entryType = document.createElement("span");
-        entryType.setAttribute("class", "entryTag entryDate rubik_light unselectable");
-        entryType.textContent = tagArray[tagCounter];
-
-        entryHeader.appendChild(entryType);
-    }
-
-    let entryMore = document.createElement("button");
-        entryMore.setAttribute("class", "entryMore btn-primary back_btn btn-modern brevia_bold");
-        entryMore.setAttribute("onclick", "readMore(this);")
-        entryMore.setAttribute("tabindex", "0");
-        entryMore.style.marginTop = "1.5rem";
-        entryMore.textContent = "Read more";
-
-    
-    
-    wrapperDiv.appendChild(entryHeader);
-    wrapperDiv.appendChild(entryText);
-
-    entryWrapper.appendChild(wrapperDiv);
-    entryWrapper.appendChild(entryMore);
-
-    parent.appendChild(entryWrapper);
+    const tagParent = document.getElementById(currentProject._id).querySelector(".tags");
+    tagArray.forEach(tag => {
+        if(tag.length == 0) { return; } 
+        let tagEle = document.createElement("span");
+            tagEle.setAttribute("class", "tag");
+            tagEle.textContent = tag;
+        tagParent.appendChild(tagEle);
+    })
 }
 
 function openArticle(element) {

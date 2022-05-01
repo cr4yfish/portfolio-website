@@ -1,0 +1,130 @@
+:root {
+    --light_orange: #F7AB3C;
+    --lightestOrange: #F8CD86;
+    --medium_orange: #F1811C;
+    --medium_orange_trans: #f17f1c81;
+    --dark_orange: #EE6B21;
+    --almost_white: #F3F3F3;
+    --not_black: #252525;
+
+    --nice_purple: #811CF1;
+    --bright_purple: #8D36E4;
+    --dark_purple: #28123F;
+    --vdark_purple: #181020;
+    --bg_purple: #13081E;
+
+    --material_dark: #212121;
+    --grey: #5E5E5E;
+    --textGrey: #C2C2C2;
+    --textGrey: #BEBEBE;
+    --lightYellow: #FFE082;
+    --cardBG: #303030;
+}
+
+body, html {
+    margin: 0;
+    overflow-x: hidden;
+    background-color: var(--bg_purple);
+    color: white;
+}
+
+header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.366), rgba(0, 0, 0, 0));
+    color: white;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    z-index: 10;
+}
+
+header div {
+    height: fit-content;
+}
+
+header h1 {
+    margin: 0;
+}
+
+#colorOverlay {
+    background-color: rgba(0, 0, 0, 0.499);
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+    transition: all .25s;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+#content_wrapper {
+    margin-top: 5rem;
+}
+
+.smallHeader {
+    color: var(--lightestOrange);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 100;
+}
+
+
+/* SPOTLIGHT
+*/
+#spotlight {
+    background-color: var(--bright_purple);
+    width: 100%;
+    height: 33rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 0;
+}
+@media screen and (max-width: 768px) {
+    #spotlight {
+        height: 25rem;
+    }
+}
+
+
+#spotlight h2 {
+    margin-left: 1rem;
+}
+
+#spotlight .swiper {
+    width: 100%;
+    height: inherit;
+    overflow: visible;
+}
+
+
+/* latest */
+#latest, #latest_articles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: fit-content;
+    width: 100%;
+}
+
+#latest_articles {
+    align-items: center;
+}
+
+#latest {
+    width: 90%;
+    margin-left: 5%;
+}
+
+#filter {
+    margin: 1rem;
+}

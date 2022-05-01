@@ -22,11 +22,6 @@ function checkGoToTop() {
   return;
 })();
 
-async function openExpandSection() {
-  await sleep(500);
-  document.getElementById("about_me_expand_btn").click();
-  document.getElementById("what_i_do_expand_btn").click();
-}
 
 
 
@@ -40,19 +35,11 @@ for (i = 0; i < coll.length; i++) {
 
     var collapsible_content = this.nextElementSibling;
     if (collapsible_content.style.maxHeight){
-        collapsible_content.style.maxHeight = null;
-        collapsible_content.style.marginTop = "0";
-        collapsible_content.style.overflow = "hidden";
         this.textContent = "Show more info";
         for(i = 0; i < collapsible_content.children.length; i++) {
           collapsible_content.children[i].style.opacity = "0";
         }
     } else {
-        collapsible_content.style.maxHeight = collapsible_content.scrollHeight + "px";
-        collapsible_content.style.marginTop = "1rem";
-        collapsible_content.style.marginLeft = "50%";
-        collapsible_content.style.transform = "translateX(-50%)";
-        collapsible_content.style.overflow = "visible";
         this.textContent = "Hide more info";
         for(i = 0; i < collapsible_content.children.length; i++) {
           collapsible_content.children[i].style.opacity = "1";
@@ -110,6 +97,12 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function scrollDown() {
+  window.scrollBy({
+    behavior: "smooth",
+    top: 1000,
+  })
+}
 
 async function openSite(x) {
 
@@ -148,10 +141,9 @@ function drawLatestProjects() {
         
       card.innerHTML = 
       `
-      <div id="firstProjectPadding">
+      <div class="firstProjectPadding">
       <div class="card-content rubik_light about-me-card-title">${bigProject.name}</div>
       <div class="big_project_card_tags">
-          <span class="tag rubik_light">Live</span>
       </div>
       <div class="about-me-card-content rubik_light">${bigProject.desc}</div>
       </div>
@@ -160,7 +152,6 @@ function drawLatestProjects() {
 
       // replace background image
       getImage(bigProject.imageName, bigProject._id).then(imageUrl => {
-        console.log("imageUrl:",imageUrl);
         document.documentElement.style.setProperty("--imageUrl", `url(${imageUrl})`);
       })
 
@@ -176,29 +167,10 @@ function drawLatestProjects() {
       // rest
     for(i = 1; i < 4; i++) {
 
-      
-
       var cardElement = document.createElement("div");
       cardElement.setAttribute("class", "card latest-projects-card");
-
-      var cardTitle = document.createElement("div");
-      cardTitle.setAttribute("class", "card-title rubik_light");
-      cardTitle.setAttribute("tabindex", "0");
-      cardTitle.textContent = result[i].name;
-
-      // make latest projects titles keyboard accessible
-      cardTitle.addEventListener("keyup", function(event) {
-        if(event.keyCode == 13) {
-          window.open("https://manuelfahmy.de/main/code.html#" + result[i]._id, "_self" )
-        }
-      })
-
-
-      // redirect to code.html and scroll to card
-      cardTitle.setAttribute("onclick", "window.open('https://manuelfahmy.de/main/code.html#" + result[i]._id + "', '_self');");
-      var cardContent = document.createElement("div");
-      cardContent.setAttribute("class", "card-content rubik_light");
-
+      cardElement.setAttribute("onclick", `window.open('https://manuelfahmy.de/main/code.html#${result[i]._id}', '_self');`)
+      
       if (result[i].desc.length > 150) {
         // text is 151 chars or longer
         resultText = result[i].desc.substring(0,150) ;
@@ -212,11 +184,10 @@ function drawLatestProjects() {
         }
       }
 
-      cardContent.textContent = resultText;
-
-        
-      cardElement.appendChild(cardTitle);
-      cardElement.appendChild(cardContent);
+      cardElement.innerHTML=`
+        <div class="card-title rubik_light" tabindex="0">${result[i].name}</div>
+        <div class="card-content rubik_light">${resultText}</div>
+      `
 
       parentDiv.appendChild(cardElement);
 
@@ -232,7 +203,6 @@ function drawLatestProjects() {
 function getImage(imageName, projectID) {
 
   return new Promise(function (resolve, reject) {
-      console.log(imageName)
       if(imageName == "") {
           resolve(imageName)
       }
@@ -253,7 +223,6 @@ function getImage(imageName, projectID) {
   
       .then(imageBlob => {
           const imageUrl = URL.createObjectURL(imageBlob);
-          //console.log(imageUrl);
 
           // cache image in localStorage
               const newObj = {
@@ -284,8 +253,5 @@ function getImage(imageName, projectID) {
 
           resolve(imageUrl);
       })
-      
-
   })
-  
 }

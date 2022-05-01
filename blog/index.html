@@ -7,64 +7,75 @@
         <title>Manuel's Blog</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../style.css">
-        <link rel="stylesheet" href="blogStyle.css">
-        <link rel="stylesheet" href="../code/codeStyle.css">
-        <link rel="stylesheet" href="../buttons.css">
-        <link rel="stylesheet" href="../cardStyle.css">
-        <link rel="stylesheet" href="../extraPageStyle.css">
 
-        <script src="https://kit.fontawesome.com/d4164139c2.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+            />
+
+        <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+        <link rel="stylesheet" href="css/blogStyle.css">
+        <link rel="stylesheet" href="css/buttons.css">
+        <link rel="stylesheet" href="css/sidenavStyle.css">
+        <link rel="stylesheet" href="css/cardStyle.css">
 
     </head>
 
-    <body onload="getCurrentTab();getLatest();">
-
+    <body onload="getLatest()">
+        <div id="colorOverlay" onclick="closeNav()"></div>
         <main>
             <header>
                 <div>
-                    <h1>Blog</h1>
-                    <div id="headerUnderline"></div>
+                    <h1>Closed[in]</h1>
                 </div>
                     <i id="navbarOpener" onclick="openNav();"  class="fas fa-bars pointer"></i>
 
                     <div id="sidebar" class="sidenav">
                 
-                        <a onclick="closeNav();"><i class="fas fa-times pointer"></i></a>
+                        <a onclick="closeNav();"><i class="fa-solid fa-circle-xmark pointer"></i></a>
                 
-                        <a id="homeAnchor" href="/">Home</a>
-                        <a id="newsAnchor" href="news.html">News</a>
+                        <a id="homeAnchor" class="btn btn_primary" href="/">Home</a>
+                        <a id="newsAnchor" class="btn btn_primary disabled" href="news.html">News</a>
                 
                     </div>
 
             </header>
 
             <div id="content_wrapper">
-                <h2 class="languagesHeader smallHeader brevia_medium">Latest Articles</h2>
-    
-                <div id="filter">
-                    <div>
-                        <input id="projectSearch" type="text">
-                        <label class="rubik_light" for="projectSearch" id="projectLabel">search</label>
-                    </div>
-    
-                </div>
 
-                <div id="latest"></div>
+                <section id="spotlight">
+                    <h2 class="smallHeader">Spotlight</h2>
+                    <div class="swiper">
+                        <div class="swiper-wrapper" id="spotlightAnchor"></div>
+                        <div class="swiper-scrollbar"></div>
+                    </div>
+                </section>
+
+
+                <div id="latest">
+                    <h2 class="smallHeader">Latest Articles</h2>
+        
+                    <div id="filter">
+                        <div>
+                            <input id="articleSearch" type="text">
+                            <label class="rubik_light" id="projectLabel">search</label>
+                        </div>
+                    </div>
+
+                    <div id="latest_articles"></div>
+
+                </div>
             </div>
             
         </main>
         
-        <script>
-            fetch("http://localhost:8443/blog/request/0/all/all/all/all/all")
-            .then(res => res.json())
-            .then(res => {
-                console.log(res);
-            })
-        </script>
-        
-        
-        <script src="sidebarLogic.js"></script>
-        <script src="blogScript.js" async defer></script>
+        <script src="script/blogScript.js" async defer></script>
+        <script src="script/navbar.js" async defer></script>
+        <script src="script/spotlight.js" async defer></script>
     </body>
 </html>

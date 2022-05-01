@@ -13,19 +13,29 @@
     --textBgGrey: #3D4244;
     --lightYellow: #FFE082;
     --nice_blue: #61C1EC;
+    --light_blue: #97d9f8;
 }
 
 .btn {
+    cursor: pointer;
     border: none;
-    border-radius: 40px;
+    border-radius: 9px;
     padding-left: 3vw;
     padding-right: 3vw;
     padding-top: 0.5vw;
     padding-bottom: 0.5vw;
-    transition: all .5s cubic-bezier(0.38, 0.13, 0.32, 0.9);
+    transition: all .1s cubic-bezier(0.38, 0.13, 0.32, 0.9);
     margin-top: 1vh;
     position: relative;
+    border: solid 3px;
 }
+    .btn a {
+        font-size: 1vw;
+        transition: 0;
+        color: inherit;
+        transition: none !important;
+        transition: all 0.25s;
+    }
 
     .btn:focus-visible {
         outline: webkit-focus-ring-color auto 1px !important;
@@ -35,64 +45,53 @@
 .btn-primary {
     cursor: pointer;
     position: relative;
-    background: linear-gradient(90deg, var(--light_orange), var(--medium_orange) 51%, var(--light_orange)) var(--x, 0)/ 200%;
-    box-shadow: 0 0 25px var(--medium_orange_trans);
-    border: none;
-    border-radius: 40px;
-    padding-left: 3vw;
-    padding-right: 3vw;
-    padding-top: 0.5vw;
-    padding-bottom: 0.5vw;
-    transition: all .5s cubic-bezier(0.38, 0.13, 0.32, 0.9) ;
-    margin-top: 1vh;
+    background: var(--new-orange);
+    border-color: var(--new-orange);
 }
-
-    .btn-primary a {
-        color: #532800;
-        font-size: 1vw;
-        transition: all 0.25s;
-    }
 
     .btn-primary:hover { 
-        --x: 100%; 
-        box-shadow: 5px 2px 25px var(--medium_orange);
-        transition: all 0.5s cubic-bezier(0.38, 0.13, 0.32, 0.9);
+        background: transparent;
+        color: var(--new-orange);
     }
 
-    .btn-primary:focus {
-        background-color: var(--light_orange);
-    }
 
 .btn-secondary {
-    cursor: pointer;
-    position: relative;
-    background: linear-gradient(90deg, var(--nice_purple), var(--nice_blue) 51%, var(--nice_blue)) var(--x, 0)/ 200%;
-    box-shadow: 0 0 25px var(--nice_purple_trans);
-    border: none;
-    border-radius: 40px;
-    padding-left: 3vw;
-    padding-right: 3vw;
-    padding-top: 0.5vw;
-    padding-bottom: 0.5vw;
-    transition: all .5s cubic-bezier(0.38, 0.13, 0.32, 0.9) ;
-    margin-top: 1vh;
+    background: transparent;
+    border-color: var(--light_blue);
+    color: var(--light_blue);
+
 }
 
-    .btn-secondary a {
-        color: var(--material_dark);
-        font-size: 1vw;
-        transition: all 0.25s;
-    }
-
     .btn-secondary:hover { 
-        --x: 100%; 
-        box-shadow: 5px 2px 25px var(--nice_purple_trans);
-        transition: all 0.5s cubic-bezier(0.38, 0.13, 0.32, 0.9);
+        background: var(--light_blue);
+        color: #162a42;
     }
 
-    .btn-secondary:focus {
-        background-color: var(--nice_blue);
+
+.btn-purple {
+    cursor: pointer;
+    position: relative;
+    background: var(--purple);
+    border-color: var(--purple);
+}
+
+    .btn-purple:hover { 
+        background: transparent;
+        color: var(--purple);
     }
+
+.btn-hollow-white {
+    background: transparent;
+    border-color: white;
+    color: white;
+}
+
+    .btn-hollow-white:hover { 
+        background: white;
+        color: black;
+    }
+
+    
 
 .btn-modern {
     background: none;
@@ -104,6 +103,11 @@
 
     .btn-modern:hover {
         background-color: var(--dark_orange);
+        box-shadow: var(--medium_orange_trans);
+    }
+
+    .btn-modern:active {
+        background-color: var(--light_orange);
     }
 
 
@@ -126,15 +130,14 @@
 
 
 @media screen and (max-width: 1000px) {
-    .btn-primary, .btn-secondary {
-        border-radius: 40px;
+    .btn-primary, .btn-secondary, .btn-purple, .btn-hollow-white {
         padding-left: 5.75vw;
         padding-right: 5.75vw;
         padding-top: 1.6vw;
         padding-bottom: 1.6vw;
         margin-top: 1vh;
     }
-    .btn-primary a, .btn-secondary a {
+    .btn-primary a, .btn-secondary a, .btn-purple a, .btn-hollow-white a {
         font-size: 1.5rem;
     }
 }
