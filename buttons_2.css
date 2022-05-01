@@ -91,24 +91,6 @@
         color: black;
     }
 
-    
-
-.btn-modern {
-    background: none;
-    background-color: var(--textBgGrey);
-    border-radius: 9px;
-    box-shadow: none ;
-    transition: all 0.25s;
-}
-
-    .btn-modern:hover {
-        background-color: var(--dark_orange);
-        box-shadow: var(--medium_orange_trans);
-    }
-
-    .btn-modern:active {
-        background-color: var(--light_orange);
-    }
 
 
 .expand_btn {
