@@ -21,6 +21,15 @@
     --purple-comp: #1E0D2A;
 }
 
+#checker {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: url("https://manuelfahmy.de/main/images/checker.png");
+    background-repeat: repeat;
+    opacity: .3;
+}
+
 #scrollToTop {
     position: fixed;
     right: 10%;
