@@ -224,6 +224,7 @@ header, #page1, .footer_inner {
     left: 0;
     z-index: 3;
     display: none;
+    backdrop-filter: blur(3px);
     cursor: pointer;
     transition: opacity .25s;
 }
